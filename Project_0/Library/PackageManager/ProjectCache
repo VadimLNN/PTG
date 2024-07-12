@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638563768463598979
-    m_Hash: 3980428150
+      ticks: 638563904235146378
+    m_Hash: 606507168
   m_LockFileStatus:
     m_FilePath: "C:/Users/svobo/OneDrive/\u0420\u0430\u0431\u043E\u0447\u0438\u0439
       \u0441\u0442\u043E\u043B/study/PTG/Project_0/Packages/packages-lock.json"
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638563768463654213
-    m_Hash: 537598238
+      ticks: 638563904392619576
+    m_Hash: 103959088
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
