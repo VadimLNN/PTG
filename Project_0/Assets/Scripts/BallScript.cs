@@ -24,6 +24,9 @@ public class BallScript : MonoBehaviour
     // для работы с UI
     public Text val;
 
+    // начальная позиция шара
+    Vector3 oldPos;
+
 
     // вызывается при выборе сферы
     public void select()
@@ -31,6 +34,7 @@ public class BallScript : MonoBehaviour
         ren.material = selectedMat;
     }
 
+    // установщик скорости 
     public void setSpeed(float value)
     {
         Debug.Log(value.ToString());
@@ -38,10 +42,21 @@ public class BallScript : MonoBehaviour
         val.text = speed.ToString();
     }
 
+    // сброс параметров 
+    public void reset()
+    {
+        transform.position = oldPos;
+        start = false;
+        ren.material = defoultMat;
+    }
+
 
     // вызывается перед первым кадром
     void Start()
     {
+        // сохранение начальной позиции 
+        oldPos = transform.position;
+
         val.text = speed.ToString();
 
         ren = GetComponent<Renderer>();
