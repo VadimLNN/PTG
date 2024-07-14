@@ -1,29 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
+    // для работы со скоростью шара
     [Range(0.1f, 100f)]
     public float speed = 2;
+
+    // для работы с материалом шара при стокновении 
     public Material hitMat;
     private Renderer ren;
 
+    // для работы с материалом шара при выборе 
+    [HideInInspector] // сокрытие переменной в инспекторе
+    public bool start = false; // переменная определяющая начало движения
 
-    // Start is called before the first frame update
+    public Material defoultMat; //  материала до выбора
+    public Material selectedMat; // материал при выборе
+
+    // вызывается при выборе сферы
+    public void select()
+    {
+        ren.material = selectedMat;
+    }
+
+
+    // вызывается перед первым кадром
     void Start()
     {
         ren = GetComponent<Renderer>();
+        ren.material = defoultMat;
     }
 
+    // вызывается при столкновении 
     private void OnCollisionEnter(Collision collision)
     {
-        ren.material = hitMat; // смена материала при столкновении 
+        // смена материала при столкновении 
+        ren.material = hitMat; 
     }
 
-    // Update is called once per frame
+    // вызывается каждый кадр
     void Update()
     {
-        transform.position += transform.right * Time.deltaTime * speed;
+        if (start)        
+        {
+            transform.position += transform.right * Time.deltaTime * speed;
+        }
+        
     }
 }
