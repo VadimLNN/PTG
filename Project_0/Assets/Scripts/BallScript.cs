@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallScript : MonoBehaviour
 {
@@ -20,16 +21,29 @@ public class BallScript : MonoBehaviour
     public Material defoultMat; //  материала до выбора
     public Material selectedMat; // материал при выборе
 
+    // для работы с UI
+    public Text val;
+
+
     // вызывается при выборе сферы
     public void select()
     {
         ren.material = selectedMat;
     }
 
+    public void setSpeed(float value)
+    {
+        Debug.Log(value.ToString());
+        speed = value;
+        val.text = speed.ToString();
+    }
+
 
     // вызывается перед первым кадром
     void Start()
     {
+        val.text = speed.ToString();
+
         ren = GetComponent<Renderer>();
         ren.material = defoultMat;
     }
