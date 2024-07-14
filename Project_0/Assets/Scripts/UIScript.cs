@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class UIScript : MonoBehaviour
 {
-    public GameObject sphere;
+    public GameObject[] spheres;
 
     public void reset()
     {
-        sphere.GetComponent<BallScript>().reset();
+        foreach (GameObject sphere in spheres) 
+        {
+            sphere.GetComponent<BallScript>().reset(); 
+        }
+
     }
 
 }
