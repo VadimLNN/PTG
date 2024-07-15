@@ -75,7 +75,6 @@ public class BallScr_Translate : MonoBehaviour
     {
         if (start)        
         {
-            //transform.position += transform.right * Time.deltaTime * speed;
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
         
