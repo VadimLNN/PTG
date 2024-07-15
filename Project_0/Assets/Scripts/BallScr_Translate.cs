@@ -33,10 +33,6 @@ public class BallScr_Translate : MonoBehaviour
     {
         ren.material = selectedMat;
     }
-    public void notSelect()
-    {
-        ren.material = defoultMat;
-    }
 
     // установщик скорости 
     public void setSpeed(float value)
@@ -79,7 +75,8 @@ public class BallScr_Translate : MonoBehaviour
     {
         if (start)        
         {
-            transform.position += transform.right * Time.deltaTime * speed;
+            //transform.position += transform.right * Time.deltaTime * speed;
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
         
     }
