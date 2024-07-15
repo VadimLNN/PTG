@@ -27,15 +27,13 @@ public class BallScr_AddForce : MonoBehaviour
     // начальная позиция шара
     Vector3 oldPos;
 
+    // 
+    Rigidbody rb;
 
     // вызывается при выборе сферы
     public void select()
     {
         ren.material = selectedMat;
-    }
-    public void notSelect()
-    {
-        ren.material = defoultMat;
     }
 
     // установщик скорости 
@@ -63,6 +61,8 @@ public class BallScr_AddForce : MonoBehaviour
 
         val.text = speed.ToString();
 
+        rb = GetComponent<Rigidbody>();
+
         ren = GetComponent<Renderer>();
         ren.material = defoultMat;
     }
@@ -75,11 +75,12 @@ public class BallScr_AddForce : MonoBehaviour
     }
 
     // вызывается каждый кадр
-    void Update()
+    void FixedUpdate()
     {
         if (start)        
         {
-            transform.position += transform.right * Time.deltaTime * speed;
+            //transform.position += transform.right * Time.deltaTime * speed;
+            rb.AddForce(Vector3.right * speed);
         }
         
     }
