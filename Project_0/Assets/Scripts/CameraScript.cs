@@ -16,15 +16,47 @@ public class CameraScript : MonoBehaviour
         {
             Transform objectHit = hit.transform;
 
-            BallScript bs;
+            BallScr_SetSpeed bs_ss;
+            BallScr_MovePosition bs_mp;
+            BallScr_AddForce bs_af;
+            BallScr_Translate bs_t;
+            BallScr_SetPosition bs_sp;
 
-            // если объект с которым произошло столкновение содержит BallScript
-            if (objectHit.TryGetComponent<BallScript>(out bs) == true)
+            // если объект с которым произошло столкновение содержит BallScript_
+            if (objectHit.TryGetComponent<BallScr_SetSpeed>(out bs_ss) == true)
             {
-                bs.select(); // вызов смены материала
+                bs_ss.select(); // вызов смены материала
 
                 if (Input.GetAxis("Fire1") > 0) // если нажата левая кнопка мыши - запуск движения 
-                    bs.start = true;
+                    bs_ss.start = true;
+            }
+            else if (objectHit.TryGetComponent<BallScr_MovePosition>(out bs_mp) == true)
+            {
+                bs_mp.select(); // вызов смены материала
+
+                if (Input.GetAxis("Fire1") > 0) // если нажата левая кнопка мыши - запуск движения 
+                    bs_mp.start = true;
+            }
+            else if (objectHit.TryGetComponent<BallScr_AddForce>(out bs_af) == true)
+            {
+                bs_af.select(); // вызов смены материала
+
+                if (Input.GetAxis("Fire1") > 0) // если нажата левая кнопка мыши - запуск движения 
+                    bs_af.start = true;
+            }
+            else if (objectHit.TryGetComponent<BallScr_Translate>(out bs_t) == true)
+            {
+                bs_t.select(); // вызов смены материала
+
+                if (Input.GetAxis("Fire1") > 0) // если нажата левая кнопка мыши - запуск движения 
+                    bs_t.start = true;
+            }
+            else if (objectHit.TryGetComponent<BallScr_SetPosition>(out bs_sp) == true)
+            {
+                bs_sp.select(); // вызов смены материала
+
+                if (Input.GetAxis("Fire1") > 0) // если нажата левая кнопка мыши - запуск движения 
+                    bs_sp.start = true;
             }
         }
     }
