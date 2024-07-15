@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d1c6c62d223e34da5c8cbe4ee07fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   hitMat: {fileID: 2100000, guid: bfb6f60cc9590db4aa8862927355e102, type: 2}
   start: 0
   defoultMat: {fileID: 2100000, guid: 3af3bf046d6fd814c896b68950e4dcfe, type: 2}
@@ -1504,7 +1504,7 @@ GameObject:
   - component: {fileID: 527640800}
   - component: {fileID: 527640799}
   m_Layer: 5
-  m_Name: SetSpeed
+  m_Name: SetVelosity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,7 +1562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SetSpeed
+  m_Text: SetVelosity
 --- !u!222 &527640800
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1657,7 +1657,7 @@ GameObject:
   - component: {fileID: 619023873}
   - component: {fileID: 619023874}
   m_Layer: 5
-  m_Name: SliderSetSpeed
+  m_Name: SliderSetVelosity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3740,7 +3740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb972e38b9e38540a124e312d470806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   hitMat: {fileID: 2100000, guid: bfb6f60cc9590db4aa8862927355e102, type: 2}
   start: 0
   defoultMat: {fileID: 2100000, guid: 3af3bf046d6fd814c896b68950e4dcfe, type: 2}
@@ -3892,7 +3892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c052117f28c4c164c9ed8ace0aee5e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   hitMat: {fileID: 2100000, guid: bfb6f60cc9590db4aa8862927355e102, type: 2}
   start: 0
   defoultMat: {fileID: 2100000, guid: 3af3bf046d6fd814c896b68950e4dcfe, type: 2}
@@ -3988,8 +3988,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BallScript, Assembly-CSharp
+      - m_Target: {fileID: 1695265395}
+        m_TargetAssemblyTypeName: BallScr_AddForce, Assembly-CSharp
         m_MethodName: setSpeed
         m_Mode: 0
         m_Arguments:
@@ -4090,8 +4090,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BallScript, Assembly-CSharp
+      - m_Target: {fileID: 491946185}
+        m_TargetAssemblyTypeName: BallScr_Translate, Assembly-CSharp
         m_MethodName: setSpeed
         m_Mode: 0
         m_Arguments:
@@ -4465,8 +4465,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BallScript, Assembly-CSharp
+      - m_Target: {fileID: 1713245221}
+        m_TargetAssemblyTypeName: BallScr_SetPosition, Assembly-CSharp
         m_MethodName: setSpeed
         m_Mode: 0
         m_Arguments:

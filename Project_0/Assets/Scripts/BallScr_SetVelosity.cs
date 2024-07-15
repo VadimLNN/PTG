@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BallScr_SetSpeed : MonoBehaviour
+public class BallScr_SetVelosity : MonoBehaviour
 {
     // для работы со скоростью шара
     [Range(0.1f, 100f)]
@@ -28,6 +28,7 @@ public class BallScr_SetSpeed : MonoBehaviour
     // начальная позиция шара
     Vector3 oldPos;
 
+    Rigidbody rb;
 
     // вызывается при выборе сферы
     public void select()
@@ -60,6 +61,8 @@ public class BallScr_SetSpeed : MonoBehaviour
 
         val.text = speed.ToString();
 
+        rb = GetComponent<Rigidbody>();
+
         ren = GetComponent<Renderer>();
         ren.material = defoultMat;
     }
@@ -76,7 +79,8 @@ public class BallScr_SetSpeed : MonoBehaviour
     {
         if (start)        
         {
-            transform.position += transform.right * Time.deltaTime * speed;
+            //transform.position += transform.right * Time.deltaTime * speed;
+            rb.velocity = Vector3.right * speed;
         }
         
     }

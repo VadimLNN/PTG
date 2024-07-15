@@ -16,19 +16,20 @@ public class CameraScript : MonoBehaviour
         {
             Transform objectHit = hit.transform;
 
-            BallScr_SetSpeed bs_ss;
+            BallScr_SetVelosity bs_sv;
             BallScr_MovePosition bs_mp;
             BallScr_AddForce bs_af;
             BallScr_Translate bs_t;
             BallScr_SetPosition bs_sp;
 
             // если объект с которым произошло столкновение содержит BallScript_
-            if (objectHit.TryGetComponent<BallScr_SetSpeed>(out bs_ss) == true)
+            if (objectHit.TryGetComponent<BallScr_SetVelosity>(out bs_sv) == true)
             {
-                bs_ss.select(); // вызов смены материала
+                
+                bs_sv.select(); // вызов смены материала
 
                 if (Input.GetAxis("Fire1") > 0) // если нажата левая кнопка мыши - запуск движения 
-                    bs_ss.start = true;
+                    bs_sv.start = true;
             }
             else if (objectHit.TryGetComponent<BallScr_MovePosition>(out bs_mp) == true)
             {

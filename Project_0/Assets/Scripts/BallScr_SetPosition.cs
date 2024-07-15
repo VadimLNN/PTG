@@ -27,15 +27,10 @@ public class BallScr_SetPosition : MonoBehaviour
     // начальная позиция шара
     Vector3 oldPos;
 
-
     // вызывается при выборе сферы
     public void select()
     {
         ren.material = selectedMat;
-    }
-    public void notSelect()
-    {
-        ren.material = defoultMat;
     }
 
     // установщик скорости 
@@ -75,7 +70,7 @@ public class BallScr_SetPosition : MonoBehaviour
     }
 
     // вызывается каждый кадр
-    void Update()
+    void FixedUpdate()
     {
         if (start)        
         {
