@@ -14,14 +14,14 @@ public class CameraScr : MonoBehaviour
         float horAx = Input.GetAxisRaw("Horizontal");
 
 
-        //________Изменение позиции камеры________//
+        // Изменение позиции камеры
         Vector3 dir = new Vector3(horAx, 0, vertAx);
         dir.Normalize();
         dir = transform.TransformDirection(dir) * Time.fixedDeltaTime * moveSpeed;
         transform.position += dir;
 
 
-        //________Поворот на ПКМ________//
+        // Поворот на ПКМ 
         if (Input.GetAxis("Fire2") == 1)
         {
             float x_axis = Input.GetAxis("Mouse X") * mouse_sens;
@@ -31,7 +31,7 @@ public class CameraScr : MonoBehaviour
         }
 
 
-        //________Поворот на Q и E________//
+        // Поворот на Q и E 
         if (Input.GetKey(KeyCode.Q) == true)
         {
             transform.Rotate(new Vector3(0, 1, 0), -angSpeed * Time.fixedDeltaTime, Space.World);
