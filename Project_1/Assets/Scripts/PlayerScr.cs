@@ -6,7 +6,6 @@ public class PlayerScr : MonoBehaviour
 {
     // ссылки на объекты и UI
     public Camera cam;     
-    public GameObject deadfloor;
     public GameObject player;
 
     public Slider speedSlider;
@@ -63,11 +62,6 @@ public class PlayerScr : MonoBehaviour
                 }
             }
         }
-
-
-        //if (transform.position.y < deadfloor.transform.position.y)
-        //    isDead = true;
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -75,8 +69,6 @@ public class PlayerScr : MonoBehaviour
         // Обработка смерти 
         if (collision.transform.CompareTag("Dead"))
         {
-            /*speedSlider.value = 100;*/
-
             
         }
 
