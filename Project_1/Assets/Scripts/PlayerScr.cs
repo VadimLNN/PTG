@@ -16,6 +16,9 @@ public class PlayerScr : MonoBehaviour
     bool isCalm;
     bool isDead;
 
+    public GameObject win_pnl;
+    public GameObject dead_pnl;
+
 
     void Start()
     {
@@ -69,13 +72,13 @@ public class PlayerScr : MonoBehaviour
         // Обработка смерти 
         if (collision.transform.CompareTag("Dead"))
         {
-            
+            dead_pnl.SetActive(true);
         }
 
         // Обработка победы
         if (collision.transform.CompareTag("Win"))
         {
-
+            win_pnl.SetActive(true);
         }
     }
 
