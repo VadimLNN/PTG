@@ -28,6 +28,12 @@ public class PlayerScr : MonoBehaviour
 
     void Update()
     {
+        if (rb.velocity == Vector3.zero)
+            isCalm = true;
+        else 
+            isDead = false;
+
+
         if (isCalm)
         {
             RaycastHit hit;
