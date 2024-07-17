@@ -28,10 +28,10 @@ public class PlayerScr : MonoBehaviour
 
     void Update()
     {
-        if (rb.velocity == Vector3.zero)
+        /*if (rb.velocity == Vector3.zero)
             isCalm = true;
         else 
-            isDead = false;
+            isCalm = false;*/
 
 
         if (isCalm)
@@ -68,6 +68,23 @@ public class PlayerScr : MonoBehaviour
         //if (transform.position.y < deadfloor.transform.position.y)
         //    isDead = true;
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Обработка смерти 
+        if (collision.transform.CompareTag("Dead"))
+        {
+            /*speedSlider.value = 100;*/
+
+            
+        }
+
+        // Обработка победы
+        if (collision.transform.CompareTag("Win"))
+        {
+
+        }
     }
 
     private Vector3 CalculatingVector(RaycastHit hit)
