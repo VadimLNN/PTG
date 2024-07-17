@@ -34,4 +34,9 @@ public class MenuScr : MonoBehaviour
 
         Time.timeScale = 1;
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
