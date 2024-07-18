@@ -40,5 +40,15 @@ public class CameraScr : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 1, 0), angSpeed * Time.fixedDeltaTime, Space.World);
         }
+
+        // изменение высоты на Space и LShift
+        if (Input.GetKey(KeyCode.Space) == true)
+        {
+            transform.position += transform.up * moveSpeed * Time.fixedDeltaTime;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) == true)
+        {
+            transform.position -= transform.up * moveSpeed * Time.fixedDeltaTime;
+        }
     }
 }
