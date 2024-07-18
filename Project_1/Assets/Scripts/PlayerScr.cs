@@ -4,18 +4,17 @@ using UnityEngine.UI;
 
 public class PlayerScr : MonoBehaviour
 {
-    // ссылки на объекты и UI
-    public Camera cam;     
-    public GameObject player;
-
-    public Slider speedSlider;
-
-    LineRenderer lr;
-    Rigidbody rb;
+    // параметры и ссылки на объекты, UI
     float speed;
     bool isCalm;
-    bool isDead;
-
+    /*bool isDead;*/
+    
+    public Camera cam;     
+    public GameObject player;
+    LineRenderer lr;
+    Rigidbody rb;
+    
+    public Slider speedSlider;
     public GameObject win_pnl;
     public GameObject dead_pnl;
 
@@ -25,7 +24,7 @@ public class PlayerScr : MonoBehaviour
         rb = player.GetComponent<Rigidbody>();
         lr = player.GetComponent<LineRenderer>();
         isCalm = true;
-        isDead = false;
+        /*isDead = false;*/
     }
 
     void Update()
@@ -36,20 +35,20 @@ public class PlayerScr : MonoBehaviour
             isCalm = false;*/
 
 
-        if (isCalm)
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        lr.SetPosition(0, transform.position);
+        lr.SetPosition(1, transform.position);
+
+
+        if (Physics.Raycast(ray, out hit))
         {
-            RaycastHit hit;
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            // работа с указателем 
+            lr.SetPosition(1, CalculatingVector(hit));
 
-            lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, transform.position);
-
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // работа с указателем 
-                lr.SetPosition(1, CalculatingVector(hit));
-
+            if (isCalm)
+            {    
                 // Наращевание скорости и на ЛКМ
                 if (Input.GetAxis("Fire1") == 1 && speed <= speedSlider.maxValue)
                 {
@@ -81,8 +80,14 @@ public class PlayerScr : MonoBehaviour
         if (collision.transform.CompareTag("Win"))
         {
             win_pnl.SetActive(true);
+
+            // Сохранение данных, если уровень не был пройден ранее
+            int level = SavesData.CurrentLevel();
+
+            if (level == SavesData.LastOpenedLevel())
+                SavesData.Save(level + 1);
+
             Time.timeScale = 0;
-            
         }
     }
 
