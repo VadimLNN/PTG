@@ -73,12 +73,16 @@ public class PlayerScr : MonoBehaviour
         if (collision.transform.CompareTag("Dead"))
         {
             dead_pnl.SetActive(true);
+            Time.timeScale = 0;
+            
         }
 
         // Обработка победы
         if (collision.transform.CompareTag("Win"))
         {
             win_pnl.SetActive(true);
+            Time.timeScale = 0;
+            
         }
     }
 
