@@ -12,6 +12,7 @@ public class MenuScr : MonoBehaviour
     public GameObject win_pnl;
     public GameObject dead_pnl;
     public GameObject menu_pnl;
+    public GameObject finish_pnl;
 
     public GameObject menu_main_pnl;
     public GameObject menu_lvls_pnl;
@@ -21,6 +22,7 @@ public class MenuScr : MonoBehaviour
         win_pnl.SetActive(false);
         dead_pnl.SetActive(false);
         menu_pnl.SetActive(false);
+        finish_pnl.SetActive(false);
 
         menu_lvls_pnl.SetActive(false);
     }
@@ -52,11 +54,22 @@ public class MenuScr : MonoBehaviour
 
     public void Next()
     {
-        if (File.Exists(Application.persistentDataPath + "/MySaveData.dat"))
+        if (File.Exists(Application.persistentDataPath
+          + "/MySaveData.dat"))
         {
-            level = SavesData.LastOpenedLevel() > SavesData.CountLevels() ? SavesData.CountLevels() : SavesData.LastOpenedLevel();
+            int level = SavesData.CurrentLevel();
+            int countLevels = SavesData.CountLevels();
 
-            SceneManager.LoadScene(Convert.ToInt32(level));
+            Debug.Log(level);
+            Debug.Log(countLevels);
+
+            if (level < countLevels && level != -1)
+                SceneManager.LoadScene(Convert.ToInt32(level + 1));
+            else if (level >= countLevels)
+            {
+                win_pnl.SetActive(false);
+                finish_pnl.SetActive(true);
+            }
         }
     }
 

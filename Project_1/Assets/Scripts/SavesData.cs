@@ -29,9 +29,8 @@ public class SavesData : MonoBehaviour
           + "/MySaveData.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file =
-              File.Open(Application.persistentDataPath
-              + "/MySaveData.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath
+                + "/MySaveData.dat", FileMode.Open);
             SaveData data = (SaveData)bf.Deserialize(file);
             file.Close();
             level = data.level;

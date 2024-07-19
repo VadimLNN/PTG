@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.IO;
 public class PlayerScr : MonoBehaviour
 {
     // параметры и ссылки на объекты, UI
