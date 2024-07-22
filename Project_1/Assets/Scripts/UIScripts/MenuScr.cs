@@ -31,8 +31,10 @@ public class MenuScr : MonoBehaviour
     {
         win_pnl.SetActive(false);
         dead_pnl.SetActive(false);
+        finish_pnl.SetActive(false);
 
         menu_pnl.SetActive(true);
+
 
         Time.timeScale = 0;
     }
@@ -57,6 +59,7 @@ public class MenuScr : MonoBehaviour
         if (File.Exists(Application.persistentDataPath
           + "/MySaveData.dat"))
         {
+            Debug.Log("exist");
             int level = SavesData.CurrentLevel();
             int countLevels = SavesData.CountLevels();
 
@@ -71,20 +74,21 @@ public class MenuScr : MonoBehaviour
                 finish_pnl.SetActive(true);
             }
         }
+
+        Time.timeScale = 1;
     }
 
     public void NewGame()
     {
-        // В сохранении и внутри класса устанавливается уровень 1
-        level = 1;
-        SavesData.Save(1);
-
-        // Можно взаимодействовать с кнопками "Продолжить игру" и "Уровни"
-        /*resumeBtn.interactable = false;
-        levelsBtn.interactable = false;*/
+        SavesData.DeleteSave();
+        
+        // В сохранении устанавливается уровень 1
+        SavesData.Save(0);
 
         // Загрузка первого уровня
-        SceneManager.LoadScene(Convert.ToInt32(level));
+        SceneManager.LoadScene(0);
+
+        Time.timeScale = 1;
     }
 
     public void Levels() 

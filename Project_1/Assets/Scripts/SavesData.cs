@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Pipes;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,10 +32,20 @@ public class SavesData : MonoBehaviour
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath
                 + "/MySaveData.dat", FileMode.Open);
-            SaveData data = (SaveData)bf.Deserialize(file);
+            if (file.Length != 0)
+            {
+                SaveData data = (SaveData)bf.Deserialize(file);
+                level = data.level;
+                Debug.Log("Game data loaded!");
+            }
+            else
+            {
+                level = 0;
+                Debug.Log("Game data created!");
+            }
+            
             file.Close();
-            level = data.level;
-            Debug.Log("Game data loaded!");
+            
 
             return Convert.ToInt32(level);
         }
@@ -50,6 +61,7 @@ public class SavesData : MonoBehaviour
         {
             File.Delete(Application.persistentDataPath
               + "/MySaveData.dat");
+
             Debug.Log("Data reset complete!");
         }
         else

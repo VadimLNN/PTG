@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &82443927 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5054042973150144697, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
-  m_PrefabInstance: {fileID: 521156574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &230833646
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,7 +327,7 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1001 &521156574
+--- !u!1001 &371023861
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -424,10 +419,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6829425628166833182, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7345053670175760969, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -437,10 +428,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
---- !u!114 &521156575 stripped
+--- !u!1 &371023862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973286228111302067, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
+  m_PrefabInstance: {fileID: 371023861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &371023863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5054042973150144697, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
+  m_PrefabInstance: {fileID: 371023861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &371023864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4707521972275849479, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
-  m_PrefabInstance: {fileID: 521156574}
+  m_PrefabInstance: {fileID: 371023861}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -683,11 +684,6 @@ Transform:
   - {fileID: 1633483857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1491329224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3973286228111302067, guid: c72fe02c5088c824d90b177abcc302fd, type: 3}
-  m_PrefabInstance: {fileID: 521156574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1538203437
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -986,11 +982,11 @@ PrefabInstance:
     - target: {fileID: 8382316582575452985, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: win_pnl
       value: 
-      objectReference: {fileID: 82443927}
+      objectReference: {fileID: 371023863}
     - target: {fileID: 8382316582575452985, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: dead_pnl
       value: 
-      objectReference: {fileID: 1491329224}
+      objectReference: {fileID: 371023862}
     - target: {fileID: 8382316582575452985, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: deadfloor
       value: 
@@ -998,10 +994,10 @@ PrefabInstance:
     - target: {fileID: 8382316582575452985, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: speedSlider
       value: 
-      objectReference: {fileID: 521156575}
+      objectReference: {fileID: 371023864}
     - target: {fileID: 8889650859025763901, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.06
+      value: -27.81
       objectReference: {fileID: 0}
     - target: {fileID: 8889650859025763901, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1009,7 +1005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8889650859025763901, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.4
+      value: -61.78
       objectReference: {fileID: 0}
     - target: {fileID: 8889650859025763901, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1273,6 +1269,6 @@ SceneRoots:
   - {fileID: 3189078375482993960}
   - {fileID: 2247622548441901454}
   - {fileID: 1173730129080811884}
-  - {fileID: 521156574}
   - {fileID: 2946049876215630090}
   - {fileID: 2118465672}
+  - {fileID: 371023861}

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6760027347408796667}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2078095640891625695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.91}
+  m_LocalPosition: {x: -16.94, y: 3.68, z: 71.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078095640891625695}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8ced74b71e351404dafcc1560b92d053, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -129,7 +129,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 664b6526ef2c0c24d9f041a67ddac33e, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,7 +152,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 2}
+  - {x: 0, y: 0, z: 4}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -160,8 +160,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.1428566
-        value: 0.1486454
+        time: 0.21278715
+        value: 0.39864248
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -224,10 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b757afa558cc646942806afbd68a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 7129680583498841410, guid: 22ec54e389dba3d44b4496253892e824, type: 3}
-  deadfloor: {fileID: 0}
+  cam: {fileID: 0}
   player: {fileID: 2078095640891625695}
   speedSlider: {fileID: 0}
+  win_pnl: {fileID: 0}
+  dead_pnl: {fileID: 0}
 --- !u!54 &6760027347408796667
 Rigidbody:
   m_ObjectHideFlags: 0

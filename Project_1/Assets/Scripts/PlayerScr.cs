@@ -7,7 +7,6 @@ public class PlayerScr : MonoBehaviour
     // параметры и ссылки на объекты, UI
     float speed;
     bool isCalm;
-    /*bool isDead;*/
     
     public Camera cam;     
     public GameObject player;
@@ -24,7 +23,6 @@ public class PlayerScr : MonoBehaviour
         rb = player.GetComponent<Rigidbody>();
         lr = player.GetComponent<LineRenderer>();
         isCalm = true;
-        /*isDead = false;*/
     }
 
     void Update()
@@ -84,7 +82,8 @@ public class PlayerScr : MonoBehaviour
             // Сохранение данных, если уровень не был пройден ранее
             int level = SavesData.CurrentLevel();
 
-            if (level == SavesData.LastOpenedLevel())
+            if (level == SavesData.LastOpenedLevel() || !File.Exists(Application.persistentDataPath
+                                                            + "/MySaveData.dat"))
                 SavesData.Save(level + 1);
 
             Time.timeScale = 0;

@@ -19,7 +19,7 @@ public class LevelsScr : MonoBehaviour
 
         foreach (GameObject btn in objects)
         {
-            if (Convert.ToInt32(btn.name.Substring(5)) > lastLevel)  // Через имя кнопки узнаётся уровень, на который она переводит
+            if (Convert.ToInt32(btn.name.Substring(0, 1)) > lastLevel)  // Через имя кнопки узнаётся уровень, на который она переводит
             {
                 btn.transform.GetComponent<UnityEngine.UI.Button>().interactable = false;
             }
@@ -32,6 +32,8 @@ public class LevelsScr : MonoBehaviour
         SceneManager.LoadScene(
             Convert.ToInt32(
                 EventSystem.current.currentSelectedGameObject.name.Substring(0, 1)));
+
+        Time.timeScale = 1;
     }
 
     public void Back()
