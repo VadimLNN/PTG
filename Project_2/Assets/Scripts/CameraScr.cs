@@ -6,7 +6,7 @@ public class CameraScr : MonoBehaviour
 {
     void Update()
     {
-        int moveSpeed = 5;
+        /*int moveSpeed = 5;
         int angSpeed = 25;
         float mouse_sens = 2f;
 
@@ -31,16 +31,6 @@ public class CameraScr : MonoBehaviour
         }
 
 
-        // Поворот на Q и E 
-        if (Input.GetKey(KeyCode.Q) == true)
-        {
-            transform.Rotate(new Vector3(0, 1, 0), -angSpeed * Time.fixedDeltaTime, Space.World);
-        }
-        if (Input.GetKey(KeyCode.E) == true)
-        {
-            transform.Rotate(new Vector3(0, 1, 0), angSpeed * Time.fixedDeltaTime, Space.World);
-        }
-
         // изменение высоты на Space и LShift
         if (Input.GetKey(KeyCode.Space) == true)
         {
@@ -49,6 +39,6 @@ public class CameraScr : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) == true)
         {
             transform.position -= transform.up * moveSpeed * Time.fixedDeltaTime;
-        }
+        }*/
     }
 }
