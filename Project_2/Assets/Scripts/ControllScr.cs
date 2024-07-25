@@ -15,7 +15,7 @@ public class ControllScr : MonoBehaviour
 
     // Характеристики для прыжка
     [Range(0.1f, 1f)]
-    public float jumpForce = 0.5f;
+    public float jumpForce = 0.35f;
     public bool onGround;
 
 
@@ -28,8 +28,7 @@ public class ControllScr : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Ground"))
-            onGround = true;
+        onGround = true;
     }
     void OnCollisionExit(Collision collision)
     {
@@ -39,7 +38,7 @@ public class ControllScr : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        state = 0; 
+        state = 0;
 
         // воспроизведение анимации передвижения вперёд
         if (Input.GetAxisRaw("Vertical") > 0)
@@ -47,19 +46,27 @@ public class ControllScr : MonoBehaviour
             if (onGround == true)
                 state = 1;
 
-            Vector3 v = transform.forward * speed;
-            v.y += rb.velocity.y;
-            rb.velocity = v;
+            rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+        }
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            if (onGround == true)
+                state = 3;
+
+            rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed);
         }
 
         // повороты в стороны
-        if(Input.GetAxisRaw("Horizontal") > 0)
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            transform.Rotate(Vector3.up, ang_speed * Time.deltaTime, Space.Self);
+            Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
+            rb.MoveRotation(rb.rotation * deltaRotation);
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            transform.Rotate(Vector3.up, -ang_speed * Time.deltaTime, Space.Self);
+            //transform.Rotate(Vector3.up, -ang_speed * Time.deltaTime, Space.Self);
+            Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
+            rb.MoveRotation(rb.rotation * deltaRotation);
         }
 
         // прыжок
@@ -69,7 +76,7 @@ public class ControllScr : MonoBehaviour
         }
 
         if (onGround == false)
-            state = 2;
+            state = 5;
 
         if (state == 0) // покой
         {
