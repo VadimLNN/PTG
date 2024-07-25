@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ControllScr : MonoBehaviour
@@ -40,20 +41,28 @@ public class ControllScr : MonoBehaviour
     {
         state = 0;
 
-        // воспроизведение анимации передвижения вперёд
+        // установка анимации и передвижения вперёд, назад 
         if (Input.GetAxisRaw("Vertical") > 0)
         {
             if (onGround == true)
+            {
                 state = 1;
-
-            rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+            }
+            else                                                                            // снижение скорости тк в полёте         
+                rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * (speed * (float)0.75));
+            
+            
         }
         if (Input.GetAxisRaw("Vertical") < 0)
         {
             if (onGround == true)
-                state = 3;
-
-            rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed);
+            {
+                state = 3;                                                           // снижение скорости тк движение назад
+                rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+            }
+            else                                                                     // снижение скорости тк движение назад в полёте
+                rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * ((speed / 2) * (float)0.75));
         }
 
         // повороты в стороны
@@ -64,26 +73,25 @@ public class ControllScr : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            //transform.Rotate(Vector3.up, -ang_speed * Time.deltaTime, Space.Self);
             Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
             rb.MoveRotation(rb.rotation * deltaRotation);
         }
 
-        // прыжок
+        // прыжок 
         if (onGround == true && Input.GetKey(KeyCode.Space))
-        {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
 
+        // установка анимация конфузии в полёте 
         if (onGround == false)
             state = 5;
 
-        if (state == 0) // покой
+        /*if (state == 0) // покой
         {
-            //float y = rb.velocity.y;
-            //rb.velocity = new Vector3 (0, y, 0);
-        }
+            float y = rb.velocity.y;
+            rb.velocity = new Vector3 (0, y, 0);
+        }*/
 
+        // воспроизведение анимации
         anim.SetInteger("state", state);
     }
 
