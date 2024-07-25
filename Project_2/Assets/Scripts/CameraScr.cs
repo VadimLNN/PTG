@@ -4,41 +4,26 @@ using UnityEngine;
 
 public class CameraScr : MonoBehaviour
 {
+    public float sensitivity = 100.0f;
+    public float smoothing = 2.0f;
+    Vector2 mouseLook;
+    Vector2 smoothV;
+    GameObject character;
+
+    void Start()
+    {
+        character = this.transform.parent.gameObject;
+    }
+
     void Update()
     {
-        /*int moveSpeed = 5;
-        int angSpeed = 25;
-        float mouse_sens = 2f;
-
-        float vertAx = Input.GetAxisRaw("Vertical");
-        float horAx = Input.GetAxisRaw("Horizontal");
-
-
-        // Изменение позиции камеры
-        Vector3 dir = new Vector3(horAx, 0, vertAx);
-        dir.Normalize();
-        dir = transform.TransformDirection(dir) * Time.fixedDeltaTime * moveSpeed;
-        transform.position += dir;
-
-
-        // Поворот на ПКМ 
-        if (Input.GetAxis("Fire2") == 1)
-        {
-            float x_axis = Input.GetAxis("Mouse X") * mouse_sens;
-            float y_axis = Input.GetAxis("Mouse Y") * -mouse_sens;
-            transform.Rotate(Vector3.up, x_axis, Space.World);
-            transform.Rotate(Vector3.right, y_axis, Space.Self);
-        }
-
-
-        // изменение высоты на Space и LShift
-        if (Input.GetKey(KeyCode.Space) == true)
-        {
-            transform.position += transform.up * moveSpeed * Time.fixedDeltaTime;
-        }
-        if (Input.GetKey(KeyCode.LeftShift) == true)
-        {
-            transform.position -= transform.up * moveSpeed * Time.fixedDeltaTime;
-        }*/
+        var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        md = Vector2.Scale(md, new Vector2(sensitivity * smoothing, sensitivity * smoothing));
+        smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
+        //smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
+        mouseLook += smoothV;
+        mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 90f);
+        transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
+        character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
     }
 }
