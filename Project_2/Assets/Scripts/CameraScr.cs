@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScr : MonoBehaviour
 {
-    public float sensitivity = 100.0f;
+    public float sensitivity = 1.0f;
     public float smoothing = 2.0f;
     Vector2 mouseLook;
     Vector2 smoothV;

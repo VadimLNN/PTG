@@ -46,14 +46,13 @@ public class ControllScr : MonoBehaviour
         {
             if (onGround == true)
             {
-                state = 1;
+                state = 2;
                 rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
             }
             else                                                                            // снижение скорости тк в полёте         
                 rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * (speed * (float)0.75));
-            
-            
         }
+        
         if (Input.GetAxisRaw("Vertical") < 0)
         {
             if (onGround == true)
@@ -65,7 +64,19 @@ public class ControllScr : MonoBehaviour
                 rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * ((speed / 2) * (float)0.75));
         }
 
-        // повороты в стороны
+        // установка анимации и передвижения вправо, влево
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            state = 4;
+            rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            state = 5;
+            rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed);
+        }
+
+        /*// повороты в стороны
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
@@ -75,7 +86,7 @@ public class ControllScr : MonoBehaviour
         {
             Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
             rb.MoveRotation(rb.rotation * deltaRotation);
-        }
+        }*/
 
         // прыжок 
         if (onGround == true && Input.GetKey(KeyCode.Space))
@@ -83,13 +94,15 @@ public class ControllScr : MonoBehaviour
 
         // установка анимация конфузии в полёте 
         if (onGround == false)
-            state = 5;
+            state = 1;
 
         /*if (state == 0) // покой
         {
             float y = rb.velocity.y;
             rb.velocity = new Vector3 (0, y, 0);
         }*/
+
+        //if(state == 0 || state == 1 )
 
         // воспроизведение анимации
         anim.SetInteger("state", state);
