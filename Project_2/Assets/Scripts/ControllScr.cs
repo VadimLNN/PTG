@@ -32,11 +32,13 @@ public class ControllScr : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        onGround = true;
+        if (collision.transform.CompareTag("Ground"))
+            onGround = true;
     }
     void OnCollisionExit(Collision collision)
     {
-        onGround = false;
+        if (collision.transform.CompareTag("Ground"))
+            onGround = false;
     }
 
     // Update is called once per frame
