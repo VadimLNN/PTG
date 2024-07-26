@@ -19,6 +19,9 @@ public class ControllScr : MonoBehaviour
     public float jumpForce = 0.35f;
     public bool onGround;
 
+    // отслеживание состояния атаки
+    public bool attacking = false;
+
 
     void Start()
     {
@@ -39,74 +42,82 @@ public class ControllScr : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        state = 0;
+        // если не происходит атака
+        if (attacking == false){
+            state = 0;
 
-        // установка анимации и передвижения вперёд, назад 
-        if (Input.GetAxisRaw("Vertical") > 0)
-        {
-            if (onGround == true)
+            // установка анимации и передвижения вперёд, назад 
+            if (Input.GetAxisRaw("Vertical") > 0)
             {
-                state = 2;
-                rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                if (onGround == true)
+                {
+                    state = 2;
+                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                }
+                else                                                                            // снижение скорости тк в полёте         
+                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * (speed * (float)0.75));
             }
-            else                                                                            // снижение скорости тк в полёте         
-                rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * (speed * (float)0.75));
-        }
-        
-        if (Input.GetAxisRaw("Vertical") < 0)
-        {
-            if (onGround == true)
+            if (Input.GetAxisRaw("Vertical") < 0)
             {
-                state = 3;                                                           // снижение скорости тк движение назад
-                rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+                if (onGround == true)
+                {
+                    state = 3;                                                           // снижение скорости тк движение назад
+                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+                }
+                else                                                                     // снижение скорости тк движение назад в полёте
+                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * ((speed / 2) * (float)0.75));
             }
-            else                                                                     // снижение скорости тк движение назад в полёте
-                rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * ((speed / 2) * (float)0.75));
+
+            // установка анимации и передвижения вправо, влево
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                state = 4;
+                rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
+            }
+            if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                state = 5;
+                rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed);
+            }
+
+            /*// повороты в стороны
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
+                rb.MoveRotation(rb.rotation * deltaRotation);
+            }
+            if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
+                rb.MoveRotation(rb.rotation * deltaRotation);
+            }*/
+
+            // прыжок 
+            if (onGround == true && Input.GetKey(KeyCode.Space))
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            // установка анимация конфузии в полёте 
+            if (onGround == false)
+                state = 1;
+
+            if (onGround && (state == 0 || state == 2) && Input.GetKey(KeyCode.LeftControl))
+                state = 6;
+
+            if (onGround && (state == 0 || state == 2) && Input.GetKey(KeyCode.LeftShift))
+                state = 7;
         }
-
-        // установка анимации и передвижения вправо, влево
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            state = 4;
-            rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
-        }
-        if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            state = 5;
-            rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed);
-        }
-
-        /*// повороты в стороны
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
-            rb.MoveRotation(rb.rotation * deltaRotation);
-        }
-        if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
-            rb.MoveRotation(rb.rotation * deltaRotation);
-        }*/
-
-        // прыжок 
-        if (onGround == true && Input.GetKey(KeyCode.Space))
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
-        // установка анимация конфузии в полёте 
-        if (onGround == false)
-            state = 1;
-
-        /*if (state == 0) // покой
-        {
-            float y = rb.velocity.y;
-            rb.velocity = new Vector3 (0, y, 0);
-        }*/
-
-        //if(state == 0 || state == 1 )
 
         // воспроизведение анимации
         anim.SetInteger("state", state);
     }
 
-
+    public void AttackOn()
+    {
+        attacking = true;
+    }
+    
+    public void AttackOff() 
+    {
+        attacking = false;
+    }
 }
