@@ -43,8 +43,16 @@ public class ControllScr : MonoBehaviour
         // установка анимации и передвижения вперёд, назад 
         if (Input.GetAxisRaw("Vertical") > 0)
         {
-            state = 1;
-            rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+            if(onGround && Input.GetKey(KeyCode.LeftShift))
+            {
+                state = 3;                                                      // умножение скорости X2 тк бег
+                rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed*2);
+            }
+            else
+            {
+                state = 1;
+                rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+            }
         }
         if (Input.GetAxisRaw("Vertical") < 0)
         {
@@ -67,15 +75,17 @@ public class ControllScr : MonoBehaviour
         // прыжок 
         if (onGround == true && Input.GetKey(KeyCode.Space))
         {
-            state = 3;
+            state = 4;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        if (onGround && (state == 0 || state == 1) && Input.GetAxis("Fire1") == 1)
-            state = 6;
+        // прямой крос на пкм, если персонаж стоит, идёт вперёд/назад, бежит
+        if (onGround && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire1") == 1)
+            state = 5;
 
-        if (onGround && (state == 0 || state == 1) && Input.GetAxis("Fire2") == 1)
-            state = 7;
+        // удар левым локтем на лкм, если персонаж стоит, идёт вперёд/назад, бежит
+        if (onGround && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire2") == 1)
+            state = 6;
 
         // воспроизведение анимации
         anim.SetInteger("state", state);
