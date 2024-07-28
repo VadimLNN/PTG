@@ -15,7 +15,7 @@ public class ControllScr : MonoBehaviour
     public float ang_speed = 72;
 
     // Характеристики для прыжка
-    [Range(0.1f, 1f)]
+    [Range(1f, 10f)]
     public float jumpForce = 0.35f;
     public bool onGround;
 
@@ -27,13 +27,11 @@ public class ControllScr : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("ground"))
-            onGround = true;
+        onGround = true;
     }
     void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.CompareTag("ground"))
-            onGround = false;
+        onGround = false;
     }
 
     void LateUpdate()
@@ -79,7 +77,7 @@ public class ControllScr : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        // прямой крос на пкм, если персонаж стоит, идёт вперёд/назад, бежит
+        // прямой крос правой на пкм, если персонаж стоит, идёт вперёд/назад, бежит
         if (onGround && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire1") == 1)
             state = 5;
 

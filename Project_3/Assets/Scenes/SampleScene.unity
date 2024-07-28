@@ -173,8 +173,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.509355, y: 1.9155068, z: 0.35602853}
+  m_Center: {x: -0.000000029802322, y: 0.9537134, z: 0.010951892}
 --- !u!54 &313131925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -202,6 +202,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &313131926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313131921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3706cb5aa395034ea57bef2e899e00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ang_speed: 72
+  jumpForce: 3
+  onGround: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +576,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a599abb8facf7d3489828cb402d2a4b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 313131924}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a599abb8facf7d3489828cb402d2a4b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 313131926}
   m_SourcePrefab: {fileID: 100100000, guid: a599abb8facf7d3489828cb402d2a4b8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
