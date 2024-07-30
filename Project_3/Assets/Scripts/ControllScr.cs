@@ -11,7 +11,7 @@ public class ControllScr : MonoBehaviour
     Animator anim;
 
     // скорость передвижения и поворота
-    float speed = 5;
+    float speed = 3;
     public float ang_speed = 72;
 
     // Характеристики для прыжка
