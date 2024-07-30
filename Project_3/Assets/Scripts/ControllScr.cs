@@ -40,6 +40,7 @@ public class ControllScr : MonoBehaviour
 
     void LateUpdate()
     {
+        // установка анимации простоя
         state = 0;
 
         // если нет анимации атаки
