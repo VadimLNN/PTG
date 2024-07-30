@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class ControllScr : MonoBehaviour
 {
-    // ссылки на физическое тело, состояние, состояние полёта и аниматора
+    // ссылки на физическое тело, состояние и аниматора
     Rigidbody rb;
     int state = 0;
-    int f_state = -1;
     Animator anim;
 
     // скорость передвижения и поворота
@@ -20,7 +19,7 @@ public class ControllScr : MonoBehaviour
     public float jumpForce = 0.35f;
     public bool onGround;
 
-    // 
+    // состояние атаки и полёта
     bool attacking = false;
     bool flying = false;
 
@@ -46,34 +45,10 @@ public class ControllScr : MonoBehaviour
         // если нет анимации атаки
         if (attacking == false)
         {
-            // приземление
-            if (onGround == true && flying == true)
-            {
-                state = 8;
-                flying = false;
-            }
-            
-            // полёт
-            if (onGround == false)
-            {
-                state = 7;
-                flying = true;
-            }
-
-            // прыжок (взлёт)
-            if (onGround == true && Input.GetKey(KeyCode.Space))
-            {
-                state = 4;
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
-
-
-
-
             // установка анимации и передвижения вперёд, назад 
             if (Input.GetAxisRaw("Vertical") > 0)
             {
-                if (onGround && Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift))
                 {
                     state = 3;                                                      // умножение скорости X2 тк бег
                     rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed * 2);
@@ -103,11 +78,30 @@ public class ControllScr : MonoBehaviour
             }
 
             // прямой крос правой на пкм, если персонаж стоит, идёт вперёд/назад, бежит
-            if (onGround && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire1") == 1)
+            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire1") == 1)
                 state = 5;
             // удар левым локтем на лкм, если персонаж стоит, идёт вперёд/назад, бежит
-            if (onGround && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire2") == 1)
+            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire2") == 1)
                 state = 6;
+            
+            // прыжок (взлёт)
+            if (onGround == true && Input.GetKey(KeyCode.Space))
+            {
+                state = 4;
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            // полёт
+            if (onGround == false)
+            {
+                state = 7;
+                flying = true;
+            }
+            // приземление
+            if (onGround == true && flying == true)
+            {
+                state = 8;
+                flying = false;
+            }
         }
 
         // воспроизведение анимации
