@@ -7,10 +7,12 @@ public class ControllScr : MonoBehaviour
     public LayerMask ground;
     NavMeshAgent agent;
     Animator anim;
+    int state = 0;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     void LateUpdate()
@@ -30,9 +32,12 @@ public class ControllScr : MonoBehaviour
             }
         }
 
-        if (agent.velocity.magnitude > 0.1f)
-            anim.SetInteger("state", 1);
+        // если скорость перемещения больше 0.1: бег, иначе простой 
+        if (agent.velocity.magnitude < 0.1f)
+            state = 0;
         else
-            anim.SetInteger("state", 0);
+            state = 1;
+
+        anim.SetInteger("state", state);
     }
 }
