@@ -6,6 +6,9 @@ public class legScr : MonoBehaviour
 {
     public Transform projector;
     public LayerMask ground;
+    public legScr leftLeg;
+    public legScr rightLeg;
+
     float stepDistance = 0.2f;
     float stepSpeed = 10;
     float overShoot = 0.9f;
@@ -30,7 +33,8 @@ public class legScr : MonoBehaviour
         Vector3 proj1 = Vector3.ProjectOnPlane(projector.position, Vector3.up);
         Vector3 proj2 = Vector3.ProjectOnPlane(currentPos, Vector3.up);
 
-        if (Vector3.Distance(proj1, proj2) > stepDistance && lerp >= 1) 
+        if (Vector3.Distance(proj1, proj2) > stepDistance && lerp >= 1 
+            && leftLeg.isMooving() == false && rightLeg.isMooving() == false)  
         {
             Physics.Raycast(projector.position + (proj1 - proj2) * overShoot, Vector3.down, out hit, 100, ground);
             newPos = hit.point;
@@ -50,6 +54,11 @@ public class legScr : MonoBehaviour
             oldPos = newPos;
         }
     }
+
+    public bool isMooving()
+    {
+        return lerp < 1;
+    } 
 
     private void OnDrawGizmos()
     {
