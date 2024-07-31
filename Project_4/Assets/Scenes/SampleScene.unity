@@ -1082,11 +1082,11 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28229764, y: -0.6483117, z: 0.28229764, w: 0.6483117}
-  m_LocalPosition: {x: 3.94, y: 2.78, z: 1.91}
+  m_LocalPosition: {x: 2.68, y: 2.705, z: 0.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1263184013}
   m_LocalEulerAnglesHint: {x: 47.06, y: -90, z: 0}
 --- !u!1 &1129088707
 GameObject:
@@ -1212,6 +1212,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4989476675865270, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
       insertIndex: -1
       addedObject: {fileID: 682287545}
+    - targetCorrespondingSourceObject: {fileID: 4989476675865270, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 963194228}
     - targetCorrespondingSourceObject: {fileID: 4295625707076348, guid: 5c7f0950aa535ce4faef155ad244c136, type: 3}
       insertIndex: 1
       addedObject: {fileID: 279491640}
@@ -1310,6 +1313,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   jumpForce: 1000
+  legs:
+  - {fileID: 740693882}
+  - {fileID: 405189362}
+  - {fileID: 824845312}
+  - {fileID: 766462815}
 --- !u!114 &1263184020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,7 +1414,7 @@ GameObject:
   - component: {fileID: 1648268822}
   - component: {fileID: 1648268821}
   - component: {fileID: 1648268820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: slide 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1701,7 +1709,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 956799499}
   - {fileID: 1263184012}

@@ -8,6 +8,8 @@ public class ControllerScr : MonoBehaviour
     public float speed = 1;
     public float jumpForce = 1000;
 
+    public legScr[] legs;
+
     Rigidbody rb;
 
     void Start()
@@ -42,5 +44,12 @@ public class ControllerScr : MonoBehaviour
             // поворот объекта по часовой 
             transform.Rotate(Vector3.up, Mathf.PI / 8, Space.World);
         }
+    
+        Vector3 v1 = legs[0].transform.position - legs[3].transform.position; 
+        Vector3 v2 = legs[1].transform.position - legs[2].transform.position;
+
+        Vector3 normal = Vector3.Cross(v1, v2).normalized;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, (Quaternion.FromToRotation(transform.up, normal) * transform.rotation), Mathf.PI / 18);
     }
 }
