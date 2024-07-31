@@ -7,6 +7,9 @@ public class legScr : MonoBehaviour
     public Transform projector;
     public LayerMask ground;
     float stepDistance = 0.2f;
+    float stepSpeed = 10;
+    float overShoot = 0.9f;
+    float stepHeight = 0.2f;
 
     Vector3 oldPos, newPos, currentPos;
 
@@ -22,15 +25,29 @@ public class legScr : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = oldPos;
+        transform.position = currentPos;
 
         Vector3 proj1 = Vector3.ProjectOnPlane(projector.position, Vector3.up);
-        Vector3 proj2 = Vector3.ProjectOnPlane(oldPos, Vector3.up);
+        Vector3 proj2 = Vector3.ProjectOnPlane(currentPos, Vector3.up);
 
-        if (Vector3.Distance(proj1, proj2) > stepDistance) 
+        if (Vector3.Distance(proj1, proj2) > stepDistance && lerp >= 1) 
         {
-            Physics.Raycast(projector.position, Vector3.down, out hit, 100, ground);
-            oldPos = hit.point;
+            Physics.Raycast(projector.position + (proj1 - proj2) * overShoot, Vector3.down, out hit, 100, ground);
+            newPos = hit.point;
+            lerp = 0;
+        }
+
+        if (lerp < 1) 
+        {
+            Vector3 tempPos = Vector3.Lerp(oldPos, newPos, lerp);
+            tempPos.y += Mathf.Sin(lerp * Mathf.PI) * stepHeight;
+
+            currentPos = tempPos;
+            lerp += Time.deltaTime * stepSpeed;
+        }
+        else
+        {
+            oldPos = newPos;
         }
     }
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class ControllerScr : MonoBehaviour
 {
     // скорость перемещения и сила прыжка
-    public float speed = 4;
-    public float jumpForce = 500;
+    public float speed = 1;
+    public float jumpForce = 1000;
 
     Rigidbody rb;
 
