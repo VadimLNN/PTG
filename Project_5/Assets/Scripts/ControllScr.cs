@@ -53,11 +53,7 @@ public class ControllScr : MonoBehaviour
 
             // если coin попал в радиус
             if (cols.Length > 0)
-            {
-
                 state = 2;
-                //agent.SetDestination(cols[0].transform.position);
-            }
             
             anim.SetInteger("state", state);
         }
