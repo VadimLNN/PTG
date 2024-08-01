@@ -53,9 +53,9 @@ public class EnemyScr : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, cols[0].transform.position) <= atkRadius)
             {
-                Debug.Log("In");
                 agent.SetDestination(transform.position);
                 state = 2;
+
             }
             else 
                 // направление к игроку

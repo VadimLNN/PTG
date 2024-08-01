@@ -51,6 +51,6 @@ public class ControllScr : MonoBehaviour
         dead = true;                                // смерть 
         agent.SetDestination(transform.position);   // остановка движения 
         anim.SetInteger("state", 3);                // запуск анимации смерти
-        Destroy(this.gameObject, 2);                // уничтожение объекта через 2 секунды
+        Destroy(this.gameObject, 1);                // уничтожение объекта через 2 секунды
     }
 }
