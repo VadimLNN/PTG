@@ -55,7 +55,6 @@ public class EnemyScr : MonoBehaviour
             {
                 agent.SetDestination(transform.position);
                 state = 2;
-
             }
             else 
                 // направление к игроку
