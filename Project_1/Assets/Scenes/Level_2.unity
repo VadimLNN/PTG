@@ -815,6 +815,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8382316582575452985, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 3189078375482993961}
+    - target: {fileID: 8382316582575452985, guid: 59e65389e8e7dff4385d608be93c7888, type: 3}
       propertyPath: win_pnl
       value: 
       objectReference: {fileID: 379552303}
@@ -1323,6 +1327,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ec54e389dba3d44b4496253892e824, type: 3}
+--- !u!20 &3189078375482993961 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7129680583498841410, guid: 22ec54e389dba3d44b4496253892e824, type: 3}
+  m_PrefabInstance: {fileID: 3189078375482993960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
