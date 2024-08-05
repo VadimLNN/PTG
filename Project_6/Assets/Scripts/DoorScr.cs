@@ -9,7 +9,6 @@ public class DoorScr : InteractableObj
 
     public override void interact()
     {
-        Debug.Log("Door");
         isOpen = !isOpen;
         anim.SetBool("isOpen", isOpen);
     }

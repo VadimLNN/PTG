@@ -12,9 +12,8 @@ public class ControllScr : MonoBehaviour
     Animator anim;
     
     int state = 0;
-    bool dead = false;
 
-    float detectRadius = 0.025f;
+    float detectRadius = 1f;
 
 
     void Start()
@@ -25,43 +24,39 @@ public class ControllScr : MonoBehaviour
 
     void LateUpdate()
     {
-        if (dead == false)
+        // нажатие ЛКМ
+        if (Input.GetMouseButton(0)) 
         {
+            // проекция курсора в сцену
+            RaycastHit hit;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            // если найдено пересечение
+            if (Physics.Raycast(ray, out hit, 1000f, ground))
+            {
+                // установка точки назначения агенту
+                agent.SetDestination(hit.point);
+            }
+        }
+
+        // если скорость перемещения меньше 0.1: простой, иначе бег 
+        if (agent.velocity.magnitude < 0.3f)
             state = 0;
 
-            // нажатие ЛКМ
-            if (Input.GetMouseButton(0)) 
-            {
-                // проекция курсора в сцену
-                RaycastHit hit;
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (agent.velocity.magnitude > 0.3f)
+            state = 1;
 
-                // если найдено пересечение
-                if (Physics.Raycast(ray, out hit, 1000f, ground))
-                {
-                    // установка точки назначения агенту
-                    agent.SetDestination(hit.point);
-                }
-                
-                // если скорость перемещения меньше 0.1: простой, иначе бег 
-                if (agent.velocity.magnitude < 0.1f)
-                    state = 0;
-                else 
-                    state = 1;
-            }
+        // проверка объекта в радиусе
+        Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
 
-            // проверка объекта в радиусе
-            Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
-
-            // если coin попал в радиус
-            if (cols.Length > 0)
-            {
-                //agent.SetDestination(transform.position);
-                state = 2;
-            }
-            
-            anim.SetInteger("state", state);
+        // если coin попал в радиус
+        if (cols.Length > 0 && Input.GetKey(KeyCode.Space))
+        {
+            agent.SetDestination(transform.position);
+            state = 2;
         }
+            
+        anim.SetInteger("state", state);
     }
     public void attack()
     {
@@ -72,6 +67,8 @@ public class ControllScr : MonoBehaviour
             InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
             if (c != null) 
                 c.interact();
+
+            anim.SetInteger("state", 0);
         }
     }
 }

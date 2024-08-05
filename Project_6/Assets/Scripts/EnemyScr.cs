@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
-public class EnemyScr : MonoBehaviour
+public class EnemyScr : InteractableObj
 {
-    // Start is called before the first frame update
+    Animator anim;
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void interact()
     {
-        
+        anim.SetInteger("state", 2);
+    }
+
+    public void dead()
+    {
+        Destroy(this.gameObject, 1);
     }
 }
