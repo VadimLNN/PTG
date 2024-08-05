@@ -16,7 +16,7 @@ public class ControllScr : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Clicked on " + hit.transform.name);
+                //Debug.Log("Clicked on " + hit.transform.name);
 
                 if (hit.transform.GetComponent<InteractableObj>() != null)
                     hit.transform.GetComponent<InteractableObj>().interact();
