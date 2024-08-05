@@ -8,20 +8,22 @@ public class SlimeScr : InteractableObj
     void Start()
     {
         anim = GetComponent<Animator>();
+        panel.SetActive(false);
     }
 
-    // Update is called once per frame
     public override void interact()
     {
-        anim.SetTrigger("IsTalking");
+        anim.SetInteger("state", 1);
     }
 
     public void hello()
     {
         panel.SetActive(true);
+        anim.SetInteger("state", 2);
     }
     public void closePanel()
     {
         panel.SetActive(false);
+        anim.SetInteger("state", 0);
     }
 }

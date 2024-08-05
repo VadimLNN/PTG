@@ -18,7 +18,8 @@ public class ControllScr : MonoBehaviour
             {
                 Debug.Log("Clicked on " + hit.transform.name);
 
-                hit.transform.GetComponent<InteractableObj>().interact();
+                if (hit.transform.GetComponent<InteractableObj>() != null)
+                    hit.transform.GetComponent<InteractableObj>().interact();
             }
         }
     }
