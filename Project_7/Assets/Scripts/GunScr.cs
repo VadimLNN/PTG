@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunScr : MonoBehaviour
@@ -18,8 +19,7 @@ public class GunScr : MonoBehaviour
     public ParticleSystem onHit;
 
     // ссылка на гильзу 
-    public GameObject gilza;
-
+    public GameObject gilza_orig;
     void Update()
     {
         // вызов выстрела при нажатии кнопки стрельбы 
@@ -35,6 +35,15 @@ public class GunScr : MonoBehaviour
     {
         // воспроизведение вспышки 
         flash.Play();
+        
+        // создание объекта гильзы 
+        GameObject gilza = Instantiate(gilza_orig, transform.position, transform.rotation);
+        // создание физического тела гильзы для придания ускорения
+        Rigidbody rb_g = gilza.GetComponent<Rigidbody>();
+        rb_g.AddForce(Vector3.up * 1000f);
+        // уничтожение эффекта через 5 секунд 
+        Destroy(gilza.gameObject, 5f);
+
 
         // если луч из камеры попал во что-то
         RaycastHit hit;

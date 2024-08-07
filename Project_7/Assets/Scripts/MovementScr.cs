@@ -26,9 +26,11 @@ public class MovementScr : MonoBehaviour
 
     void FixedUpdate()
     {
+        // проверка нахождения игрока на поверхности 
         bool groundCheck = Physics.Raycast(groundDetect.position, Vector3.down, 0.1f, ground);
         bool jump = Input.GetKey(KeyCode.Space) && groundCheck;
 
+        // прыжок если игрок не в полёте
         if (jump) rb.AddForce(Vector3.up * jumpForce);
 
         // определение переменная для определения состояния бега 
