@@ -8,6 +8,10 @@ public class GunScr : MonoBehaviour
     public float dmg = 10f;
     public float range = 1000f;
 
+    //  скорость стрельбы (10 в секунду) и время до след. выстрела 
+    public float fireRate = 10f;
+    public float nextShot = 0f;
+
     // ссылки на камеру, сисетму частиц при выстреле и попадании
     public Camera cam;
     public ParticleSystem flash;
@@ -16,7 +20,12 @@ public class GunScr : MonoBehaviour
     void Update()
     {
         // вызов выстрела при нажатии кнопки стрельбы 
-        if (Input.GetButton("Fire1")) Shoot();    
+        if (Input.GetButton("Fire1") && Time.time >= nextShot)
+        {
+            // расчёт времени до след выстрела и выстрел
+            nextShot = Time.time + 1 /fireRate;
+            Shoot();
+        }
     }
 
     void Shoot()
