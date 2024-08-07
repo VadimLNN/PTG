@@ -8,9 +8,10 @@ public class GunScr : MonoBehaviour
     public float dmg = 10f;
     public float range = 1000f;
 
-    // ссылки на камеру и сисетму частиц
-    Camera cam;
+    // ссылки на камеру, сисетму частиц при выстреле и попадании
+    public Camera cam;
     public ParticleSystem flash;
+    public ParticleSystem onHit;
 
     void Update()
     {
@@ -28,13 +29,20 @@ public class GunScr : MonoBehaviour
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
             // если это что-то имеет тэг "цель"
-            if(hit.transform.CompareTag("target"))
+            if (hit.transform.CompareTag("target"))
             {
                 // получение доступа к скрипту цели
                 TargetScr t = hit.transform.GetComponent<TargetScr>();
-                // вызов метода урона 
+                // вызов метода получения урона 
                 t.Hit(range);            
             }
+
+            // создание и воспроизведение эффекта выстрела в точке попадания 
+            ParticleSystem hitEffect = Instantiate(onHit, hit.point, Quaternion.LookRotation(hit.normal));
+            // воспроизведение анимации 
+            hitEffect.Play();
+            // уничтожение эффекта через секунду 
+            Destroy(hitEffect.gameObject, 1f);
         }
     }
 }
