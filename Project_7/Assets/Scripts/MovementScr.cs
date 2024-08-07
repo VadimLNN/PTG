@@ -8,9 +8,13 @@ public class MovementScr : MonoBehaviour
     public float mSpeed = 300f;
 
     Rigidbody rb;
+    public Camera cam;
+    float baseFOV;
+    public float sprintFOV = 1.25f;
 
     void Start()
     {
+        baseFOV = cam.fieldOfView;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -30,10 +34,16 @@ public class MovementScr : MonoBehaviour
         Vector3 v;
 
         // вектор вкорости = направление * скорость * время с прошедшего вызова
-        if (!sprint)
-            v = transform.TransformDirection(dir) * mSpeed * Time.fixedDeltaTime;
-        else
+        if (sprint && zMove > 0)
+        { 
             v = transform.TransformDirection(dir) * mSpeed*2 * Time.fixedDeltaTime;
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, baseFOV * sprintFOV, Time.fixedDeltaTime * 8f);
+        }
+        else
+        {
+            v = transform.TransformDirection(dir) * mSpeed * Time.fixedDeltaTime;
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, baseFOV, Time.fixedDeltaTime * 8f);
+        }
 
         // восстановление смещения по Y
         v.y = rb.velocity.y;
