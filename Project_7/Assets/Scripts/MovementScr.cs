@@ -12,6 +12,12 @@ public class MovementScr : MonoBehaviour
     float baseFOV;
     public float sprintFOV = 1.25f;
 
+    [Range(1000f, 5000f)]
+    public float jumpForce = 2000f;
+
+    public LayerMask ground;
+    public Transform groundDetect;
+
     void Start()
     {
         baseFOV = cam.fieldOfView;
@@ -20,6 +26,12 @@ public class MovementScr : MonoBehaviour
 
     void FixedUpdate()
     {
+        bool groundCheck = Physics.Raycast(groundDetect.position, Vector3.down, 0.1f, ground);
+        bool jump = Input.GetKey(KeyCode.Space) && groundCheck;
+
+        if (jump) rb.AddForce(Vector3.up * jumpForce);
+
+        // определение переменная для определения состояния бега 
         bool sprint = (Input.GetKey(KeyCode.LeftShift));
 
         // проверка нажатий w a s d
@@ -34,6 +46,7 @@ public class MovementScr : MonoBehaviour
         Vector3 v;
 
         // вектор вкорости = направление * скорость * время с прошедшего вызова
+        // зона видимости x1.25 при беге 
         if (sprint && zMove > 0)
         { 
             v = transform.TransformDirection(dir) * mSpeed*2 * Time.fixedDeltaTime;

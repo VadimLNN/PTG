@@ -191,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_008
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7d07d3573bacf1479b5ccacc6d57131, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -268,6 +272,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 79f3e412f886f274d9b89e9e3f1b7883, type: 3}
       propertyPath: m_Name
       value: table_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 79f3e412f886f274d9b89e9e3f1b7883, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -512,6 +520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tower_001
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a61145181a5bc94fa4e9766e3fd364e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -590,6 +602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_009
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff7d5124e1d7391458a791d4a921ed18, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -667,6 +683,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1e7fd2d664b35643a1fdf4ebd7e4e41, type: 3}
       propertyPath: m_Name
       value: box_006
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1e7fd2d664b35643a1fdf4ebd7e4e41, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -843,6 +863,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &543851283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 543851284}
+  m_Layer: 0
+  m_Name: groundDetect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &543851284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543851283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1750786555}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &563272183
 Mesh:
   m_ObjectHideFlags: 0
@@ -1170,6 +1221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrel_001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f12057de50129364084359eec145945b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1194,7 +1249,7 @@ GameObject:
   - component: {fileID: 734644101}
   - component: {fileID: 734644100}
   - component: {fileID: 734644099}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1602,7 @@ GameObject:
   - component: {fileID: 934653239}
   - component: {fileID: 934653238}
   - component: {fileID: 934653237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: column
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,6 +2101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hedgehog_001 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2229,6 +2288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_009 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff7d5124e1d7391458a791d4a921ed18, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2253,7 +2316,7 @@ GameObject:
   - component: {fileID: 1073999336}
   - component: {fileID: 1073999335}
   - component: {fileID: 1073999334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2660,6 +2723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrel_001
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f12057de50129364084359eec145945b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2738,6 +2805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hedgehog_001
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2815,6 +2886,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
       propertyPath: m_Name
       value: hedgehog_001 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3059,6 +3134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrel_003
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e67009e1cab30a8409ec64dbfb8ee818, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3136,6 +3215,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d175b64fa5d2f71409ea286281a81bf0, type: 3}
       propertyPath: m_Name
       value: box_010
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d175b64fa5d2f71409ea286281a81bf0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3215,6 +3298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hedgehog_001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3292,6 +3379,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f12057de50129364084359eec145945b, type: 3}
       propertyPath: m_Name
       value: barrel_001 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f12057de50129364084359eec145945b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3375,6 +3466,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e67009e1cab30a8409ec64dbfb8ee818, type: 3}
       propertyPath: m_Name
       value: barrel_003 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e67009e1cab30a8409ec64dbfb8ee818, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3517,12 +3612,13 @@ Transform:
   m_GameObject: {fileID: 1750786550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.28, y: 2.04, z: -3.06}
+  m_LocalPosition: {x: 0.25, y: 1.2, z: -10.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1050396290}
   - {fileID: 2072622160}
+  - {fileID: 543851284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1750786556
@@ -3538,6 +3634,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mSpeed: 300
+  cam: {fileID: 2072622162}
+  sprintFOV: 1.25
+  jumpForce: 2000
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDetect: {fileID: 543851284}
 --- !u!114 &1750786557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3551,7 +3654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1750786555}
-  cam: {fileID: 963194228}
+  cam: {fileID: 2072622160}
   xSens: 70
   ySens: 70
 --- !u!1001 &1890285774
@@ -3621,6 +3724,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3c2812a763773774fb5b5a5767178b55, type: 3}
       propertyPath: m_Name
       value: container_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3c2812a763773774fb5b5a5767178b55, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3699,6 +3806,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
       propertyPath: m_Name
       value: hedgehog_001 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faece97b0b2e1404b8e6fddec8f26d3f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3887,6 +3998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_001
       objectReference: {fileID: 0}
+    - target: {fileID: 2823841958521946876, guid: 87c1a8fe7383d8949bcff4dfbe196ab3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3205329146766628934, guid: 87c1a8fe7383d8949bcff4dfbe196ab3, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -3962,7 +4077,7 @@ GameObject:
   - component: {fileID: 1983009592}
   - component: {fileID: 1983009591}
   - component: {fileID: 1983009590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5913,6 +6028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_007
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f5ba5a545b8e53a4bb5929fe16c9c341, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5990,6 +6109,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d175b64fa5d2f71409ea286281a81bf0, type: 3}
       propertyPath: m_Name
       value: box_010 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d175b64fa5d2f71409ea286281a81bf0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6102,7 +6225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2124506342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6164,7 +6287,7 @@ GameObject:
   - component: {fileID: 2133072923}
   - component: {fileID: 2133072922}
   - component: {fileID: 2133072921}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: floor 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
