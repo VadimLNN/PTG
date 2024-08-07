@@ -17,6 +17,9 @@ public class GunScr : MonoBehaviour
     public ParticleSystem flash;
     public ParticleSystem onHit;
 
+    // ссылка на гильзу 
+    public GameObject gilza;
+
     void Update()
     {
         // вызов выстрела при нажатии кнопки стрельбы 
