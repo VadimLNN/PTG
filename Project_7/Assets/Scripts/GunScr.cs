@@ -20,6 +20,7 @@ public class GunScr : MonoBehaviour
 
     // ссылка на гильзу 
     public GameObject gilza_orig;
+
     void Update()
     {
         // вызов выстрела при нажатии кнопки стрельбы 
