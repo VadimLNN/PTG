@@ -17,7 +17,7 @@ public class TargetScr : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        scale = Random.Range(0.1f, 4);
+        scale = Random.Range(0.1f, 2.5f);
         transform.localScale *= scale;
         score /= scale;
     }
