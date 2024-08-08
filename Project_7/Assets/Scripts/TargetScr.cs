@@ -1,11 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class TargetScr : MonoBehaviour
 {
-    public float hp = 10f;
+    // характеристики жизни, очков 
+    public float hp = 30f;
+    float score = 1000;
+    float scale = 1;
+
+    // ссылка на систему частиц взрыва при смерти, аниматор  
     public ParticleSystem explosion;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        scale = Random.Range(0.1f, 4);
+        transform.localScale *= scale;
+        score /= scale;
+    }
 
     public void Hit(float damage)
     {
@@ -15,8 +30,16 @@ public class TargetScr : MonoBehaviour
 
     void Death()
     {
+        // запуск анимации смерти
+        anim.SetBool("isDead", true);
+        Invoke("Explosion", 1);
+    }
+
+    void Explosion()
+    {
         // создание копии эффекта взрыва и размещение её по координатам цели
         ParticleSystem exp = Instantiate(explosion, transform.position, transform.rotation);
+        exp.transform.localScale *= scale;
         // воспроизведение анимации 
         exp.Play();
         

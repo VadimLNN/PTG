@@ -41,8 +41,11 @@ public class GunScr : MonoBehaviour
         GameObject gilza = Instantiate(gilza_orig, transform.position, transform.rotation);
         // создание физического тела гильзы для придания ускорения
         Rigidbody rb_g = gilza.GetComponent<Rigidbody>();
-        rb_g.AddForce(Vector3.up * 400f);
-        // уничтожение эффекта через 5 секунд 
+        // направление вылета гильзы
+        Vector3 dir = new Vector3(0f, 300f, -100f); 
+        // придание ускорения вылету 
+        rb_g.AddForce(dir);
+        // уничтожение гильзы через 5 секунд 
         Destroy(gilza.gameObject, 5f);
 
 
