@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunScr : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class GunScr : MonoBehaviour
 
     // ссылка на гильзу 
     public GameObject gilza_orig;
+
+    // переменнная очков и ссылка на выводящий текст 
+    float score = 0;
+    public Text scoreText;
 
     void Update()
     {
@@ -69,5 +74,11 @@ public class GunScr : MonoBehaviour
             // уничтожение эффекта через секунду 
             Destroy(hitEffect.gameObject, 1f);
         }
+    }
+
+    public void GetScore(float gettedScore)
+    {
+        score += gettedScore;
+        scoreText.text = score.ToString("F0");
     }
 }

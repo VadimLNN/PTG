@@ -12,8 +12,6 @@ public class SpawnerScr : MonoBehaviour
     public int startWait;
     public bool stop;
 
-    int randEnemy;
-
     void Start()
     {
         StartCoroutine(waitSpawner());
@@ -30,8 +28,6 @@ public class SpawnerScr : MonoBehaviour
 
         while (!stop)
         {
-            randEnemy = Random.RandomRange(0, 2);
-
             Vector3 spawnPos = new Vector3(Random.Range(-spawnValue.x, spawnValue.x), 1, Random.Range(-spawnValue.z, spawnValue.z));
 
             Instantiate(enemy, spawnPos + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);

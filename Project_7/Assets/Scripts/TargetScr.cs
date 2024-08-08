@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TargetScr : MonoBehaviour
 {
     // характеристики жизни, очков 
     public float hp = 30f;
-    float score = 1000;
+    float score = 100;
     float scale = 1;
 
     // ссылка на систему частиц взрыва при смерти, аниматор  
     public ParticleSystem explosion;
     Animator anim;
 
+    // 
+    public GameObject gun;
+    GunScr gunScore;
+
     private void Start()
     {
+        gunScore = gun.GetComponent<GunScr>();
+
         anim = GetComponent<Animator>();
         scale = Random.Range(0.1f, 2.5f);
         transform.localScale *= scale;
@@ -25,7 +32,14 @@ public class TargetScr : MonoBehaviour
     public void Hit(float damage)
     {
         hp -= damage;
-        if (hp <= 0) Death();
+        if (hp <= 0)
+        {
+            Death();
+            gunScore.GetScore(score);
+            
+            //########  ќ—“џЋ№ #######//
+            /* */ gunScore = null; /* */        }
+            //########################//
     }
 
     void Death()
