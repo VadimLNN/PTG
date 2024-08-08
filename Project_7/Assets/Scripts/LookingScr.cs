@@ -8,10 +8,10 @@ public class LookingScr : MonoBehaviour
     public static bool cursorLock = true;
 
     // чувствительность мыши
-    [Range(50f, 100f)]
-    public float xSens = 70f;
-    [Range(50f, 100f)]
-    public float ySens = 70f;
+    [Range(100f, 300f)]
+    public float xSens = 120f;
+    [Range(100f, 300f)]
+    public float ySens = 120f;
 
     // начальный поворот камеры
     Quaternion center;
