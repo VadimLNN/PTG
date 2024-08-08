@@ -64,7 +64,7 @@ public class GunScr : MonoBehaviour
                 // получение доступа к скрипту цели
                 TargetScr t = hit.transform.GetComponent<TargetScr>();
                 // вызов метода получения урона 
-                t.Hit(range);            
+                t.Hit(dmg);            
             }
 
             // создание и воспроизведение эффекта выстрела в точке попадания 

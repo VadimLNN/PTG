@@ -7,26 +7,40 @@ using UnityEngine;
 public class TargetScr : MonoBehaviour
 {
     // характеристики жизни, очков 
-    public float hp = 30f;
+    public float hp = 20f;
     float score = 100;
-    float scale = 1;
+    float scale;
 
     // ссылка на систему частиц взрыва при смерти, аниматор  
     public ParticleSystem explosion;
     Animator anim;
 
-    // 
-    public GameObject gun;
-    GunScr gunScore;
+    // ссылка на оружие и скрипт дл€ него 
+    public GunScr gunScr;
+
+    // продолжительность жизни
+    float lifeTime;
 
     private void Start()
     {
-        gunScore = gun.GetComponent<GunScr>();
-
         anim = GetComponent<Animator>();
-        scale = Random.Range(0.1f, 2.5f);
+
+        // случайность решает сколько ещЄ жить скелетончику,
+        // его размер и следовательно множитель очков
+        lifeTime = Random.Range(5f, 60f);
+        scale = Random.Range(0.5f, 2f);
+        
         transform.localScale *= scale;
         score /= scale;
+    }
+
+    private void Update()
+    {
+        lifeTime -= Time.deltaTime;
+        if(lifeTime <= 0)
+            Death();
+
+        score -= Time.deltaTime;
     }
 
     public void Hit(float damage)
@@ -35,11 +49,12 @@ public class TargetScr : MonoBehaviour
         if (hp <= 0)
         {
             Death();
-            gunScore.GetScore(score);
+            gunScr.GetScore(score);
             
             //########  ќ—“џЋ№ #######//
-            /* */ gunScore = null; /* */        }
+            /* */ gunScr = null; /* */       
             //########################//
+        }
     }
 
     void Death()
