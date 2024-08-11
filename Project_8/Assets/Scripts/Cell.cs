@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+// класс описывающий €чейку лабиринта 
 public class Cell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // ссылки на стены 
+    public GameObject UpW;
+    public GameObject RightW;
+    public GameObject BottomW;
+    public GameObject LeftW;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // ссылка на текст в €чейке
+    public Text distance;
+
+
 }
