@@ -25,12 +25,14 @@ public class TargetScr : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        // случайность решает сколько ещЄ жить скелетончику,
+        // случайность решает сколько жить скелетончику,
         // его размер и следовательно множитель очков
         lifeTime = Random.Range(5f, 60f);
-        scale = Random.Range(0.5f, 2f);
+        scale = Random.Range(0.5f, 1.5f);
         
         transform.localScale *= scale;
+        //transform.Rotate(Vector3.up, -Mathf.PI / 8, Space.World);
+
         score /= scale;
     }
 
@@ -46,14 +48,11 @@ public class TargetScr : MonoBehaviour
     public void Hit(float damage)
     {
         hp -= damage;
-        if (hp <= 0)
+        if (hp <= 0 && score > 0)
         {
             Death();
             gunScr.GetScore(score);
-            
-            //########  ќ—“џЋ№ #######//
-            /* */ gunScr = null; /* */       
-            //########################//
+            score = -1;
         }
     }
 
