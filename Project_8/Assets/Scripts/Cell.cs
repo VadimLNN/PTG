@@ -12,6 +12,4 @@ public class Cell : MonoBehaviour
 
     // ссылка на текст в €чейке
     public Text distance;
-
-
 }

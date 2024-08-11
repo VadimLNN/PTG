@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
-  mazeHandler: {fileID: 607322039281721079, guid: 784fb8946f4ca6a43b109b3597dd67fe, type: 3}
+  mazeHandler: {fileID: 1846990214}
   cellPrefab: {fileID: 7505002306392355968, guid: 784fb8946f4ca6a43b109b3597dd67fe, type: 3}
   CellsSize: {x: 4, y: 4}
   width: 10
