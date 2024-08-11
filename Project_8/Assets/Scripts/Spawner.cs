@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour
         }
 
         // установка камеры над лабиринтом
-        cam.transform.position = new Vector3((width*CellsSize.x)/2, Mathf.Max(width, height)*8,(height*CellsSize.y)/2);
+        cam.transform.position = new Vector3((width*CellsSize.x)/2, Mathf.Max(width, height)*5,(height*CellsSize.y)/2);
 
     }
 }
