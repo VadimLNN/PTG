@@ -64,7 +64,7 @@ public class Controll : MonoBehaviour
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     state = 22;                                                         // снижение скорости тк движение назад
-                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed/1.5f);
+                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.5f);
                 }
                 else
                 {
@@ -73,38 +73,76 @@ public class Controll : MonoBehaviour
                 }
             }
 
-            // повороты в стороны
+            // ходьба в стороны
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
-                Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
-                rb.MoveRotation(rb.rotation * deltaRotation);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    state = 33;                                                        
+                    rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed * 2);
+                }
+                else
+                {
+                    state = 3;                                                           
+                    rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
+                }
+                
+                //state = 3;
+                //Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
+                //rb.MoveRotation(rb.rotation * deltaRotation);
             }
             if (Input.GetAxisRaw("Horizontal") < 0)
             {
-                Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
-                rb.MoveRotation(rb.rotation * deltaRotation);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    state = 44;
+                    rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed * 2);
+                }
+                else
+                {
+                    state = 4;
+                    rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed);
+                }
+                
+                //state = 4;
+                //Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
+                //rb.MoveRotation(rb.rotation * deltaRotation);
             }
 
-            // атака мечом правой на пкм, если персонаж стоит, идёт вперёд/назад, бежит
-            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3) && Input.GetAxis("Fire1") == 1)
+            // атака мечом на пкм + ctrl, если персонаж стоит или ходит
+            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+                && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.LeftControl))
+                state = 55;
+            // команда вперёд на пкм, если персонаж стоит, идёт вперёд
+            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+                && Input.GetKey(KeyCode.Mouse0))
                 state = 5;
+
+            // атака мечом на пкм + ctrl, если персонаж стоит, идёт вперёд
+            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+                && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
+                state = 66;
+            // команда назад на лкм, если персонаж стоит или ходит
+            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+                && Input.GetKey(KeyCode.Mouse1))
+                state = 6;
 
             // прыжок (взлёт)
             if (onGround == true && Input.GetKey(KeyCode.Space))
             {
-                state = 4;
+                state = 44;
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             // полёт
             if (onGround == false)
             {
-                state = 7;
+                state = 74;
                 flying = true;
             }
             // приземление
             if (onGround == true && flying == true)
             {
-                state = 8;
+                state = 84;
                 flying = false;
             }
         }
