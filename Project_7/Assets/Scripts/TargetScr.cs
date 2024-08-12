@@ -60,7 +60,7 @@ public class TargetScr : MonoBehaviour
     {
         // запуск анимации смерти
         anim.SetBool("isDead", true);
-        Invoke("Explosion", 1);
+        Invoke("Explosion", 0.4f);
     }
 
     void Explosion()
