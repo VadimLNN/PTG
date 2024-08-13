@@ -16,9 +16,10 @@ public class Controll : MonoBehaviour
     public float jumpForce = 0.35f;
     public bool onGround;
 
-    // состояние атаки и полёта
+    // состояние атаки, полёта
     bool attacking = false;
     bool flying = false;
+    bool isCrouch = false;
 
     void Start()
     {
@@ -45,31 +46,50 @@ public class Controll : MonoBehaviour
         // если нет анимации атаки
         if (attacking == false)
         {
+            if (Input.GetKey(KeyCode.C))
+                isCrouch = !isCrouch;
+
             // установка анимации и передвижения вперёд, назад 
             if (Input.GetAxisRaw("Vertical") > 0)
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (isCrouch == true)
                 {
-                    state = 11;                                                      // умножение скорости X2 тк бег
-                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed * 2);
+                    state = 111;
+                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed / 1.3f);
                 }
                 else
                 {
-                    state = 1;
-                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        state = 11;                                                      // умножение скорости X2 тк бег
+                        rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed * 2);
+                    }
+                    else
+                    {
+                        state = 1;
+                        rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                    }
                 }
             }
             if (Input.GetAxisRaw("Vertical") < 0)
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (isCrouch == true)
                 {
-                    state = 22;                                                         // снижение скорости тк движение назад
-                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.5f);
+                    state = 222;
+                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.3f);
                 }
                 else
                 {
-                    state = 2;                                                           // снижение скорости тк движение назад
-                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        state = 22;                                                         // снижение скорости тк движение назад
+                        rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.5f);
+                    }
+                    else
+                    {
+                        state = 2;                                                           // снижение скорости тк движение назад
+                        rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+                    }
                 }
             }
 
@@ -109,46 +129,48 @@ public class Controll : MonoBehaviour
                 //rb.MoveRotation(rb.rotation * deltaRotation);
             }
 
-            // атака мечом на пкм + ctrl, если персонаж стоит или ходит
-            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
-                && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.LeftControl))
-                state = 55;
             // команда вперёд на пкм, если персонаж стоит, идёт вперёд
-            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+            if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse0))
                 state = 5;
-
-            // атака мечом на пкм + ctrl, если персонаж стоит, идёт вперёд
-            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
-                && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
-                state = 66;
+            // атака мечом на пкм + ctrl, если персонаж стоит или ходит
+            if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+                && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.LeftControl))
+                state = 55;
+            
             // команда назад на лкм, если персонаж стоит или ходит
-            if (onGround == true && (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+            if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1))
                 state = 6;
+            // атака мечом на пкм + ctrl, если персонаж стоит, идёт вперёд
+            if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
+                && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
+                state = 66;
+            
 
             // прыжок (взлёт)
             if (onGround == true && Input.GetKey(KeyCode.Space))
             {
-                state = 44;
+                state = 10;
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             // полёт
             if (onGround == false)
             {
-                state = 74;
+                state = 11;
                 flying = true;
             }
             // приземление
             if (onGround == true && flying == true)
             {
-                state = 84;
+                state = 12;
                 flying = false;
             }
         }
 
         // воспроизведение анимации
         anim.SetInteger("state", state);
+        anim.SetBool("isCrouch", isCrouch);
     }
 
     public void AttackOn()
