@@ -20,10 +20,11 @@ public class Controll : MonoBehaviour
     public float jumpForce = 5;
     public bool onGround;
 
-    // состояние атаки, полёта
+    // состояние атаки, полёта, ползанья и блока
     bool attacking = false;
     bool isFlying = false;
     bool isCrouch = false;
+    bool isBlock = false;
 
     void Start()
     {
@@ -46,91 +47,97 @@ public class Controll : MonoBehaviour
     {
         // установка анимации простоя
         state = 0;
+        if ()
 
         // если нет анимации атаки
         if (attacking == false)
         {
-            if (Input.GetKey(KeyCode.C))
+            // установка состояния на кортах
+            if (Input.GetKeyDown(KeyCode.C))
                 isCrouch = !isCrouch;
 
-            // установка анимации и передвижения вперёд, назад 
-            if (Input.GetAxisRaw("Vertical") > 0)
+            // при блоке движение в блоке
+            if (isBlock == false)
             {
-                if (isCrouch == true)
+                // установка анимации и передвижения вперёд, назад 
+                if (Input.GetAxisRaw("Vertical") > 0)
                 {
-                    state = 111;
-                    rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed / 1.3f);
-                }
-                else
-                {
-                    if (Input.GetKey(KeyCode.LeftShift))
+                    if (isCrouch == true)
                     {
-                        state = 11;                                                      // умножение скорости X2 тк бег
-                        rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed * 2);
+                        state = 111;
+                        rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed / 1.3f);
                     }
                     else
                     {
-                        state = 1;
-                        rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                        if (Input.GetKey(KeyCode.LeftShift))
+                        {
+                            state = 11;                                                      // умножение скорости X2 тк бег
+                            rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed * 2);
+                        }
+                        else
+                        {
+                            state = 1;
+                            rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
+                        }
                     }
                 }
-            }
-            if (Input.GetAxisRaw("Vertical") < 0)
-            {
-                if (isCrouch == true)
+                if (Input.GetAxisRaw("Vertical") < 0)
                 {
-                    state = 222;
-                    rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.3f);
-                }
-                else
-                {
-                    if (Input.GetKey(KeyCode.LeftShift))
+                    if (isCrouch == true)
                     {
-                        state = 22;                                                         // снижение скорости тк движение назад
-                        rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.5f);
+                        state = 222;
+                        rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.3f);
                     }
                     else
                     {
-                        state = 2;                                                           // снижение скорости тк движение назад
-                        rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+                        if (Input.GetKey(KeyCode.LeftShift))
+                        {
+                            state = 22;                                                         // снижение скорости тк движение назад
+                            rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.5f);
+                        }
+                        else
+                        {
+                            state = 2;                                                           // снижение скорости тк движение назад
+                            rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
+                        }
                     }
                 }
-            }
 
-            // ходьба в стороны
-            if (Input.GetAxisRaw("Horizontal") > 0)
-            {
-                if (Input.GetKey(KeyCode.LeftShift))
+                // ходьба в стороны
+                if (Input.GetAxisRaw("Horizontal") > 0)
                 {
-                    state = 33;                                                        
-                    rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed * 2);
-                }
-                else
-                {
-                    state = 3;                                                           
-                    rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
-                }
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        state = 33;                                                        
+                        rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed * 2);
+                    }
+                    else
+                    {
+                        state = 3;                                                           
+                        rb.MovePosition(transform.position + transform.right * Time.fixedDeltaTime * speed);
+                    }
                 
-                //state = 3;
-                //Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
-                //rb.MoveRotation(rb.rotation * deltaRotation);
-            }
-            if (Input.GetAxisRaw("Horizontal") < 0)
-            {
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    state = 44;
-                    rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed * 2);
+                    //state = 3;
+                    //Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * ang_speed); ;
+                    //rb.MoveRotation(rb.rotation * deltaRotation);
                 }
-                else
+                if (Input.GetAxisRaw("Horizontal") < 0)
                 {
-                    state = 4;
-                    rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed);
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        state = 44;
+                        rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed * 2);
+                    }
+                    else
+                    {
+                        state = 4;
+                        rb.MovePosition(transform.position - transform.right * Time.fixedDeltaTime * speed);
+                    }
+
+                    //state = 4;
+                    //Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
+                    //rb.MoveRotation(rb.rotation * deltaRotation);
                 }
-                
-                //state = 4;
-                //Quaternion deltaRotation = Quaternion.Euler(Vector3.up * Time.deltaTime * -ang_speed);
-                //rb.MoveRotation(rb.rotation * deltaRotation);
             }
 
             // команда вперёд на пкм, если персонаж стоит, идёт вперёд
@@ -146,10 +153,15 @@ public class Controll : MonoBehaviour
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1))
                 state = 6;
-            // атака мечом на пкм + ctrl, если персонаж стоит, идёт вперёд
+            // блок на лкм + ctrl, если персонаж стоит, идёт вперёд
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
+            {
+                isBlock = true;
                 state = 66;
+            }
+            else 
+                isBlock = false;
             
 
             // прыжок (взлёт)
@@ -199,6 +211,7 @@ public class Controll : MonoBehaviour
         // воспроизведение анимации
         anim.SetInteger("state", state);
         anim.SetBool("isCrouch", isCrouch);
+        anim.SetBool("isBlock", isBlock);
     }
 
     /*private void OnDrawGizmos()
