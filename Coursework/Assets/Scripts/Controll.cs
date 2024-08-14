@@ -7,18 +7,17 @@ public class Controll : MonoBehaviour
     int state = 0;
     Animator anim;
 
-    // скорость передвижения и поворота
+    // скорость передвижения
     float speed = 3;
-    public float ang_speed = 72;
 
     // Характеристики для прыжка
     [Range(1f, 10f)]
-    public float jumpForce = 0.35f;
+    public float jumpForce = 5;
     public bool onGround;
 
     // состояние атаки, полёта
     bool attacking = false;
-    bool flying = false;
+    bool isFlying = false;
     bool isCrouch = false;
 
     void Start()
@@ -151,22 +150,31 @@ public class Controll : MonoBehaviour
             // прыжок (взлёт)
             if (onGround == true && Input.GetKey(KeyCode.Space))
             {
-                state = 10;
+                state = 100;
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
             // полёт
             if (onGround == false)
             {
-                state = 11;
-                flying = true;
+                state = 101;
+                isFlying = true;
             }
             // приземление
-            if (onGround == true && flying == true)
+            if (onGround == true && isFlying == true)
             {
-                state = 12;
-                flying = false;
+                isFlying = false;
+                state = 102;
             }
         }
+
+        /*if ()
+        {
+
+        }
+        if ()
+        {
+
+        }*/
 
         // воспроизведение анимации
         anim.SetInteger("state", state);
