@@ -147,7 +147,7 @@ public class Controll : MonoBehaviour
 
             // команда вперёд на пкм, если персонаж стоит, идёт вперёд
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
-                && Input.GetKey(KeyCode.Mouse0))
+                && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
             {
                 state = 5;
                 Vector3 point = transform.position + transform.forward * 10;
