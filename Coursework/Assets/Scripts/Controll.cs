@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Controll : MonoBehaviour
 {
@@ -9,8 +8,9 @@ public class Controll : MonoBehaviour
     int state = 0;
     Animator anim;
 
+    // слой для интерактивных объектов и радиус действия
     public LayerMask interactable;
-    float detectRadius = 1.5f;
+    float detectRadius = 1f;
 
     // скорость передвижения
     float speed = 2.5f;
@@ -25,6 +25,12 @@ public class Controll : MonoBehaviour
     bool isFlying = false;
     bool isCrouch = false;
     bool isBlock = false;
+
+
+    // для работы с миньонами
+    public GameObject minon;
+
+
 
     void Start()
     {
@@ -47,7 +53,6 @@ public class Controll : MonoBehaviour
     {
         // установка анимации простоя
         state = 0;
-        if ()
 
         // если нет анимации атаки
         if (attacking == false)
@@ -93,7 +98,7 @@ public class Controll : MonoBehaviour
                         if (Input.GetKey(KeyCode.LeftShift))
                         {
                             state = 22;                                                         // снижение скорости тк движение назад
-                            rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed / 1.5f);
+                            rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed);
                         }
                         else
                         {
@@ -143,7 +148,11 @@ public class Controll : MonoBehaviour
             // команда вперёд на пкм, если персонаж стоит, идёт вперёд
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse0))
+            {
                 state = 5;
+                Vector3 point = transform.position + transform.forward * 10;
+                minon.GetComponent<MinionScr>().GoForvard(point);
+            }
             // атака мечом на пкм + ctrl, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.LeftControl))
@@ -152,7 +161,10 @@ public class Controll : MonoBehaviour
             // команда назад на лкм, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1))
+            {
                 state = 6;
+
+            }
             // блок на лкм + ctrl, если персонаж стоит, идёт вперёд
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
@@ -195,29 +207,28 @@ public class Controll : MonoBehaviour
                     c.interact();
                 
             }
-            
-
         }
 
-        /*if ()
-        {
-
-        }
-        if ()
-        {
-
-        }*/
-
-        // воспроизведение анимации
+        // воспроизведение анимаций
         anim.SetInteger("state", state);
         anim.SetBool("isCrouch", isCrouch);
         anim.SetBool("isBlock", isBlock);
+
+
+
+    
+    
     }
 
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
-    }*/
+        Gizmos.DrawWireSphere(transform.localPosition, detectRadius);
+
+
+        Vector3 point = transform.position + transform.forward * 10;
+        Gizmos.DrawWireSphere(point, 0.5f);
+    }
+
     public void AttackOn()
     {
         attacking = true;
