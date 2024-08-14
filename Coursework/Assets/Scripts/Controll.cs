@@ -201,23 +201,10 @@ public class Controll : MonoBehaviour
         anim.SetBool("isCrouch", isCrouch);
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, detectRadius);
-    }
-    public void interact()
-    {
-        Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
-
-        if (cols.Length > 0)
-        {
-            InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
-            if (c != null)
-                c.interact();
-            anim.SetInteger("state", 0);
-        }
-    }
-    
+    }*/
     public void AttackOn()
     {
         attacking = true;
