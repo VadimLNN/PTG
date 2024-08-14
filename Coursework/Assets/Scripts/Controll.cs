@@ -151,7 +151,7 @@ public class Controll : MonoBehaviour
             {
                 state = 5;
                 Vector3 point = transform.position + transform.forward * 10;
-                minon.GetComponent<MinionScr>().GoForvard(point);
+                minon.GetComponent<MinionScr>().FollowOrder(point);
             }
             // атака мечом на пкм + ctrl, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
@@ -161,10 +161,8 @@ public class Controll : MonoBehaviour
             // команда назад на лкм, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1))
-            {
                 state = 6;
 
-            }
             // блок на лкм + ctrl, если персонаж стоит, идёт вперёд
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
@@ -208,25 +206,22 @@ public class Controll : MonoBehaviour
                 
             }
         }
-
+        
+        if (minon.GetComponent<MinionScr>().GetIsOnAssignment() != true)
+            minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
+        
         // воспроизведение анимаций
         anim.SetInteger("state", state);
         anim.SetBool("isCrouch", isCrouch);
         anim.SetBool("isBlock", isBlock);
-
-
-
-    
-    
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.localPosition, detectRadius);
 
-
-        Vector3 point = transform.position + transform.forward * 10;
-        Gizmos.DrawWireSphere(point, 0.5f);
+        Gizmos.DrawWireSphere(transform.position + transform.forward * 10, 0.5f);
+        Gizmos.DrawWireSphere(transform.position - transform.forward, 0.5f);
     }
 
     public void AttackOn()
