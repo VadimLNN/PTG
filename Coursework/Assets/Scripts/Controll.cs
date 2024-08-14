@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Controll : MonoBehaviour
@@ -7,8 +9,11 @@ public class Controll : MonoBehaviour
     int state = 0;
     Animator anim;
 
+    public LayerMask interactable;
+    float detectRadius = 1.5f;
+
     // скорость передвижения
-    float speed = 3;
+    float speed = 2.5f;
 
     // Характеристики для прыжка
     [Range(1f, 10f)]
@@ -165,6 +170,21 @@ public class Controll : MonoBehaviour
                 isFlying = false;
                 state = 102;
             }
+
+            // проверка объекта для интеракции в радиусе
+            Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
+
+            // если объект попал в радиус
+            if (cols.Length > 0 && Input.GetKey(KeyCode.E))
+            {
+                state = 500;
+                InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
+                if (c != null)
+                    c.interact();
+                
+            }
+            
+
         }
 
         /*if ()
@@ -181,6 +201,23 @@ public class Controll : MonoBehaviour
         anim.SetBool("isCrouch", isCrouch);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
+    }
+    public void interact()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
+
+        if (cols.Length > 0)
+        {
+            InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
+            if (c != null)
+                c.interact();
+            anim.SetInteger("state", 0);
+        }
+    }
+    
     public void AttackOn()
     {
         attacking = true;

@@ -58,6 +58,7 @@ public class ControllScr : MonoBehaviour
             
         anim.SetInteger("state", state);
     }
+
     public void attack()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
