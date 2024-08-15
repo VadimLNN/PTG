@@ -1,29 +1,29 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyScr : InteractableObj
 {
-    // ссылка на аниматора, агента и точки пути
+    // СЃСЃС‹Р»РєР° РЅР° Р°РЅРёРјР°С‚РѕСЂР°, Р°РіРµРЅС‚Р° Рё С‚РѕС‡РєРё РїСѓС‚Рё
     Animator anim;
     NavMeshAgent agent;
     public Transform[] wayPoints;
     
-    // радиусы замечания интерактивных объектов, атаки, дистанция до мастера и минёна
+    // СЂР°РґРёСѓСЃС‹ Р·Р°РјРµС‡Р°РЅРёСЏ РёРЅС‚РµСЂР°РєС‚РёРІРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, Р°С‚Р°РєРё, РґРёСЃС‚Р°РЅС†РёСЏ РґРѕ РјР°СЃС‚РµСЂР° Рё РјРёРЅС‘РЅР°
     float detectRadius = 10;
     float atkRadius = 2f;
     float distToMaster, distToMinon;
 
-    // параметры состония и индекс точки
+    // РїР°СЂР°РјРµС‚СЂС‹ СЃРѕСЃС‚РѕРЅРёСЏ Рё РёРЅРґРµРєСЃ С‚РѕС‡РєРё
     int state;
     int ind = 0;
 
-    // слои игрока и приспешника
+    // СЃР»РѕРё РёРіСЂРѕРєР° Рё РїСЂРёСЃРїРµС€РЅРёРєР°
     public LayerMask playerLayer;
     public LayerMask minionLayer;
 
-    // точки для определения состояния простоя или ходьбы 
+    // С‚РѕС‡РєРё РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ РїСЂРѕСЃС‚РѕСЏ РёР»Рё С…РѕРґСЊР±С‹ 
     Vector3 oldPos;
     Vector3 newPos;
     
@@ -36,7 +36,7 @@ public class EnemyScr : InteractableObj
 
     void Update()
     {
-        // отслеживание состояний простоя и ходьбы
+        // РѕС‚СЃР»РµР¶РёРІР°РЅРёРµ СЃРѕСЃС‚РѕСЏРЅРёР№ РїСЂРѕСЃС‚РѕСЏ Рё С…РѕРґСЊР±С‹
         newPos = transform.position;
         
         if (oldPos == newPos)
@@ -50,10 +50,8 @@ public class EnemyScr : InteractableObj
 
         oldPos = newPos;
         
-        //
 
-        
-        // ходьба по точкам пути
+        // С…РѕРґСЊР±Р° РїРѕ С‚РѕС‡РєР°Рј РїСѓС‚Рё
         if (Vector3.Distance(transform.position, wayPoints[ind].position) < 2f)
         {
             ind++;
@@ -63,7 +61,7 @@ public class EnemyScr : InteractableObj
             agent.SetDestination(wayPoints[ind].position);
         }
 
-        // отслеживание объектов игрока и приспешников
+        // РѕС‚СЃР»РµР¶РёРІР°РЅРёРµ РѕР±СЉРµРєС‚РѕРІ РёРіСЂРѕРєР° Рё РїСЂРёСЃРїРµС€РЅРёРєРѕРІ
         Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
         Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
         
@@ -73,7 +71,7 @@ public class EnemyScr : InteractableObj
         if (colsM.Length > 0)
             distToMinon = Vector3.Distance(transform.position, colsM[0].transform.position);
 
-        // если игрок или приспешник в радиусе 
+        // РµСЃР»Рё РёРіСЂРѕРє РёР»Рё РїСЂРёСЃРїРµС€РЅРёРє РІ СЂР°РґРёСѓСЃРµ 
         if (colsP.Length > 0 || colsM.Length > 0)
         {
             if (distToMaster > 0 && distToMinon > 0 && distToMaster < distToMinon || 
@@ -104,13 +102,12 @@ public class EnemyScr : InteractableObj
             agent.SetDestination(wayPoints[ind].position);
         }
 
+        // 
         distToMaster = 0;
         distToMinon = 0;
 
-        
 
-
-        // установка анимации
+        // СѓСЃС‚Р°РЅРѕРІРєР° Р°РЅРёРјР°С†РёРё
         anim.SetInteger("state", state);
     }
     public override void interact()
@@ -127,5 +124,23 @@ public class EnemyScr : InteractableObj
     {
         Gizmos.DrawWireSphere(transform.position, detectRadius);
         Gizmos.DrawWireSphere(transform.position, atkRadius);
+    }
+
+    void attack()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, minionLayer);
+
+        if (cols.Length > 0)
+        {
+            MinionScr c = cols[0].transform.GetComponent<MinionScr>();
+            if (c != null) c.takeDamage();
+        }
+    }
+
+    public void takeDamage() 
+    {
+        agent.SetDestination(transform.position);  
+        anim.SetInteger("state", -1);               
+        Destroy(this.gameObject, 1);
     }
 }

@@ -1,23 +1,28 @@
-using System.Drawing;
+п»їusing System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class MinionScr : MonoBehaviour
 {
-    // ссылка на нав. агента и аниматора 
+    // СЃСЃС‹Р»РєР° РЅР° РЅР°РІ. Р°РіРµРЅС‚Р°, Р°РЅРёРјР°С‚РѕСЂР° 
     NavMeshAgent agent;
     Animator anim;
 
-    // параметр состояния и времени на осмотр перед возвращением 
+    // 
+    public LayerMask enemyLayer;
+
+    // РїР°СЂР°РјРµС‚СЂ СЃРѕСЃС‚РѕСЏРЅРёСЏ Рё РІСЂРµРјРµРЅРё РЅР° РѕСЃРјРѕС‚СЂ РїРµСЂРµРґ РІРѕР·РІСЂР°С‰РµРЅРёРµРј 
     int state;
     float inspectionTime = 2f;
-    
-    // точки для определения состояния простоя или ходьбы 
+    float atkRadius = 1f;
+    int hp = 40;
+
+    // С‚РѕС‡РєРё РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ РїСЂРѕСЃС‚РѕСЏ РёР»Рё С…РѕРґСЊР±С‹ 
     Vector3 oldPos;
     Vector3 newPos;
 
-    // состояния "на задании"
+    // СЃРѕСЃС‚РѕСЏРЅРёСЏ "РЅР° Р·Р°РґР°РЅРёРё"
     bool isOnAssignment = false;
 
     void Start()
@@ -28,15 +33,15 @@ public class MinionScr : MonoBehaviour
 
     void Update()
     {
-        // новая точка для сравнения со старым положением
+        // РЅРѕРІР°СЏ С‚РѕС‡РєР° РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ СЃРѕ СЃС‚Р°СЂС‹Рј РїРѕР»РѕР¶РµРЅРёРµРј
         newPos = transform.position;
         
-        //  если старая точка и новая равны = простой
+        //  РµСЃР»Рё СЃС‚Р°СЂР°СЏ С‚РѕС‡РєР° Рё РЅРѕРІР°СЏ СЂР°РІРЅС‹ = РїСЂРѕСЃС‚РѕР№
         if (oldPos == newPos)
         {
             state = 0;
 
-            // отсчёт времени до прекращения состояния "на задании" 
+            // РѕС‚СЃС‡С‘С‚ РІСЂРµРјРµРЅРё РґРѕ РїСЂРµРєСЂР°С‰РµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ "РЅР° Р·Р°РґР°РЅРёРё" 
             inspectionTime -= Time.deltaTime;
             if (inspectionTime <= 0 && isOnAssignment == true)
                 isOnAssignment = false;
@@ -44,38 +49,56 @@ public class MinionScr : MonoBehaviour
         else
         {
             state = 1;
-            // время осмотра 
+            // РІСЂРµРјСЏ РѕСЃРјРѕС‚СЂР° 
             inspectionTime = 2f;
         }
             
         oldPos = newPos;
 
 
-        // установка анимации
+        // СѓСЃС‚Р°РЅРѕРІРєР° Р°РЅРёРјР°С†РёРё
         anim.SetInteger("state", state);
     }
     
     public void FollowOrder(Vector3 point) 
     {
-        // пробежка до задания и установка состояния 
+        // РїСЂРѕР±РµР¶РєР° РґРѕ Р·Р°РґР°РЅРёСЏ Рё СѓСЃС‚Р°РЅРѕРІРєР° СЃРѕСЃС‚РѕСЏРЅРёСЏ 
         agent.SetDestination(point);
         isOnAssignment = true;
     }
     public void FollowMaster(Vector3 point)
     {
-        // преследование мастера
+        // РїСЂРµСЃР»РµРґРѕРІР°РЅРёРµ РјР°СЃС‚РµСЂР°
         agent.SetDestination(point);
     }
 
     public bool GetIsOnAssignment()
     {
-        // возвращение состояния на задании
+        // РІРѕР·РІСЂР°С‰РµРЅРёРµ СЃРѕСЃС‚РѕСЏРЅРёСЏ РЅР° Р·Р°РґР°РЅРёРё
         return isOnAssignment;
     }
 
     void stopFollowOrder()
     {
-        // прекрашение состояния "на задании"
+        // РїСЂРµРєСЂР°С€РµРЅРёРµ СЃРѕСЃС‚РѕСЏРЅРёСЏ "РЅР° Р·Р°РґР°РЅРёРё"
         isOnAssignment = false;
+    }
+
+    void attack()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, enemyLayer);
+
+        if (cols.Length > 0)
+        {
+            EnemyScr c = cols[0].transform.GetComponent<EnemyScr>();
+            if (c != null) c.takeDamage();
+        }
+    }
+
+    public void takeDamage()
+    {
+        agent.SetDestination(transform.position);   
+        anim.SetInteger("state", -1);                
+        Destroy(this.gameObject, 1);
     }
 }

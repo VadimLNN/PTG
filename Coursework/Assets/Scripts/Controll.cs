@@ -1,34 +1,40 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using UnityEngine.AI;
 
 public class Controll : MonoBehaviour
 {
-    // ссылки на физическое тело, состояние и аниматора
+    // СЃСЃС‹Р»РєРё РЅР° С„РёР·РёС‡РµСЃРєРѕРµ С‚РµР»Рѕ, СЃРѕСЃС‚РѕСЏРЅРёРµ Рё Р°РЅРёРјР°С‚РѕСЂР°
     Rigidbody rb;
     int state = 0;
     Animator anim;
 
-    // слой для интерактивных объектов и радиус действия
+    // СЃР»РѕР№ РґР»СЏ РёРЅС‚РµСЂР°РєС‚РёРІРЅС‹С… РѕР±СЉРµРєС‚РѕРІ, РІСЂР°РіРѕРІ Рё СЂР°РґРёСѓСЃ РґРµР№СЃС‚РІРёСЏ
     public LayerMask interactable;
+    public LayerMask enemyLayer;
     float detectRadius = 1f;
 
-    // скорость передвижения
+    // СЃРєРѕСЂРѕСЃС‚СЊ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ
     float speed = 2.5f;
 
-    // Характеристики для прыжка
+    // РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё РґР»СЏ РїСЂС‹Р¶РєР°
     [Range(1f, 10f)]
     public float jumpForce = 5;
     public bool onGround;
 
-    // состояние атаки, полёта, ползанья и блока
+    // СЃРѕСЃС‚РѕСЏРЅРёРµ Р°С‚Р°РєРё, РїРѕР»С‘С‚Р°, РїРѕР»Р·Р°РЅСЊСЏ Рё Р±Р»РѕРєР°
     bool attacking = false;
     bool isFlying = false;
     bool isCrouch = false;
     bool isBlock = false;
 
 
-    // для работы с миньонами
+    // РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРёРЅСЊРѕРЅР°РјРё
     public GameObject minon;
+
+
+    // 
+    int hp = 100;
+    float atkRadius = 2f;
 
 
 
@@ -51,20 +57,20 @@ public class Controll : MonoBehaviour
 
     void LateUpdate()
     {
-        // установка анимации простоя
+        // СѓСЃС‚Р°РЅРѕРІРєР° Р°РЅРёРјР°С†РёРё РїСЂРѕСЃС‚РѕСЏ
         state = 0;
 
-        // если нет анимации атаки
+        // РµСЃР»Рё РЅРµС‚ Р°РЅРёРјР°С†РёРё Р°С‚Р°РєРё
         if (attacking == false)
         {
-            // установка состояния на кортах
+            // СѓСЃС‚Р°РЅРѕРІРєР° СЃРѕСЃС‚РѕСЏРЅРёСЏ РЅР° РєРѕСЂС‚Р°С…
             if (Input.GetKeyDown(KeyCode.C))
                 isCrouch = !isCrouch;
 
-            // при блоке движение в блоке
+            // РїСЂРё Р±Р»РѕРєРµ РґРІРёР¶РµРЅРёРµ РІ Р±Р»РѕРєРµ
             if (isBlock == false)
             {
-                // установка анимации и передвижения вперёд, назад 
+                // СѓСЃС‚Р°РЅРѕРІРєР° Р°РЅРёРјР°С†РёРё Рё РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РІРїРµСЂС‘Рґ, РЅР°Р·Р°Рґ 
                 if (Input.GetAxisRaw("Vertical") > 0)
                 {
                     if (isCrouch == true)
@@ -76,7 +82,7 @@ public class Controll : MonoBehaviour
                     {
                         if (Input.GetKey(KeyCode.LeftShift))
                         {
-                            state = 11;                                                      // умножение скорости X2 тк бег
+                            state = 11;                                                      // СѓРјРЅРѕР¶РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё X2 С‚Рє Р±РµРі
                             rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed * 2);
                         }
                         else
@@ -97,18 +103,18 @@ public class Controll : MonoBehaviour
                     {
                         if (Input.GetKey(KeyCode.LeftShift))
                         {
-                            state = 22;                                                         // снижение скорости тк движение назад
+                            state = 22;                                                         // СЃРЅРёР¶РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё С‚Рє РґРІРёР¶РµРЅРёРµ РЅР°Р·Р°Рґ
                             rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * speed);
                         }
                         else
                         {
-                            state = 2;                                                           // снижение скорости тк движение назад
+                            state = 2;                                                           // СЃРЅРёР¶РµРЅРёРµ СЃРєРѕСЂРѕСЃС‚Рё С‚Рє РґРІРёР¶РµРЅРёРµ РЅР°Р·Р°Рґ
                             rb.MovePosition(transform.position - transform.forward * Time.fixedDeltaTime * (speed / 2));
                         }
                     }
                 }
 
-                // ходьба в стороны
+                // С…РѕРґСЊР±Р° РІ СЃС‚РѕСЂРѕРЅС‹
                 if (Input.GetAxisRaw("Horizontal") > 0)
                 {
                     if (Input.GetKey(KeyCode.LeftShift))
@@ -145,27 +151,27 @@ public class Controll : MonoBehaviour
                 }
             }
 
-            // команда вперёд на пкм, если персонаж стоит, идёт вперёд
+            // РєРѕРјР°РЅРґР° РІРїРµСЂС‘Рґ РЅР° РїРєРј, РµСЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ СЃС‚РѕРёС‚, РёРґС‘С‚ РІРїРµСЂС‘Рґ
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
             {
                 state = 5;
 
-                // вычисление точки перед игроком и приказ посылающий миньёна вперёд
+                // РІС‹С‡РёСЃР»РµРЅРёРµ С‚РѕС‡РєРё РїРµСЂРµРґ РёРіСЂРѕРєРѕРј Рё РїСЂРёРєР°Р· РїРѕСЃС‹Р»Р°СЋС‰РёР№ РјРёРЅСЊС‘РЅР° РІРїРµСЂС‘Рґ
                 Vector3 point = transform.position + transform.forward * 10;
                 minon.GetComponent<MinionScr>().FollowOrder(point);
             }
-            // атака мечом на пкм + ctrl, если персонаж стоит или ходит
+            // Р°С‚Р°РєР° РјРµС‡РѕРј РЅР° РїРєРј + ctrl, РµСЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ СЃС‚РѕРёС‚ РёР»Рё С…РѕРґРёС‚
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.LeftControl))
                 state = 55;
             
-            // команда назад на лкм, если персонаж стоит или ходит
+            // РєРѕРјР°РЅРґР° РЅР°Р·Р°Рґ РЅР° Р»РєРј, РµСЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ СЃС‚РѕРёС‚ РёР»Рё С…РѕРґРёС‚
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1))
                 state = 6;
 
-            // блок на лкм + ctrl, если персонаж стоит, идёт вперёд
+            // Р±Р»РѕРє РЅР° Р»РєРј + ctrl, РµСЃР»Рё РїРµСЂСЃРѕРЅР°Р¶ СЃС‚РѕРёС‚, РёРґС‘С‚ РІРїРµСЂС‘Рґ
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftControl))
             {
@@ -176,29 +182,29 @@ public class Controll : MonoBehaviour
                 isBlock = false;
             
 
-            // прыжок (взлёт)
+            // РїСЂС‹Р¶РѕРє (РІР·Р»С‘С‚)
             if (onGround == true && Input.GetKey(KeyCode.Space))
             {
                 state = 100;
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
-            // полёт
+            // РїРѕР»С‘С‚
             if (onGround == false)
             {
                 state = 101;
                 isFlying = true;
             }
-            // приземление
+            // РїСЂРёР·РµРјР»РµРЅРёРµ
             if (onGround == true && isFlying == true)
             {
                 isFlying = false;
                 state = 102;
             }
 
-            // проверка объекта для интеракции в радиусе
+            // РїСЂРѕРІРµСЂРєР° РѕР±СЉРµРєС‚Р° РґР»СЏ РёРЅС‚РµСЂР°РєС†РёРё РІ СЂР°РґРёСѓСЃРµ
             Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
 
-            // если объект попал в радиус
+            // РµСЃР»Рё РѕР±СЉРµРєС‚ РїРѕРїР°Р» РІ СЂР°РґРёСѓСЃ
             if (cols.Length > 0 && Input.GetKey(KeyCode.E))
             {
                 state = 500;
@@ -209,11 +215,11 @@ public class Controll : MonoBehaviour
             }
         }
         
-        // если миньён не на задании, то бегает за игроком
+        // РµСЃР»Рё РјРёРЅСЊС‘РЅ РЅРµ РЅР° Р·Р°РґР°РЅРёРё, С‚Рѕ Р±РµРіР°РµС‚ Р·Р° РёРіСЂРѕРєРѕРј
         if (minon.GetComponent<MinionScr>().GetIsOnAssignment() != true)
             minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
         
-        // воспроизведение анимаций
+        // РІРѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ Р°РЅРёРјР°С†РёР№
         anim.SetInteger("state", state);
         anim.SetBool("isCrouch", isCrouch);
         anim.SetBool("isBlock", isBlock);
@@ -234,5 +240,24 @@ public class Controll : MonoBehaviour
     public void AttackOff()
     {
         attacking = false;
+    }
+
+
+
+    void attack()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, enemyLayer);
+
+        if (cols.Length > 0)
+        {
+            EnemyScr c = cols[0].transform.GetComponent<EnemyScr>();
+            if (c != null) c.takeDamage();
+        }
+    }
+
+    public void takeDamage()
+    {
+        anim.SetInteger("state", -1);                
+        Destroy(this.gameObject, 1);
     }
 }
