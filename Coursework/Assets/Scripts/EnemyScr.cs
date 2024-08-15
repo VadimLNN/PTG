@@ -5,20 +5,28 @@ using UnityEngine.AI;
 
 public class EnemyScr : InteractableObj
 {
+    // ссылка на аниматора, агента и точки пути
     Animator anim;
     NavMeshAgent agent;
     public Transform[] wayPoints;
+    
+    // радиусы замечания интерактивных объектов, атаки, дистанция до мастера и минёна
     float detectRadius = 10;
     float atkRadius = 0.8f;
+    float distToMaster, distToMinon;
 
+    // параметры состония и индекс точки
     int state;
     int ind = 0;
 
+    // слои игрока и приспешника
     public LayerMask playerLayer;
     public LayerMask minionLayer;
 
+    // точки для определения состояния простоя или ходьбы 
     Vector3 oldPos;
     Vector3 newPos;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -28,7 +36,7 @@ public class EnemyScr : InteractableObj
 
     void Update()
     {
-        //
+        // ходьба по точкам пути
         if (Vector3.Distance(transform.position, wayPoints[ind].position) < 2f)
         {
             ind++;
@@ -38,8 +46,53 @@ public class EnemyScr : InteractableObj
             agent.SetDestination(wayPoints[ind].position);
         }
 
-        newPos = transform.position;
+        // отслеживание объектов игрока и приспешников
+        Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
+        Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
+        
+        // 
+        if (colsP.Length > 0)
+            distToMaster = Vector3.Distance(transform.position, colsP[0].transform.position);
+        if (colsM.Length > 0)
+            distToMinon = Vector3.Distance(transform.position, colsM[0].transform.position);
 
+        // если игрок или приспешник в радиусе 
+        if (colsP.Length > 0 || colsM.Length > 0)
+        {
+            if (distToMaster > 0 && distToMinon > 0 && distToMaster < distToMinon || 
+                distToMaster > 0 && distToMinon == 0)
+            {
+                if (Vector3.Distance(transform.position, colsP[0].transform.position) <= atkRadius)
+                {
+                    agent.SetDestination(transform.position);
+                    state = 3;
+                }
+                else
+                    agent.SetDestination(colsP[0].transform.position);
+            }
+            if (distToMaster > 0 && distToMinon > 0 && distToMaster > distToMinon ||
+                distToMaster == 0 && distToMinon > 0)
+            {
+                if (Vector3.Distance(transform.position, colsM[0].transform.position) <= atkRadius)
+                {
+                    agent.SetDestination(transform.position);
+                    state = 3;
+                }
+                else
+                    agent.SetDestination(colsM[0].transform.position);
+            }
+        }
+        else
+        {
+            agent.SetDestination(wayPoints[ind].position);
+        }
+
+        distToMaster = 0;
+        distToMinon = 0;
+
+        // отслеживание состояний простоя и ходьбы
+        newPos = transform.position;
+        
         if (oldPos == newPos)
         {
             state = 0;
@@ -49,36 +102,22 @@ public class EnemyScr : InteractableObj
             state = 1;
         }
 
-
         oldPos = newPos;
 
+
+        // установка анимации
         anim.SetInteger("state", state);
     }
     public override void interact()
     {
         anim.SetInteger("state", 2);
-
-        Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
-        Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
-
-        if (colsP.Length > 0 || colsM.Length > 0)
-        {
-            if (Vector3.Distance(transform.position, colsP[0].transform.position) <= atkRadius)
-            {
-                agent.SetDestination(transform.position);
-                state = 3;
-            }
-            else
-                agent.SetDestination(colsP[0].transform.position);
-        }
-        else
-            agent.SetDestination(wayPoints[ind].position);
     }
 
     public void dead()
     {
         Destroy(this.gameObject, 2);
     }
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, detectRadius);

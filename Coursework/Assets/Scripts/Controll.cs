@@ -150,6 +150,8 @@ public class Controll : MonoBehaviour
                 && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
             {
                 state = 5;
+
+                // вычисление точки перед игроком и приказ посылающий миньёна вперёд
                 Vector3 point = transform.position + transform.forward * 10;
                 minon.GetComponent<MinionScr>().FollowOrder(point);
             }
@@ -207,6 +209,7 @@ public class Controll : MonoBehaviour
             }
         }
         
+        // если миньён не на задании, то бегает за игроком
         if (minon.GetComponent<MinionScr>().GetIsOnAssignment() != true)
             minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
         
