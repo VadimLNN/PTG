@@ -7,7 +7,6 @@ public class MinionScr : MonoBehaviour
 {
 
     NavMeshAgent agent;
-    Rigidbody rb;
     int state;
     Animator anim;
 
@@ -23,7 +22,6 @@ public class MinionScr : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();  
-        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
