@@ -246,10 +246,12 @@ public class Controll : MonoBehaviour
 
     void attack()
     {
+        Debug.Log("attack ON");
         Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, enemyLayer);
 
         if (cols.Length > 0)
         {
+            Debug.Log("attack OK");
             EnemyScr c = cols[0].transform.GetComponent<EnemyScr>();
             if (c != null) c.takeDamage();
         }
@@ -258,6 +260,6 @@ public class Controll : MonoBehaviour
     public void takeDamage()
     {
         anim.SetInteger("state", -1);                
-        Destroy(this.gameObject, 1);
+        //Destroy(this.gameObject, 1);
     }
 }
