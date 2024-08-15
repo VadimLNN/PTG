@@ -12,7 +12,7 @@ public class EnemyScr : InteractableObj
     
     // радиусы замечания интерактивных объектов, атаки, дистанция до мастера и минёна
     float detectRadius = 10;
-    float atkRadius = 0.8f;
+    float atkRadius = 2f;
     float distToMaster, distToMinon;
 
     // параметры состония и индекс точки
@@ -36,6 +36,23 @@ public class EnemyScr : InteractableObj
 
     void Update()
     {
+        // отслеживание состояний простоя и ходьбы
+        newPos = transform.position;
+        
+        if (oldPos == newPos)
+        {
+            state = 0;
+        }
+        else
+        {
+            state = 1;
+        }
+
+        oldPos = newPos;
+        
+        //
+
+        
         // ходьба по точкам пути
         if (Vector3.Distance(transform.position, wayPoints[ind].position) < 2f)
         {
@@ -64,8 +81,8 @@ public class EnemyScr : InteractableObj
             {
                 if (Vector3.Distance(transform.position, colsP[0].transform.position) <= atkRadius)
                 {
-                    agent.SetDestination(transform.position);
                     state = 3;
+                    agent.SetDestination(transform.position);
                 }
                 else
                     agent.SetDestination(colsP[0].transform.position);
@@ -75,8 +92,8 @@ public class EnemyScr : InteractableObj
             {
                 if (Vector3.Distance(transform.position, colsM[0].transform.position) <= atkRadius)
                 {
-                    agent.SetDestination(transform.position);
                     state = 3;
+                    agent.SetDestination(transform.position);
                 }
                 else
                     agent.SetDestination(colsM[0].transform.position);
@@ -90,19 +107,7 @@ public class EnemyScr : InteractableObj
         distToMaster = 0;
         distToMinon = 0;
 
-        // отслеживание состояний простоя и ходьбы
-        newPos = transform.position;
         
-        if (oldPos == newPos)
-        {
-            state = 0;
-        }
-        else
-        {
-            state = 1;
-        }
-
-        oldPos = newPos;
 
 
         // установка анимации
