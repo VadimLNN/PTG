@@ -15,17 +15,22 @@ public class EnemyScr : InteractableObj
     float atkRadius = 2f;
     float distToMaster, distToMinon;
 
-    // параметры состония и индекс точки
+    // параметры состония, индекс точки
     int state;
     int ind = 0;
+    int hp = 50;
 
     // слои игрока и приспешника
     public LayerMask playerLayer;
     public LayerMask minionLayer;
+    public LayerMask targetLayer;
 
     // точки для определения состояния простоя или ходьбы 
     Vector3 oldPos;
     Vector3 newPos;
+
+    //
+    bool isDead = false;
     
     void Start()
     {
@@ -36,76 +41,86 @@ public class EnemyScr : InteractableObj
 
     void Update()
     {
-        // отслеживание состояний простоя и ходьбы
-        newPos = transform.position;
-        
-        if (oldPos == newPos)
+        if (hp <= 0)
         {
-            state = 0;
-        }
-        else
-        {
-            state = 1;
+            agent.SetDestination(transform.position); 
+            state = Random.Range(-2, -1);
+            isDead = true;
+            Destroy(this.gameObject, 5);
         }
 
-        oldPos = newPos;
-        
-
-        // ходьба по точкам пути
-        if (Vector3.Distance(transform.position, wayPoints[ind].position) < 2f)
+        if (isDead == false)
         {
-            ind++;
+            // отслеживание состояний простоя и ходьбы
+            newPos = transform.position;
 
-            if (ind >= wayPoints.Length) ind = 0;
-
-            agent.SetDestination(wayPoints[ind].position);
-        }
-
-        // отслеживание объектов игрока и приспешников
-        Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
-        Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
-        
-        // 
-        if (colsP.Length > 0)
-            distToMaster = Vector3.Distance(transform.position, colsP[0].transform.position);
-        if (colsM.Length > 0)
-            distToMinon = Vector3.Distance(transform.position, colsM[0].transform.position);
-
-        // если игрок или приспешник в радиусе 
-        if (colsP.Length > 0 || colsM.Length > 0)
-        {
-            if (distToMaster > 0 && distToMinon > 0 && distToMaster < distToMinon || 
-                distToMaster > 0 && distToMinon == 0)
+            if (oldPos == newPos)
             {
-                if (Vector3.Distance(transform.position, colsP[0].transform.position) <= atkRadius)
-                {
-                    state = 3;
-                    agent.SetDestination(transform.position);
-                }
-                else
-                    agent.SetDestination(colsP[0].transform.position);
+                state = 0;
             }
-            if (distToMaster > 0 && distToMinon > 0 && distToMaster > distToMinon ||
-                distToMaster == 0 && distToMinon > 0)
+            else
             {
-                if (Vector3.Distance(transform.position, colsM[0].transform.position) <= atkRadius)
-                {
-                    state = 3;
-                    agent.SetDestination(transform.position);
-                }
-                else
-                    agent.SetDestination(colsM[0].transform.position);
+                state = 1;
             }
-        }
-        else
-        {
-            agent.SetDestination(wayPoints[ind].position);
-        }
 
-        // 
-        distToMaster = 0;
-        distToMinon = 0;
+            oldPos = newPos;
 
+
+            // ходьба по точкам пути
+            if (Vector3.Distance(transform.position, wayPoints[ind].position) < 2f)
+            {
+                ind++;
+
+                if (ind >= wayPoints.Length) ind = 0;
+
+                agent.SetDestination(wayPoints[ind].position);
+            }
+
+            // отслеживание объектов игрока и приспешников
+            Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
+            Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
+
+            // 
+            if (colsP.Length > 0)
+                distToMaster = Vector3.Distance(transform.position, colsP[0].transform.position);
+            if (colsM.Length > 0)
+                distToMinon = Vector3.Distance(transform.position, colsM[0].transform.position);
+
+            // если игрок или приспешник в радиусе 
+            if (colsP.Length > 0 || colsM.Length > 0)
+            {
+                if (distToMaster > 0 && distToMinon > 0 && distToMaster < distToMinon ||
+                    distToMaster > 0 && distToMinon == 0)
+                {
+                    if (Vector3.Distance(transform.position, colsP[0].transform.position) <= atkRadius)
+                    {
+                        state = 3;
+                        agent.SetDestination(transform.position);
+                    }
+                    else
+                        agent.SetDestination(colsP[0].transform.position);
+                }
+                if (distToMaster > 0 && distToMinon > 0 && distToMaster > distToMinon ||
+                    distToMaster == 0 && distToMinon > 0)
+                {
+                    if (Vector3.Distance(transform.position, colsM[0].transform.position) <= atkRadius)
+                    {
+                        state = 3;
+                        agent.SetDestination(transform.position);
+                    }
+                    else
+                        agent.SetDestination(colsM[0].transform.position);
+                }
+            }
+            else
+            {
+                agent.SetDestination(wayPoints[ind].position);
+            }
+
+            // 
+            distToMaster = 0;
+            distToMinon = 0;
+        }
 
         // установка анимации
         anim.SetInteger("state", state);
@@ -128,7 +143,7 @@ public class EnemyScr : InteractableObj
 
     void attack()
     {
-        Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, minionLayer);
+        Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, targetLayer);
 
         if (cols.Length > 0)
         {
@@ -137,10 +152,10 @@ public class EnemyScr : InteractableObj
         }
     }
 
-    public void takeDamage() 
+    public void takeDamage(int gamage) 
     {
-        agent.SetDestination(transform.position);  
-        anim.SetInteger("state", -1);               
-        Destroy(this.gameObject, 1);
+        hp -= gamage;
+         
+        
     }
 }

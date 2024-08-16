@@ -91,7 +91,7 @@ public class MinionScr : MonoBehaviour
         if (cols.Length > 0)
         {
             EnemyScr c = cols[0].transform.GetComponent<EnemyScr>();
-            if (c != null) c.takeDamage();
+            if (c != null) c.takeDamage(10);
         }
     }
 
