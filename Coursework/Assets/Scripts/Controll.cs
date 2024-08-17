@@ -34,7 +34,7 @@ public class Controll : MonoBehaviour
 
     // 
     int hp = 100;
-    float atkRadius = 2f;
+    float atkRadius = 1f;
 
 
 
@@ -227,10 +227,11 @@ public class Controll : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // радиус действия и атаки
         Gizmos.DrawWireSphere(transform.localPosition, detectRadius);
 
+        // точка куда побежит прихвостень
         Gizmos.DrawWireSphere(transform.position + transform.forward * 10, 0.5f);
-        Gizmos.DrawWireSphere(transform.position - transform.forward, 0.5f);
     }
 
     public void AttackOn()
