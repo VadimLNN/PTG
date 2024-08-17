@@ -220,9 +220,9 @@ public class Controll : MonoBehaviour
             minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
         
         // воспроизведение анимаций
-        anim.SetInteger("state", state);
-        anim.SetBool("isCrouch", isCrouch);
         anim.SetBool("isBlock", isBlock);
+        anim.SetBool("isCrouch", isCrouch);
+        anim.SetInteger("state", state);
     }
 
     private void OnDrawGizmos()

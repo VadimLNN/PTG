@@ -14,16 +14,19 @@ public class MinionScr : MonoBehaviour
 
     // параметр состояния и времени на осмотр перед возвращением 
     int state;
-    float inspectionTime = 2f;
+    public float inspectionTime = 2f;
+
+    //
     float atkRadius = 1f;
     int hp = 40;
 
     // точки для определения состояния простоя или ходьбы 
-    Vector3 oldPos;
+    Vector3 assignmentPnt;
     Vector3 newPos;
+    Vector3 oldPos;
 
     // состояния "на задании"
-    bool isOnAssignment = false;
+    public bool isOnAssignment = false;
 
     void Start()
     {
@@ -31,29 +34,32 @@ public class MinionScr : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();  
     }
 
-    void Update()
+    void LateUpdate()
     {
-        // новая точка для сравнения со старым положением
-        newPos = transform.position;
-        
-        //  если старая точка и новая равны = простой
-        if (oldPos == newPos)
+        Vector3 posNow = transform.position;
+
+
+
+
+        if (assignmentPnt.x - 1 <= posNow.x && posNow.x <= assignmentPnt.x + 1 &&
+            assignmentPnt.z - 1 <= posNow.z && posNow.z <= assignmentPnt.z + 1)
         {
             state = 0;
 
             // отсчёт времени до прекращения состояния "на задании" 
-            inspectionTime -= Time.deltaTime;
+            if (state == 0 && isOnAssignment == true)
+            {
+                inspectionTime -= Time.deltaTime;
+            }
+
             if (inspectionTime <= 0 && isOnAssignment == true)
+            {
                 isOnAssignment = false;
+                inspectionTime = 2f;
+            }
         }
         else
-        {
             state = 1;
-            // время осмотра 
-            inspectionTime = 2f;
-        }
-            
-        oldPos = newPos;
 
 
         // установка анимации
@@ -62,12 +68,15 @@ public class MinionScr : MonoBehaviour
     
     public void FollowOrder(Vector3 point) 
     {
+        assignmentPnt = point;
+        
         // пробежка до задания и установка состояния 
         agent.SetDestination(point);
         isOnAssignment = true;
     }
     public void FollowMaster(Vector3 point)
     {
+        assignmentPnt = point;
         // преследование мастера
         agent.SetDestination(point);
     }
