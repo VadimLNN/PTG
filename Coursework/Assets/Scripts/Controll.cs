@@ -11,7 +11,7 @@ public class Controll : MonoBehaviour
     // слой для интерактивных объектов, врагов и радиус действия
     public LayerMask interactable;
     public LayerMask enemyLayer;
-    float detectRadius = 1f;
+    float detectRadius = 1.5f;
 
     // скорость передвижения
     float speed = 2.5f;
@@ -34,7 +34,7 @@ public class Controll : MonoBehaviour
 
     // 
     int hp = 100;
-    float atkRadius = 1f;
+    float atkRadius = 1.5f;
 
 
 
