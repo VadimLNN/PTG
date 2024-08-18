@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MinionCrowd : MonoBehaviour
@@ -23,18 +21,42 @@ public class MinionCrowd : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        playerPos = player.transform.position;
-        float indentDown = 0.3f;
-        float indentRight = 0.3f;
+        playerPos = player.transform.position - player.transform.forward*0.7f;
+        float indentDown = 0.37f;
+        float indentRight = 0.42f;
 
-        int minionsInRow = 1;
+        int previousRow = 0;
+        int currentRow = 0;
+        int currentMinions = 0;
 
-        for (int i = 0; i < crowdCount; i++)
+
+        while (currentMinions < crowdCount)
         {
-            Gizmos.DrawWireSphere(playerPos - player.transform.forward, 0.5f);
+            currentRow = previousRow + 1;
+            
+            if (currentRow + currentMinions <= crowdCount)
+                for (float j = -(currentRow - 1 ) / 2f; j <= (currentRow - 1) / 2f; j++)
+                {
+                    Gizmos.DrawWireSphere(playerPos - player.transform.forward * indentDown * currentRow
+                                                    + player.transform.right * indentRight * j, 0.2f);
+                }
+            else
+            {
+                currentRow = crowdCount - currentMinions;
+                for (float j = -(currentRow - 1) / 2f; j <= (currentRow - 1) / 2f; j++)
+                {
+                    Gizmos.DrawWireSphere(playerPos - player.transform.forward * indentDown * (previousRow+1)
+                                                    + player.transform.right * indentRight * j, 0.2f);
+                }
+            }
+            currentMinions += currentRow;
+            previousRow = currentRow;
 
+           
         }
 
-        
+
+
+
     }
 }
