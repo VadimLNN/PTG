@@ -52,7 +52,7 @@ public class MinionCrowd : MonoBehaviour
             {
                 currentRow = crowdCount - currentMinions;
                 for (float j = -(currentRow - 1) / 2f; j <= (currentRow - 1) / 2f; j++)
-                    places.Add(playerPos - player.transform.forward * indentDown * currentRow
+                    places.Add(playerPos - player.transform.forward * indentDown * (previousRow + 1)
                                                     + player.transform.right * indentRight * j);
                 /*Gizmos.DrawWireSphere(playerPos - player.transform.forward * indentDown * (previousRow+1)
                                                 + player.transform.right * indentRight * j, 0.2f);*/
@@ -63,7 +63,9 @@ public class MinionCrowd : MonoBehaviour
 
         for (int i = 0; i < crowdCount; i++)
         {
+            Debug.Log(minions[i].name);
             minions[i].position = places[i];
+            Debug.Log(places[i]);
         }
 
     }
