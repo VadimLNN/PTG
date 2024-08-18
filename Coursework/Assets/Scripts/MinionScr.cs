@@ -38,11 +38,8 @@ public class MinionScr : MonoBehaviour
     {
         Vector3 posNow = transform.position;
 
-
-
-
-        if (assignmentPnt.x - 1 <= posNow.x && posNow.x <= assignmentPnt.x + 1 &&
-            assignmentPnt.z - 1 <= posNow.z && posNow.z <= assignmentPnt.z + 1)
+        if (assignmentPnt.x - 0.1f <= posNow.x && posNow.x <= assignmentPnt.x + 0.1f &&
+            assignmentPnt.z - 0.1f <= posNow.z && posNow.z <= assignmentPnt.z + 0.1f)
         {
             state = 0;
 
@@ -60,6 +57,7 @@ public class MinionScr : MonoBehaviour
         }
         else
             state = 1;
+
 
 
         // установка анимации
