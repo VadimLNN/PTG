@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class MinionScr : MonoBehaviour
 {
     // ссылка на нав. агента, аниматора 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     Animator anim;
 
     // 

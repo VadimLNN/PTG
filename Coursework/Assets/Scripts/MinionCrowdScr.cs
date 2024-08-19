@@ -11,7 +11,7 @@ public class MinionCrowd : MonoBehaviour
 
     Vector3 playerPos;
 
-    // ����� �������� � ����� 
+    // кол-во приспешников
     int crowdCount;
 
 
@@ -73,9 +73,30 @@ public class MinionCrowd : MonoBehaviour
         // расстановка прихвостней по местам
         for (int i = 0; i < crowdCount; i++)
         {
-            minions[i].position = places[i];
+            if (minions[i].GetComponent<MinionScr>().GetIsOnAssignment() == false)
+                minions[i].GetComponent<MinionScr>().agent.SetDestination(places[i]);
         }
 
+    }
+
+    public void GoForward()
+    {
+        bool minionSent = false;
+        for (int i = 0; i < crowdCount; i++)
+        {
+            if (minions[i].GetComponent<MinionScr>().GetIsOnAssignment() == false)
+            {
+                // вычисление точки перед игроком и приказ посылающий миньёна вперёд
+                Vector3 point = player.transform.position + player.transform.forward * 10;
+                
+                minions[i].GetComponent<MinionScr>().FollowOrder(point);
+
+                minionSent = true;
+            }
+
+            if (minionSent == true)
+                break;
+        }
     }
 
 

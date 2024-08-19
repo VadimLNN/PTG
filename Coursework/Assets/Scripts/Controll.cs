@@ -29,8 +29,9 @@ public class Controll : MonoBehaviour
 
 
     // для работы с миньонами
-    public GameObject minon;
-
+    //public GameObject minon;
+    public GameObject minions;
+    MinionCrowd minionsCrowd;
 
     // 
     int hp = 100;
@@ -43,6 +44,8 @@ public class Controll : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         onGround = true;
+
+        minionsCrowd = minions.GetComponent<MinionCrowd>();
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -156,10 +159,7 @@ public class Controll : MonoBehaviour
                 && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
             {
                 state = 5;
-
-                // вычисление точки перед игроком и приказ посылающий миньёна вперёд
-                Vector3 point = transform.position + transform.forward * 10;
-                minon.GetComponent<MinionScr>().FollowOrder(point);
+                minionsCrowd.GoForward();
             }
             // атака мечом на пкм + ctrl, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
@@ -216,8 +216,8 @@ public class Controll : MonoBehaviour
         }
         
         // если миньён не на задании, то бегает за игроком
-        if (minon.GetComponent<MinionScr>().GetIsOnAssignment() != true)
-            minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
+        //if (minon.GetComponent<MinionScr>().GetIsOnAssignment() != true)
+        //    minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
         
         // воспроизведение анимаций
         anim.SetBool("isBlock", isBlock);
