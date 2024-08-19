@@ -36,17 +36,17 @@ public class MinionCrowd : MonoBehaviour
         // число миньёнов
         crowdCount = minions.Count;
 
-        //
+        // список мест прихвостней 
         List<Vector3> places = new List<Vector3>();
 
-        //
+        // позиция чуть позади игрока 
         playerPos = player.transform.position - player.transform.forward*0.7f;
         
-        //
+        // параметры смещения мест вниз и в сторону 
         float indentDown = 0.4f;
         float indentRight = 0.42f;
 
-        //
+        // параметры и алгоритм построения
         int previousRow = 0;
         int currentRow = 0;
         int currentMinions = 0;
