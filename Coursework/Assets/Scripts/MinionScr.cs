@@ -14,7 +14,7 @@ public class MinionScr : MonoBehaviour
 
     // параметр состояния и времени на осмотр перед возвращением 
     int state;
-    public float inspectionTime = 2f;
+    float inspectionTime = 0.5f;
 
     //
     float atkRadius = 1f;
@@ -52,7 +52,7 @@ public class MinionScr : MonoBehaviour
             if (inspectionTime <= 0 && isOnAssignment == true)
             {
                 isOnAssignment = false;
-                inspectionTime = 2f;
+                inspectionTime = 0.5f;
             }
         }
         else
