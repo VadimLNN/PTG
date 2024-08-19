@@ -143,13 +143,35 @@ public class EnemyScr : InteractableObj
 
     void attack()
     {
-        Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, targetLayer);
+        // отслеживание объектов игрока и приспешников
+        Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
+        Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
 
-        if (cols.Length > 0)
+        // 
+        if (colsP.Length > 0)
+            distToMaster = Vector3.Distance(transform.position, colsP[0].transform.position);
+        if (colsM.Length > 0)
+            distToMinon = Vector3.Distance(transform.position, colsM[0].transform.position);
+
+        // если игрок или приспешник в радиусе 
+        if (colsP.Length > 0 || colsM.Length > 0)
         {
-            MinionScr c = cols[0].transform.GetComponent<MinionScr>();
-            if (c != null) c.takeDamage();
+            if (distToMaster > 0 && distToMinon > 0 && distToMaster < distToMinon ||
+                distToMaster > 0 && distToMinon == 0)
+            {
+                Controll c = colsP[0].transform.GetComponent<Controll>();
+                if (c != null) c.takeDamage();
+            }
+            if (distToMaster > 0 && distToMinon > 0 && distToMaster > distToMinon ||
+                distToMaster == 0 && distToMinon > 0)
+            {
+                MinionScr c = colsM[0].transform.GetComponent<MinionScr>();
+                if (c != null) c.takeDamage();
+            }
         }
+
+        distToMaster = 0;
+        distToMinon = 0;
     }
 
     public void takeDamage(int gamage) 

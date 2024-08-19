@@ -19,6 +19,7 @@ public class MinionScr : MonoBehaviour
     //
     float atkRadius = 1f;
     int hp = 40;
+    bool isDead = false;
 
     // точки для определения состояния простоя или ходьбы 
     Vector3 assignmentPnt;
@@ -36,28 +37,35 @@ public class MinionScr : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 posNow = transform.position;
-        float razbros = 0.1f;
-        if (assignmentPnt.x - razbros <= posNow.x && posNow.x <= assignmentPnt.x + razbros &&
-            assignmentPnt.z - razbros <= posNow.z && posNow.z <= assignmentPnt.z + razbros)
+        if (isDead == false)
         {
-            state = 0;
-
-            // отсчёт времени до прекращения состояния "на задании" 
-            if (state == 0 && isOnAssignment == true)
+            Vector3 posNow = transform.position;
+            float razbros = 0.1f;
+            if (assignmentPnt.x - razbros <= posNow.x && posNow.x <= assignmentPnt.x + razbros &&
+                assignmentPnt.z - razbros <= posNow.z && posNow.z <= assignmentPnt.z + razbros)
             {
-                inspectionTime -= Time.deltaTime;
-            }
+                state = 0;
 
-            if (inspectionTime <= 0 && isOnAssignment == true)
-            {
-                isOnAssignment = false;
-                inspectionTime = 0.5f;
+                // отсчёт времени до прекращения состояния "на задании" 
+                if (state == 0 && isOnAssignment == true)
+                {
+                    inspectionTime -= Time.deltaTime;
+                }
+
+                if (inspectionTime <= 0 && isOnAssignment == true)
+                {
+                    isOnAssignment = false;
+                    inspectionTime = 0.5f;
+                }
             }
+            else
+                state = 1;
         }
         else
-            state = 1;
-
+        {
+            agent.SetDestination(transform.position);
+            state = -1;
+        }
 
 
         // установка анимации
@@ -66,18 +74,24 @@ public class MinionScr : MonoBehaviour
     
     public void FollowOrder(Vector3 point) 
     {
-        assignmentPnt = point;
+        if (isDead == false)
+        {
+            assignmentPnt = point;
         
-        // пробежка до задания и установка состояния 
-        agent.SetDestination(point);
-        isOnAssignment = true;
+            // пробежка до задания и установка состояния 
+            agent.SetDestination(point);
+            isOnAssignment = true;
+        }
     }
     public void FollowMaster(Vector3 point)
     {
-        assignmentPnt = point;
-        // преследование мастера
-        agent.SetDestination(point);
-        isOnAssignment = false;
+        if (isDead == false)
+        {
+            assignmentPnt = point;
+            // преследование мастера
+            agent.SetDestination(point);
+            isOnAssignment = false;
+        }
     }
 
     public bool GetIsOnAssignment()
@@ -105,8 +119,7 @@ public class MinionScr : MonoBehaviour
 
     public void takeDamage()
     {
-        agent.SetDestination(transform.position);   
-        anim.SetInteger("state", -1);                
-        Destroy(this.gameObject, 1);
+        isDead = true;
+        Destroy(this.gameObject, 5);
     }
 }
