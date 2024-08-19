@@ -74,7 +74,7 @@ public class MinionCrowd : MonoBehaviour
         for (int i = 0; i < crowdCount; i++)
         {
             if (minions[i].GetComponent<MinionScr>().GetIsOnAssignment() == false)
-                minions[i].GetComponent<MinionScr>().agent.SetDestination(places[i]);
+                minions[i].GetComponent<MinionScr>().FollowMaster(places[i]);
         }
 
     }

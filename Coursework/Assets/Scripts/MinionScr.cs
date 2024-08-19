@@ -37,9 +37,9 @@ public class MinionScr : MonoBehaviour
     void LateUpdate()
     {
         Vector3 posNow = transform.position;
-
-        if (assignmentPnt.x - 0.1f <= posNow.x && posNow.x <= assignmentPnt.x + 0.1f &&
-            assignmentPnt.z - 0.1f <= posNow.z && posNow.z <= assignmentPnt.z + 0.1f)
+        float razbros = 0.1f;
+        if (assignmentPnt.x - razbros <= posNow.x && posNow.x <= assignmentPnt.x + razbros &&
+            assignmentPnt.z - razbros <= posNow.z && posNow.z <= assignmentPnt.z + razbros)
         {
             state = 0;
 

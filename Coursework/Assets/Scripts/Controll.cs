@@ -33,7 +33,7 @@ public class Controll : MonoBehaviour
     MinionCrowd minionsCrowd;
 
     float fireRate = 10f;
-    public float nextShot = 0f;
+    float nextShot = 0f;
 
 
 
@@ -222,10 +222,6 @@ public class Controll : MonoBehaviour
                 
             }
         }
-        
-        // если миньён не на задании, то бегает за игроком
-        //if (minon.GetComponent<MinionScr>().GetIsOnAssignment() != true)
-        //    minon.GetComponent<MinionScr>().FollowMaster(transform.position - transform.forward);
         
         // воспроизведение анимаций
         anim.SetBool("isBlock", isBlock);
