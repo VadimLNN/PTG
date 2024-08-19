@@ -29,9 +29,13 @@ public class Controll : MonoBehaviour
 
 
     // для работы с миньонами
-    //public GameObject minon;
     public GameObject minions;
     MinionCrowd minionsCrowd;
+
+    float fireRate = 10f;
+    public float nextShot = 0f;
+
+
 
     // 
     int hp = 100;
@@ -159,7 +163,11 @@ public class Controll : MonoBehaviour
                 && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
             {
                 state = 5;
-                minionsCrowd.GoForward();
+                if (Time.time >= nextShot)
+                {
+                    nextShot = Time.time + 1 / fireRate;
+                    minionsCrowd.GoForward();
+                }
             }
             // атака мечом на пкм + ctrl, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
