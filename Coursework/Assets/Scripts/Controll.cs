@@ -177,7 +177,14 @@ public class Controll : MonoBehaviour
             // команда назад на лкм, если персонаж стоит или ходит
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
                 && Input.GetKey(KeyCode.Mouse1))
+            {
                 state = 6;
+                if (Time.time >= nextShot)
+                {
+                    nextShot = Time.time + 1 / fireRate;
+                    minionsCrowd.GoBackOne();
+                }
+            }
 
             // блок на лкм + ctrl, если персонаж стоит, идёт вперёд
             if (onGround == true //&& (state == 0 || state == 1 || state == 2 || state == 3 || state == 4) 
@@ -250,6 +257,11 @@ public class Controll : MonoBehaviour
     void AllBack()
     {
         minionsCrowd.GoBackAll();
+    }
+
+    void OneBack()
+    {
+        minionsCrowd.GoBackOne();
     }
 
     void attack()

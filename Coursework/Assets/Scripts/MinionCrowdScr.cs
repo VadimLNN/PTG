@@ -104,7 +104,24 @@ public class MinionCrowd : MonoBehaviour
         for (int i = 0; i < crowdCount; i++)
            minions[i].GetComponent<MinionScr>().FollowMaster(places[i]);
     }
-    
+
+    public void GoBackOne()
+    {
+        bool minionSentBack = false;
+        for (int i = 0; i < crowdCount; i++)
+        {
+            if (minions[i].GetComponent<MinionScr>().GetIsOnAssignment() == true)
+            {
+                minions[i].GetComponent<MinionScr>().FollowMaster(places[i]);
+                minionSentBack = true;
+            }
+
+            if (minionSentBack == true)
+                break;
+        }
+
+    }
+
     private void OnDrawGizmos()
     {
         playerPos = player.transform.position - player.transform.forward*0.7f;
