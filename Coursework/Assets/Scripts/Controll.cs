@@ -247,7 +247,10 @@ public class Controll : MonoBehaviour
         attacking = false;
     }
 
-
+    void AllBack()
+    {
+        minionsCrowd.GoBackAll();
+    }
 
     void attack()
     {

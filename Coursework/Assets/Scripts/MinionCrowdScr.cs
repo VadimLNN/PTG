@@ -6,8 +6,9 @@ public class MinionCrowd : MonoBehaviour
     // ссылки на игрока
     public GameObject player;
 
-    //
+    // список прихвостней и их мест за игроком 
     List<Transform> minions = new List<Transform>();
+    List<Vector3> places = new List<Vector3>();
 
     Vector3 playerPos;
 
@@ -22,6 +23,9 @@ public class MinionCrowd : MonoBehaviour
 
     void Update()
     {
+        // позиция чуть позади игрока 
+        playerPos = player.transform.position - player.transform.forward*0.7f;
+        
         // переменная для отслеживания изменений колличества приспешников
         int newCrowdCount = transform.childCount;
 
@@ -35,12 +39,6 @@ public class MinionCrowd : MonoBehaviour
         
         // число миньёнов
         crowdCount = minions.Count;
-
-        // список мест прихвостней 
-        List<Vector3> places = new List<Vector3>();
-
-        // позиция чуть позади игрока 
-        playerPos = player.transform.position - player.transform.forward*0.7f;
         
         // параметры смещения мест вниз и в сторону 
         float indentDown = 0.4f;
@@ -50,6 +48,8 @@ public class MinionCrowd : MonoBehaviour
         int previousRow = 0;
         int currentRow = 0;
         int currentMinions = 0;
+        
+        places.Clear();
 
         while (currentMinions < crowdCount)
         {
@@ -99,7 +99,11 @@ public class MinionCrowd : MonoBehaviour
         }
     }
 
-
+    public void GoBackAll()
+    {
+        for (int i = 0; i < crowdCount; i++)
+           minions[i].GetComponent<MinionScr>().FollowMaster(places[i]);
+    }
     
     private void OnDrawGizmos()
     {
