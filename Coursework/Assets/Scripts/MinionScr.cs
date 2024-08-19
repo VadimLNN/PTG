@@ -77,6 +77,7 @@ public class MinionScr : MonoBehaviour
         assignmentPnt = point;
         // преследование мастера
         agent.SetDestination(point);
+        isOnAssignment = false;
     }
 
     public bool GetIsOnAssignment()

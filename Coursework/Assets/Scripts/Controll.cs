@@ -32,8 +32,9 @@ public class Controll : MonoBehaviour
     public GameObject minions;
     MinionCrowd minionsCrowd;
 
-    float fireRate = 10f;
-    float nextShot = 0f;
+    float sendRate = 10f;
+    public float nextSend = 0f;
+    public float nextSendBack = 0f;
 
 
 
@@ -163,9 +164,9 @@ public class Controll : MonoBehaviour
                 && Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftControl))
             {
                 state = 5;
-                if (Time.time >= nextShot)
+                if (Time.time >= nextSend)
                 {
-                    nextShot = Time.time + 1 / fireRate;
+                    nextSend = Time.time + 1 / sendRate;
                     minionsCrowd.GoForward();
                 }
             }
@@ -179,9 +180,9 @@ public class Controll : MonoBehaviour
                 && Input.GetKey(KeyCode.Mouse1))
             {
                 state = 6;
-                if (Time.time >= nextShot)
+                if (Time.time >= nextSendBack)
                 {
-                    nextShot = Time.time + 1 / fireRate;
+                    nextSendBack = Time.time + 1 / sendRate;
                     minionsCrowd.GoBackOne();
                 }
             }

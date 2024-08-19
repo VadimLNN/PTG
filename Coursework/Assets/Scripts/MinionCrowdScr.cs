@@ -87,7 +87,7 @@ public class MinionCrowd : MonoBehaviour
             if (minions[i].GetComponent<MinionScr>().GetIsOnAssignment() == false)
             {
                 // вычисление точки перед игроком и приказ посылающий миньёна вперёд
-                Vector3 point = player.transform.position + player.transform.forward * 10;
+                Vector3 point = player.transform.position + player.transform.forward * 19;
                 
                 minions[i].GetComponent<MinionScr>().FollowOrder(point);
 
