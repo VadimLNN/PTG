@@ -10,11 +10,11 @@ public class MinionCrowd : MonoBehaviour
     List<Transform> minions = new List<Transform>();
     List<Vector3> places = new List<Vector3>();
 
+    // позиция игрока 
     Vector3 playerPos;
 
     // кол-во приспешников
     int crowdCount;
-
 
     void Start()
     {

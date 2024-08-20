@@ -243,7 +243,7 @@ public class Controll : MonoBehaviour
         Gizmos.DrawWireSphere(transform.localPosition, detectRadius);
 
         // точка куда побежит прихвостень
-        Gizmos.DrawWireSphere(transform.position + transform.forward * 10, 0.5f);
+        Gizmos.DrawWireSphere(transform.position + transform.forward * 15, 0.5f);
     }
 
     public void AttackOn()
@@ -259,11 +259,11 @@ public class Controll : MonoBehaviour
     {
         minionsCrowd.GoBackAll();
     }
-
     void OneBack()
     {
         minionsCrowd.GoBackOne();
     }
+
 
     void attack()
     {
@@ -275,7 +275,6 @@ public class Controll : MonoBehaviour
             if (c != null) c.takeDamage(20);
         }
     }
-
     public void takeDamage()
     {
         anim.SetInteger("state", -1);                

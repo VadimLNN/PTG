@@ -135,17 +135,12 @@ public class EnemyScr : InteractableObj
         Destroy(this.gameObject, 2);
     }
     
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
-        Gizmos.DrawWireSphere(transform.position, atkRadius);
-    }
 
     void attack()
     {
         // отслеживание объектов игрока и приспешников
-        Collider[] colsP = Physics.OverlapSphere(transform.position, detectRadius, playerLayer);
-        Collider[] colsM = Physics.OverlapSphere(transform.position, detectRadius, minionLayer);
+        Collider[] colsP = Physics.OverlapSphere(transform.position, atkRadius, playerLayer);
+        Collider[] colsM = Physics.OverlapSphere(transform.position, atkRadius, minionLayer);
 
         // 
         if (colsP.Length > 0)
@@ -166,7 +161,7 @@ public class EnemyScr : InteractableObj
                 distToMaster == 0 && distToMinon > 0)
             {
                 MinionScr c = colsM[0].transform.GetComponent<MinionScr>();
-                if (c != null) c.takeDamage();
+                if (c != null) c.takeDamage(20);
             }
         }
 
@@ -177,7 +172,10 @@ public class EnemyScr : InteractableObj
     public void takeDamage(int gamage) 
     {
         hp -= gamage;
-         
-        
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
+        Gizmos.DrawWireSphere(transform.position, atkRadius);
     }
 }

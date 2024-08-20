@@ -9,25 +9,24 @@ public class MinionScr : MonoBehaviour
     public NavMeshAgent agent;
     Animator anim;
 
-    // 
+    // слой врагов 
     public LayerMask enemyLayer;
 
     // параметр состояния и времени на осмотр перед возвращением 
     int state;
     float inspectionTime = 0.5f;
 
-    //
+    // радиус атаки, замечания, здоровья
     float atkRadius = 1f;
+    float detectRadius = 10f;
     int hp = 40;
-    bool isDead = false;
 
     // точки для определения состояния простоя или ходьбы 
     Vector3 assignmentPnt;
-    Vector3 newPos;
-    Vector3 oldPos;
 
-    // состояния "на задании"
+    // состояния "на задании", "смерти"
     public bool isOnAssignment = false;
+    bool isDead = false;
 
     void Start()
     {
@@ -37,6 +36,14 @@ public class MinionScr : MonoBehaviour
 
     void LateUpdate()
     {
+        if (hp <= 0)
+        {
+            agent.SetDestination(transform.position);
+            state = -1;
+            isDead = true;
+            Destroy(this.gameObject, 5);
+        }
+
         if (isDead == false)
         {
             Vector3 posNow = transform.position;
@@ -60,11 +67,22 @@ public class MinionScr : MonoBehaviour
             }
             else
                 state = 1;
-        }
-        else
-        {
-            agent.SetDestination(transform.position);
-            state = -1;
+
+
+            // отслеживание врага
+            Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, enemyLayer);
+
+            // если враг в радиусе 
+            if (cols.Length > 0)
+            {
+                if (Vector3.Distance(transform.position, cols[0].transform.position) <= atkRadius)
+                {
+                    state = 2;
+                    agent.SetDestination(transform.position);
+                }
+                else
+                    agent.SetDestination(cols[0].transform.position);
+            }
         }
 
 
@@ -99,12 +117,12 @@ public class MinionScr : MonoBehaviour
         // возвращение состояния на задании
         return isOnAssignment;
     }
-
     void stopFollowOrder()
     {
         // прекрашение состояния "на задании"
         isOnAssignment = false;
     }
+
 
     void attack()
     {
@@ -116,10 +134,16 @@ public class MinionScr : MonoBehaviour
             if (c != null) c.takeDamage(10);
         }
     }
-
-    public void takeDamage()
+    public void takeDamage(int gamage)
     {
-        isDead = true;
-        Destroy(this.gameObject, 5);
+        hp -= gamage;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // радиус атаки
+        Gizmos.DrawWireSphere(transform.position, atkRadius);
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
+
     }
 }
