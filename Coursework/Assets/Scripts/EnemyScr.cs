@@ -175,7 +175,7 @@ public class EnemyScr : InteractableObj
     }
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
-        Gizmos.DrawWireSphere(transform.position, atkRadius);
+        //Gizmos.DrawWireSphere(transform.position, detectRadius);
+        //Gizmos.DrawWireSphere(transform.position, atkRadius);
     }
 }
