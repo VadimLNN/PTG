@@ -33,8 +33,8 @@ public class Controll : MonoBehaviour
     MinionCrowd minionsCrowd;
 
     float sendRate = 10f;
-    public float nextSend = 0f;
-    public float nextSendBack = 0f;
+    float nextSend = 0f;
+    float nextSendBack = 0f;
 
 
 
@@ -226,7 +226,6 @@ public class Controll : MonoBehaviour
                 InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
                 if (c != null)
                     c.interact();
-                
             }
         }
         

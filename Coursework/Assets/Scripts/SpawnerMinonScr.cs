@@ -2,23 +2,35 @@ using UnityEngine;
 
 public class SpawnerMinonScr : InteractableObj
 {
-    public Transform Minions;
+    //
+    public GameObject Minions;
     public GameObject minion;
-    //MinionCrowd minionCrowd;
 
-    int minionsMax = 10;
+    //
+    int minionsMax = 15;
+    Vector3 pnt = new Vector3();
 
-    public override void interact()
-    {
-        if (minionsMax > 0)
-        {
-            Instantiate(minion, Minions);
-            minionsMax--;
-        }
-    }
+    //
+    float spawnRate = 10f;
+    float nextSpawn = 0f;
 
     /*void Update()
     {
         
     }*/
+
+    public override void interact()
+    {
+        SpawnMinion();
+    }
+
+    void SpawnMinion()
+    {
+        if (Time.time >= nextSpawn && minionsMax > 0)
+        {
+            nextSpawn = Time.time + 1 / spawnRate;
+            Instantiate(minion, transform.position, Quaternion.identity, Minions.gameObject.transform);
+            minionsMax--;
+        }
+    }
 }
