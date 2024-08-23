@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlimeScr : InteractableObj
+public class DialogScr : InteractableObj
 {
     public GameObject panel;
     Animator anim;
