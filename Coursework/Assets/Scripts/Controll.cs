@@ -219,11 +219,10 @@ public class Controll : MonoBehaviour
 
             // проверка объекта для интеракции в радиусе
             Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
-
             // если объект попал в радиус
             if (cols.Length > 0 && Input.GetKey(KeyCode.E))
             {
-                state = 500;
+                //state = 500;
                 InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
                 if (c != null)
                     c.interact();
@@ -240,10 +239,10 @@ public class Controll : MonoBehaviour
     private void OnDrawGizmos()
     {
         // радиус действия и атаки
-        Gizmos.DrawWireSphere(transform.localPosition, detectRadius);
+        //Gizmos.DrawWireSphere(transform.localPosition, detectRadius);
 
         // точка куда побежит прихвостень
-        Gizmos.DrawWireSphere(transform.position + transform.forward * 15, 0.5f);
+        //Gizmos.DrawWireSphere(transform.position + transform.forward * 15, 0.5f);
     }
 
     public void AttackOn()

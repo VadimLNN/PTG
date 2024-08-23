@@ -14,16 +14,15 @@ public class SlimeScr : InteractableObj
     public override void interact()
     {
         anim.SetInteger("state", 1);
-    }
-
-    public void hello()
-    {
-        panel.SetActive(true);
-        anim.SetInteger("state", 2);
+        panel.SetActive(true); 
+        Cursor.lockState = CursorLockMode.Confined;
     }
     public void closePanel()
     {
         panel.SetActive(false);
         anim.SetInteger("state", 0);
+        Cursor.lockState = CursorLockMode.Locked;
     }
+
+
 }
