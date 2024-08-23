@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MinionCrowd : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class MinionCrowd : MonoBehaviour
 
     // кол-во приспешников
     int crowdCount;
+
+    // ссылка на текст для отображения кол-ва приспешников в строю
+    public Text minionsInRank;
+    int inRank;
 
     void Start()
     {
@@ -71,12 +76,17 @@ public class MinionCrowd : MonoBehaviour
         }
 
         // расстановка прихвостней по местам
+        inRank = 0;
         for (int i = 0; i < crowdCount; i++)
         {
             if (minions[i].GetComponent<MinionScr>().GetIsOnAssignment() == false)
+            {
                 minions[i].GetComponent<MinionScr>().FollowMaster(places[i]);
+                inRank++;
+            }
         }
 
+        minionsInRank.text = $"{inRank}/{crowdCount}";
     }
 
     public void GoForward()
