@@ -17,7 +17,7 @@ public class MinionScr : MonoBehaviour
     float inspectionTime = 0.5f;
 
     // радиус атаки, замечания, здоровья
-    float atkRadius = 1f;
+    float atkRadius = 0.7f;
     float detectRadius = 10f;
     int hp = 40;
 
@@ -142,8 +142,8 @@ public class MinionScr : MonoBehaviour
     private void OnDrawGizmos()
     {
         // радиус атаки
-        Gizmos.DrawWireSphere(transform.position, atkRadius);
-        Gizmos.DrawWireSphere(transform.position, detectRadius);
+        //Gizmos.DrawWireSphere(transform.position, atkRadius);
+        //Gizmos.DrawWireSphere(transform.position, detectRadius);
 
     }
 }
