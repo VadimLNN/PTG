@@ -102,7 +102,10 @@ public class MinionCrowd : MonoBehaviour
     public void GoBackAll()
     {
         for (int i = 0; i < crowdCount; i++)
+        {
            minions[i].GetComponent<MinionScr>().FollowMaster(places[i]);
+           minions[i].GetComponent<MinionScr>().stopFollowOrder();
+        }
     }
 
     public void GoBackOne()

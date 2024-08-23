@@ -73,7 +73,7 @@ public class MinionScr : MonoBehaviour
             Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, enemyLayer);
 
             // если враг в радиусе 
-            if (cols.Length > 0)
+            if (cols.Length > 0 && isOnAssignment == true)
             {
                 if (Vector3.Distance(transform.position, cols[0].transform.position) <= atkRadius)
                 {
@@ -117,7 +117,7 @@ public class MinionScr : MonoBehaviour
         // возвращение состояния на задании
         return isOnAssignment;
     }
-    void stopFollowOrder()
+    public void stopFollowOrder()
     {
         // прекрашение состояния "на задании"
         isOnAssignment = false;
