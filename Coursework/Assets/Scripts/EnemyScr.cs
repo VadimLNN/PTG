@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyScr : InteractableObj
 {
@@ -18,7 +17,7 @@ public class EnemyScr : InteractableObj
     // параметры состония, индекс точки
     int state;
     int ind = 0;
-    int hp = 50;
+    public int hp = 50;
 
     // слои игрока и приспешника
     public LayerMask playerLayer;
@@ -32,15 +31,21 @@ public class EnemyScr : InteractableObj
     //
     bool isDead = false;
     
+    //
+    public GameObject hpScrollBar;
+
     void Start()
     {
+        hpScrollBar.GetComponent<HealthBarScr>().maxHealth = hp;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         agent.SetDestination(wayPoints[ind].position);
     }
 
-    void Update()
+    void LateUpdate()
     {
+        hpScrollBar.GetComponent<HealthBarScr>().health = hp;
+
         if (hp <= 0)
         {
             agent.SetDestination(transform.position); 
@@ -121,6 +126,9 @@ public class EnemyScr : InteractableObj
             distToMaster = 0;
             distToMinon = 0;
         }
+
+        /*hpScrollBar.transform.position = transform.position + Vector3.up*2;
+        hpScrollBar.value = hp;*/
 
         // установка анимации
         anim.SetInteger("state", state);

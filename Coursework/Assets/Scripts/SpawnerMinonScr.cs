@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnerMinonScr : InteractableObj
 {
@@ -8,15 +9,15 @@ public class SpawnerMinonScr : InteractableObj
 
     //
     int minionsMax = 15;
-    Vector3 pnt = new Vector3();
 
     //
     float spawnRate = 10f;
     float nextSpawn = 0f;
 
+    
     /*void Update()
     {
-        
+
     }*/
 
     public override void interact()

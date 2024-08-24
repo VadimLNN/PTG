@@ -75,7 +75,7 @@ public class MinionCrowd : MonoBehaviour
             previousRow = currentRow;
         }
 
-        // расстановка прихвостней по местам
+        // расстановка по местам и подсчёт прихвостней 
         inRank = 0;
         for (int i = 0; i < crowdCount; i++)
         {
