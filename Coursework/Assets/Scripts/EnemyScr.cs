@@ -9,7 +9,7 @@ public class EnemyScr : InteractableObj
     NavMeshAgent agent;
     public Transform[] wayPoints;
     
-    // радиусы замечания интерактивных объектов, атаки, дистанция до мастера и минёна
+    // радиусы замечания интерактивных объектов, атаки, дистанция до мастера и приспешника
     float detectRadius = 10;
     float atkRadius = 2f;
     float distToMaster, distToMinon;
@@ -17,7 +17,6 @@ public class EnemyScr : InteractableObj
     // параметры состония, индекс точки
     int state;
     int ind = 0;
-    public int hp = 50;
 
     // слои игрока и приспешника
     public LayerMask playerLayer;
@@ -28,11 +27,15 @@ public class EnemyScr : InteractableObj
     Vector3 oldPos;
     Vector3 newPos;
 
-    //
+    // ссылка на полоску здоровья
+    public GameObject hpScrollBar;
+    // кол-во здоровья
+    public int hp = 50;
+    
+    // состояние смерти
     bool isDead = false;
     
-    //
-    public GameObject hpScrollBar;
+    
 
     void Start()
     {
