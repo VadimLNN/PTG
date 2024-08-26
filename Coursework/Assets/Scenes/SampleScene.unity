@@ -4700,7 +4700,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.42933428, g: 0.4426563, b: 0.4528302, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -4710,7 +4710,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.8
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -12682,10 +12682,11 @@ MonoBehaviour:
   - {fileID: 4077612351692668892, guid: 0322c9b0c4f4d93418d648ec9405b63d, type: 3}
   - {fileID: 7677146391431892031, guid: 7ac0f4727b8b02d4b8fd471d4dc47304, type: 3}
   - {fileID: 8185963723970810583, guid: c36cdfacfaab1584c887c605bc8e7b2f, type: 3}
+  mobsCrowd: {fileID: 1001478389}
   spawnValue: {x: 5, y: 0, z: 5}
-  spawnWait: 10
-  spawnMostWait: 5
-  spawnLeastWait: 1
+  spawnWait: 0
+  spawnMostWait: 0
+  spawnLeastWait: 0
   startWait: 0
   stop: 0
 --- !u!1 &1926557033

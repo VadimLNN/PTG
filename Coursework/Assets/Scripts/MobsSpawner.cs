@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MobsSpawner : MonoBehaviour
 {
-    // ссылки на префабы мобов
+    // ссылки на префабы мобов и куда создавать
     public GameObject[] mobs;
+    public GameObject mobsCrowd;
 
     // зона спавна
     public Vector3 spawnValue;
@@ -43,5 +44,21 @@ public class MobsSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnWait);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // отрисовка зоны спавна
+        Vector3 spawnZonePnt = mobsCrowd.transform.position;
+
+        Vector3 zoneLU = new Vector3(spawnZonePnt.x - spawnValue.x, spawnZonePnt.y, spawnZonePnt.z + spawnValue.z);
+        Vector3 zoneRU = new Vector3(spawnZonePnt.x + spawnValue.x, spawnZonePnt.y, spawnZonePnt.z + spawnValue.z);
+        Vector3 zoneRD = new Vector3(spawnZonePnt.x + spawnValue.x, spawnZonePnt.y, spawnZonePnt.z - spawnValue.z);
+        Vector3 zoneLD = new Vector3(spawnZonePnt.x - spawnValue.x, spawnZonePnt.y, spawnZonePnt.z - spawnValue.z);
+            
+        Gizmos.DrawLine(zoneLU, zoneRU);
+        Gizmos.DrawLine(zoneRU, zoneRD);
+        Gizmos.DrawLine(zoneRD, zoneLD);
+        Gizmos.DrawLine(zoneLD, zoneLU);
     }
 }
