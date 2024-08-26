@@ -3,22 +3,16 @@ using UnityEngine.UI;
 
 public class SpawnerMinonScr : InteractableObj
 {
-    //
+    // ссылка на толпу и префаб 
     public GameObject Minions;
     public GameObject minion;
 
-    //
+    // кол-во приспешников, которых можно призвать
     int minionsMax = 10;
 
-    //
+    // ограничение спавна приспешников 
     float spawnRate = 10f;
     float nextSpawn = 0f;
-
-    
-    /*void Update()
-    {
-
-    }*/
 
     public override void interact()
     {
