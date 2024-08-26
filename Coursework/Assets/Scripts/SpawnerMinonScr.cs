@@ -8,7 +8,7 @@ public class SpawnerMinonScr : InteractableObj
     public GameObject minion;
 
     //
-    int minionsMax = 15;
+    int minionsMax = 10;
 
     //
     float spawnRate = 10f;
