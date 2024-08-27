@@ -9,18 +9,22 @@ public class MobsSpawner : MonoBehaviour
     public GameObject mobsCrowd;
 
     // зона спавна
-    public Vector3 spawnValue;
+    public Vector3 spawnZone;
     
     // время спавна, максимальное и минимальное  
-    public float spawnWait;
+    float spawnWait;
     public float spawnMostWait;
     public float spawnLeastWait;
     
     // время до начала работы спавнера
-    public int startWait;
-
+    int startWait = 0;
+    
     // состояние спавна 
     public bool stop;
+
+    // численность стада 
+    int flockCount;
+
 
     void Start()
     {
@@ -29,7 +33,13 @@ public class MobsSpawner : MonoBehaviour
 
     void Update()
     {
+        flockCount = mobsCrowd.transform.childCount;
         spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
+
+        if (flockCount > 15)
+            stop = true;
+        else 
+            stop = false;
     }
 
     IEnumerator waitSpawner()
@@ -38,9 +48,9 @@ public class MobsSpawner : MonoBehaviour
 
         while (!stop)
         {
-            Vector3 spawnPos = new Vector3(Random.Range(-spawnValue.x, spawnValue.x), 1, Random.Range(-spawnValue.z, spawnValue.z));
+            Vector3 spawnPos = new Vector3(Random.Range(-spawnZone.x, spawnZone.x), 1, Random.Range(-spawnZone.z, spawnZone.z));
 
-            Instantiate(mobs[Random.Range(0, mobs.Length-1)], spawnPos + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation);
+            Instantiate(mobs[Random.Range(0, mobs.Length-1)], spawnPos + transform.TransformPoint(0, 0, 0), gameObject.transform.rotation, mobsCrowd.transform);
 
             yield return new WaitForSeconds(spawnWait);
         }
@@ -49,12 +59,12 @@ public class MobsSpawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         // отрисовка зоны спавна
-        Vector3 spawnZonePnt = mobsCrowd.transform.position;
+        Vector3 spawnZoneCenter = mobsCrowd.transform.position;
 
-        Vector3 zoneLU = new Vector3(spawnZonePnt.x - spawnValue.x, spawnZonePnt.y, spawnZonePnt.z + spawnValue.z);
-        Vector3 zoneRU = new Vector3(spawnZonePnt.x + spawnValue.x, spawnZonePnt.y, spawnZonePnt.z + spawnValue.z);
-        Vector3 zoneRD = new Vector3(spawnZonePnt.x + spawnValue.x, spawnZonePnt.y, spawnZonePnt.z - spawnValue.z);
-        Vector3 zoneLD = new Vector3(spawnZonePnt.x - spawnValue.x, spawnZonePnt.y, spawnZonePnt.z - spawnValue.z);
+        Vector3 zoneLU = new Vector3(spawnZoneCenter.x - spawnZone.x, spawnZoneCenter.y, spawnZoneCenter.z + spawnZone.z);
+        Vector3 zoneRU = new Vector3(spawnZoneCenter.x + spawnZone.x, spawnZoneCenter.y, spawnZoneCenter.z + spawnZone.z);
+        Vector3 zoneRD = new Vector3(spawnZoneCenter.x + spawnZone.x, spawnZoneCenter.y, spawnZoneCenter.z - spawnZone.z);
+        Vector3 zoneLD = new Vector3(spawnZoneCenter.x - spawnZone.x, spawnZoneCenter.y, spawnZoneCenter.z - spawnZone.z);
             
         Gizmos.DrawLine(zoneLU, zoneRU);
         Gizmos.DrawLine(zoneRU, zoneRD);
