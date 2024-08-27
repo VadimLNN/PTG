@@ -12687,7 +12687,7 @@ MonoBehaviour:
   spawnZone: {x: 12.55, y: 0, z: 5.78}
   spawnMostWait: 15
   spawnLeastWait: 5
-  stop: 0
+  stop: 1
 --- !u!1 &1926557033
 GameObject:
   m_ObjectHideFlags: 0
