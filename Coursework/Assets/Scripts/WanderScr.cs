@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,38 +7,38 @@ public class WanderScr : MonoBehaviour
 {
     public NavMeshSurface surface;
     public NavMeshAgent agent;
-    NavMeshData data;
-
 
     float timer;
 
     Vector3 destination;
 
+    public bool isWander = true;
+
     void Start()
     {
-        data = surface.navMeshData;
-        agent.destination = SetRandomDest(data.sourceBounds);
-        //Debug.Log(data.sourceBounds);
+        agent.destination = SetRandomDest(surface.navMeshData.sourceBounds);
         timer = 0;
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 5)
-        {
-            agent.destination = SetRandomDest(data.sourceBounds);
-            //Debug.Log(data.sourceBounds);
-            timer = 0;
+        if (isWander)
+        {   
+            timer += Time.deltaTime;
+            if (timer > 5)
+            {
+                agent.destination = SetRandomDest(surface.navMeshData.sourceBounds);
+                timer = 0;
+            }
         }
     }
 
     Vector3 SetRandomDest(Bounds bounds)
     {
-        var x = Random.Range(bounds.min.x, bounds.max.x);
-        var z = Random.Range(bounds.min.z, bounds.max.z);
+        var x = Random.Range(transform.position.x - 7, transform.position.x + 7);
+        var z = Random.Range(transform.position.z - 7, transform.position.z + 7);
 
-        destination = new Vector3(x, 1, z);
+        destination = new Vector3(x, transform.position.y, z);
         return destination;
     }
 }
