@@ -18,6 +18,7 @@ public class WanderScr : MonoBehaviour
     {
         agent.destination = SetRandomDest(surface.navMeshData.sourceBounds);
         timer = 0;
+
     }
 
     void Update()
