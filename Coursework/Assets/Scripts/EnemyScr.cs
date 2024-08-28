@@ -129,9 +129,6 @@ public class EnemyScr : InteractableObj
             distToMinon = 0;
         }
 
-        /*hpScrollBar.transform.position = transform.position + Vector3.up*2;
-        hpScrollBar.value = hp;*/
-
         // установка анимации
         anim.SetInteger("state", state);
     }

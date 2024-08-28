@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GoatSheepControllerScr : MonoBehaviour
 {
-    // ссылка на аниматора
+    // ссылка на аниматора, агента
     Animator anim;
+    NavMeshAgent agent;
 
     // точки для определения состояния простоя или ходьбы 
     Vector3 oldPos;
@@ -19,17 +19,24 @@ public class GoatSheepControllerScr : MonoBehaviour
 
     bool isDead = false;
 
+    // ссылка на полоску здоровья
+    public GameObject hpScrollBar;
+
     void Start()
     {
+        hpScrollBar.GetComponent<HealthBarScr>().maxHealth = hp;
         anim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
+        hpScrollBar.GetComponent<HealthBarScr>().health = hp;
+
         if (hp <= 0)
         {
-            //agent.SetDestination(transform.position);
-            state = 1;
+            agent.SetDestination(transform.position);
+            state = -1;
             isDead = true;
             Destroy(this.gameObject, 2);
         }
