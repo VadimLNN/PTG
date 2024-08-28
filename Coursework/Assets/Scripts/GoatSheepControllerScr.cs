@@ -11,12 +11,11 @@ public class GoatSheepControllerScr : MonoBehaviour
     Vector3 oldPos;
     Vector3 newPos;
 
-    // параметры состония
+    // параметры состония, кол-во здоровья
     int state;
-
-    // кол-во здоровья
     public int hp = 15;
 
+    // состояние жизни 
     bool isDead = false;
 
     // ссылка на полоску здоровья
