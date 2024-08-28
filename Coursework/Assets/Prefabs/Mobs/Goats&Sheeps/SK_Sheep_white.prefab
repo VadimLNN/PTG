@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8819770613194198333}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail0_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328145696935668241}
   - component: {fileID: 5449612654408673149}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181314343559873943}
   - component: {fileID: 8446562382708266040}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1256342656824213459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ankle_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624624023443263377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ToesFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3549845363297867179}
   - component: {fileID: 138000188392430105}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7033070334589228331}
   - component: {fileID: 1004373873806813463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8884586717631978947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hip_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7988861510496586834}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine1_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6539967019495686321}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AnkleFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6133374175892587578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9144337522254996665}
   - component: {fileID: 5224239263218189895}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292964328077732460}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rump_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6351662491594193480}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ear1_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -727,7 +727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6855921091217694402}
   - component: {fileID: 1797066695607927563}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4287306953404097446}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jaw_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7834225372814846941}
   - component: {fileID: 1071789065545287628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3457681006826123582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AnkleFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5611320313195931969}
   - component: {fileID: 3261015553786478910}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1094249183653947650}
   - component: {fileID: 6017745247920739860}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2260147685403643299}
   - component: {fileID: 336536271095119199}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,7 +1220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9091519619366182050}
   - component: {fileID: 4879476597475833454}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1305,7 +1305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6860776622477196104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hip_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1337,7 +1337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6398815009243475463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mamilla3_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1368,7 +1368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4738889451031915089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KneeFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1400,7 +1400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6268787955762763367}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RumpFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 836181446469762159}
   - component: {fileID: 5052113271346101932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8711611211071524402}
   - component: {fileID: 3770663272560441615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1604,7 +1604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2356412123977427055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1637,7 +1637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5383227424281932560}
   - component: {fileID: 6510990422009824436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1722,7 +1722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2979454914160837271}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HipFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1754,7 +1754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6502123417460031796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ToesFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1786,7 +1786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8983040179973297202}
   - component: {fileID: 4281669218939639248}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1871,7 +1871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6730935442113227501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toes_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1902,7 +1902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575812791892506007}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine2_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1936,7 +1936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9015226330921141443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ankle_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1969,7 +1969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6560245274796793526}
   - component: {fileID: 2630766937918885820}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2054,7 +2054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307458605680633510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HipFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2087,7 +2087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8810838023419734048}
   - component: {fileID: 3069962594559277847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2172,7 +2172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4973482278692270974}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sheep_White
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2227,7 +2227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4201548872425505387}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck1_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2259,7 +2259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8506577730992104112}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rump_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2291,7 +2291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056421097048029745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2323,7 +2323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4871926983387316997}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2364,7 +2364,7 @@ GameObject:
   - component: {fileID: 8894624207878440412}
   - component: {fileID: 4431332946616104304}
   - component: {fileID: 5759570399699711815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SK_Sheep_white
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2479,6 +2479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425f68e4c48bd934d8ee6e82699e84d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 15
 --- !u!1 &5989259295018525580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6810211419789949974}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ear1_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2520,7 +2521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7650640267553977767}
   - component: {fileID: 5565366860651416702}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2605,7 +2606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2399830118203905243}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RumpFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2637,7 +2638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8625520102033130524}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pelvis_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2674,7 +2675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8749317334169569965}
   - component: {fileID: 5918030243266475110}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2759,7 +2760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2077343703963913235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mamilla3_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2790,7 +2791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2322582189778158470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2822,7 +2823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2350072340153734376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2854,7 +2855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5346516022542320901}
   - component: {fileID: 7826495161385444336}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2939,7 +2940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3511289650682262714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: breast_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2972,7 +2973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4829269315336586593}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3004,7 +3005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6894531490923040614}
   - component: {fileID: 2350693450020412158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3090,7 +3091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5815681521925648004}
   - component: {fileID: 5324640496555375873}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3178,7 +3179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7371626371376136541}
   - component: {fileID: 948232175080764656}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3263,7 +3264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3088921607474560343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3295,7 +3296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042261958205570624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toes_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3327,7 +3328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162674311076528695}
   - component: {fileID: 4471402445863376266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepWhite20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3412,7 +3413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832010759476794236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KneeFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3444,7 +3445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5507975399646988711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail1_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

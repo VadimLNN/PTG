@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7060457777513506064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mamilla3_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 148264882599905406}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RumpFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6805677642162464177}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HipFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5937684900790311939}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pelvis_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3269961822546281069}
   - component: {fileID: 1945456364747530286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1282512547227189879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine2_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5948534969216743760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jaw_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1742144205464265611}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rump_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4237262862097629195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ankle_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8610268486794409506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KneeFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5244651527515249933}
   - component: {fileID: 962691383498636667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5456256885344001374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toes_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7738726591049469117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8550187199472223089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4037260695600021306}
   - component: {fileID: 1816418504121137228}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -653,7 +653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3083762005122204542}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3321774777122630429}
   - component: {fileID: 9123883627980867346}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3607444191659639760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine1_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -804,7 +804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7051816565047077027}
   - component: {fileID: 1043561497474023702}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -889,7 +889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6359356630857224679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HipFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8588059708337862871}
   - component: {fileID: 4494344289922221062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8913487493955666359}
   - component: {fileID: 2468835160718994206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1093,7 +1093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1382618758924004754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ankle_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5821248576095368472}
   - component: {fileID: 956876999213573949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1211,7 +1211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2051759483391499684}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail1_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4522570785805835585}
   - component: {fileID: 6450006154336138374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,7 +1329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6629105272001309784}
   - component: {fileID: 2616799106817068851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5497662746763972462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AnkleFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1447,7 +1447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3790941230133524707}
   - component: {fileID: 1489920570914469754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1532,7 +1532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5803253783767040217}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sheep_Cream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2519419653515921085}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hip_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6529810670179320178}
   - component: {fileID: 4077903327913888247}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1708,7 +1708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3085441261346466014}
   - component: {fileID: 2291844933624526618}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1793,7 +1793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6230079843261932684}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1824,7 +1824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7205235333616465987}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hip_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1856,7 +1856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6609683477171246063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ear1_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1887,7 +1887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2639496831732091543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AnkleFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1920,7 +1920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7498897223937329556}
   - component: {fileID: 5559028015639516312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2005,7 +2005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191427755839803651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail0_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,7 +2037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6963712677003579747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,7 +2074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2390793126663181113}
   - component: {fileID: 7391445896918060096}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2159,7 +2159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 356613054198183649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ToesFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2191,7 +2191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4550498939588620299}
   - component: {fileID: 2627411030507923253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2277,7 +2277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4651814336290400938}
   - component: {fileID: 7622964512545690081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2362,7 +2362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9126585191969841280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rump_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2394,7 +2394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4587008453672471346}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ToesFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2425,7 +2425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2413596425440370494}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2458,7 +2458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5985481844439043041}
   - component: {fileID: 6390923892338950832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2544,7 +2544,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5829945455457064382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knee_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2576,7 +2576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5666238188230766818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ear1_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2608,7 +2608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3879088984883967201}
   - component: {fileID: 9191111431024273154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2693,7 +2693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6620724753985977326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: breast_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2726,7 +2726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3918030351549979062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mamilla3_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2758,7 +2758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801830684232561074}
   - component: {fileID: 8132393154627153561}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2843,7 +2843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7252345808513061445}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck1_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2880,7 +2880,7 @@ GameObject:
   - component: {fileID: 2915980815271519336}
   - component: {fileID: 4236881403784143216}
   - component: {fileID: 4704293071339885178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SK_Sheep_cream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2995,6 +2995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425f68e4c48bd934d8ee6e82699e84d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 15
 --- !u!1 &8714539545668948077
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8958945361965519747}
   - component: {fileID: 7782333208026820932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3091,7 +3092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2754155625971925688}
   - component: {fileID: 1610401940936320989}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3176,7 +3177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5694372699987678178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KneeFront_R_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3209,7 +3210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8908679632782784829}
   - component: {fileID: 3228885624739777560}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3294,7 +3295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328049800486523632}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toes_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3325,7 +3326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 820092763519321060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck_M_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3357,7 +3358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5914552722357418230}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RumpFront_L_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3390,7 +3391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6024641584600329503}
   - component: {fileID: 2491564981044599327}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SheepCream21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
