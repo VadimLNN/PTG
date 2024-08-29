@@ -37,7 +37,6 @@ public class Controll : MonoBehaviour
     float nextSendBack = 0f;
 
 
-
     // 
     int hp = 100;
     float atkRadius = 1.5f;
