@@ -102,8 +102,9 @@ public class PlayerScr : MonoBehaviour
 
         float r = (float)Math.Sqrt(Math.Pow(dx, 2) + Math.Pow(dy, 2) + Math.Pow(dz, 2));
         float xx = dx * ((float)step / r);
+        float yy = dy * ((float)step / r);
         float zz = dz * ((float)step / r);
 
-        return new Vector3(nodef.x + xx, nodef.y, nodef.z + zz);
+        return new Vector3(nodef.x + xx * 2, nodef.y + yy * 2, nodef.z);
     }
 }
