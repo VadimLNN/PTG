@@ -50,7 +50,7 @@ public class PlayerScr : MonoBehaviour
                 // Наращевание скорости и на ЛКМ
                 if (Input.GetAxis("Fire1") == 1 && speed <= speedSlider.maxValue)
                 {
-                    speed += 0.1f;
+                    speed += 0.25f;
                     speedSlider.value = speed;
                 }
                 if (Input.GetMouseButtonUp(0) && speed != 0)
