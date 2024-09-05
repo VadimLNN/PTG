@@ -10,6 +10,10 @@ public class Cell : MonoBehaviour
     public GameObject BottomW;
     public GameObject LeftW;
 
+    // ссылки на полы
+    public GameObject floor;
+    public GameObject startFloor;
+
     // ссылка на текст в €чейке
     public Text distance;
 }

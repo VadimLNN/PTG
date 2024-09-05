@@ -1,5 +1,7 @@
 // класс генератор, отвечающий за создание логической модели лабиринта
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
+using UnityEngine;
 
 public class Generator
 {
@@ -7,8 +9,7 @@ public class Generator
     int width = 10;
     int height = 10;
 
-    // 
-    public Maze GenerateMaze(int width, int height)
+    public Maze GenerateMaze(int width, int height, int v)
     {
         this.width = width;
         this.height = height;
@@ -25,7 +26,10 @@ public class Generator
         }
 
         // удаление стен
-        removeWalls(cells);
+        if (v == 1)
+            removeWallsOldosBroder(cells);
+        else if (v == 2)
+            removeWalls(cells);
 
         // создание лабиринта 
         Maze maze = new Maze();
@@ -35,11 +39,16 @@ public class Generator
         return maze;
     }
 
+
+
+
+
     private void removeWalls(MazeCell[,] maze)
     {
         // стартовая ячейка 
         MazeCell current = maze[0, 0];
         current.visited = true;
+        current.start = true;
 
         // очередь посещённых ячеек 
         Stack<MazeCell> stack = new Stack<MazeCell>();
@@ -79,6 +88,71 @@ public class Generator
           //  
         } while (stack.Count > 0);
     }
+    
+
+    private void removeWallsOldosBroder(MazeCell[,] maze)
+    {
+        MazeCell current = maze[Random.Range(0, width), Random.Range(0, height)];
+        current.visited = true;
+        current.numInside = 1;
+        current.start = true;
+
+        int unvisited = 1;
+
+        while (unvisited < height * width)
+        {
+            MazeCell next = pickNeighbor(current, maze);
+            if (next.visited == false)
+            {
+                next.visited = true;
+                unvisited++;
+                next.numInside = unvisited;
+                RemoveWall(current, next);
+            }
+            current = next;
+
+
+        }
+    }
+    private MazeCell pickNeighbor(MazeCell current, MazeCell[,] maze)
+    {
+        int x = current.X, y = current.Y;
+
+        // up down right left
+        List<int[]> neighbors = new List<int[]>();
+
+        if (x + 1 < width)
+        {
+            int[] temp = { x + 1, y };
+            neighbors.Add(temp);
+
+        }
+        if (x - 1 >= 0)
+        {
+            int[] temp = { x - 1, y };
+            neighbors.Add(temp);
+        }
+        if (y + 1 < height)
+        {
+            int[] temp = { x, y + 1 };
+            neighbors.Add(temp);
+        }
+        if (y - 1 >= 0)
+        {
+            int[] temp = { x, y - 1 };
+            neighbors.Add(temp);
+        }
+
+        int[] randNeighborCoordinates = neighbors[Random.Range(0, neighbors.Count)];
+
+        x = randNeighborCoordinates[0];
+        y = randNeighborCoordinates[1];
+
+        MazeCell randNeighbor = maze[x, y];
+
+        return randNeighbor;
+    }
+
 
     private void RemoveWall(MazeCell a, MazeCell b)
     {
@@ -109,4 +183,8 @@ public class Generator
             }
         }
     }
+
+
+
+
 }

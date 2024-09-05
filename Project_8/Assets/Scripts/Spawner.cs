@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -16,6 +15,10 @@ public class Spawner : MonoBehaviour
     public int width = 10;
     public int height = 10;
 
+
+    public Slider slider;
+
+
     // вызов метода генерации лабиринта 
     public void GenerateMaze()
     {
@@ -25,7 +28,8 @@ public class Spawner : MonoBehaviour
     
         // создание генератора и получение логической модели лабиринта
         Generator generator = new Generator();
-        Maze maze = generator.GenerateMaze(width, height);
+        
+        Maze maze = generator.GenerateMaze(width, height, (int)slider.value);
 
         for (int x = 0; x < maze.cells.GetLength(0); x++)
         {
@@ -33,6 +37,11 @@ public class Spawner : MonoBehaviour
             {
                 // создание и размезение визуального представления ячеек лабиринта
                 Cell c = Instantiate(cellPrefab, new Vector3(x * CellsSize.x, 0, z * CellsSize.y), Quaternion.identity);
+                
+                c.distance.text = maze.cells[x, z].numInside.ToString();
+
+                if (maze.cells[x, z].start == true)
+                    Destroy(c.floor);
 
                 // удаление стен ячеек в соответсии с логической моделью
                 //UpW RightW BottomW LeftW
@@ -51,6 +60,6 @@ public class Spawner : MonoBehaviour
         }
 
         // установка камеры над лабиринтом
-        cam.transform.position = new Vector3((width*CellsSize.x)/2, Mathf.Max(width, height)*4,(height*CellsSize.y)/2.2f);
+        cam.transform.position = new Vector3((width*CellsSize.x)/5f, Mathf.Max(width, height)*4,(height*CellsSize.y)/2.2f);
     }
 }

@@ -11,6 +11,10 @@ public class MazeCell
     public bool BottomW = true;
     public bool LeftW = true;
 
+    public bool start = false;
+
     // состояние посещённости
     public bool visited = false;
+
+    public int numInside;
 }
