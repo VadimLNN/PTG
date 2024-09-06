@@ -18,18 +18,22 @@ public class Spawner : MonoBehaviour
 
     public Slider slider;
 
+    // создание генератора
+    Generator generator = new Generator();
+
+    //хранение модели лабиринта 
+    Maze maze = new Maze();
 
     // вызов метода генерации лабиринта 
     public void GenerateMaze()
     {
         // очистка лабиринта
-        foreach(Transform child in mazeHandler.transform)
+        foreach (Transform child in mazeHandler.transform)
             GameObject.Destroy(child.gameObject);
-    
-        // создание генератора и получение логической модели лабиринта
-        Generator generator = new Generator();
-        
-        Maze maze = generator.GenerateMaze(width, height, (int)slider.value);
+        maze = new Maze();
+
+        //получение логической модели лабиринта
+        maze = generator.GenerateMaze(width, height, (int)slider.value);
 
         for (int x = 0; x < maze.cells.GetLength(0); x++)
         {
@@ -37,7 +41,7 @@ public class Spawner : MonoBehaviour
             {
                 // создание и размезение визуального представления ячеек лабиринта
                 Cell c = Instantiate(cellPrefab, new Vector3(x * CellsSize.x, 0, z * CellsSize.y), Quaternion.identity);
-                
+
                 c.distance.text = maze.cells[x, z].numInside.ToString();
 
                 if (maze.cells[x, z].start == true)
@@ -60,6 +64,11 @@ public class Spawner : MonoBehaviour
         }
 
         // установка камеры над лабиринтом
-        cam.transform.position = new Vector3((width*CellsSize.x)/5f, Mathf.Max(width, height)*4,(height*CellsSize.y)/2.2f);
+        cam.transform.position = new Vector3((width * CellsSize.x) / 5f, Mathf.Max(width, height) * 4, (height * CellsSize.y) / 2.2f);
+    }
+
+    public void FindAllPath()
+    {
+        //generator.findPath(maze.cells);
     }
 }

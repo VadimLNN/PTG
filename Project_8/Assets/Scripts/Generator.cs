@@ -9,6 +9,8 @@ public class Generator
     int width = 10;
     int height = 10;
 
+    MazeCell start;
+    MazeCell[,] globalMaze;
     public Maze GenerateMaze(int width, int height, int v)
     {
         this.width = width;
@@ -16,6 +18,7 @@ public class Generator
 
         // метод генерации
         MazeCell[,] cells = new MazeCell[width, height];
+        globalMaze = cells;
 
         for (int x = 0; x < cells.GetLength(0); x++)
         {
@@ -31,6 +34,8 @@ public class Generator
         else if (v == 2)
             removeWalls(cells);
 
+        findPaths(cells);
+
         // создание лабиринта 
         Maze maze = new Maze();
 
@@ -39,16 +44,13 @@ public class Generator
         return maze;
     }
 
-
-
-
-
     private void removeWalls(MazeCell[,] maze)
     {
         // стартова€ €чейка 
         MazeCell current = maze[0, 0];
         current.visited = true;
         current.start = true;
+        start = current;
 
         // очередь посещЄнных €чеек 
         Stack<MazeCell> stack = new Stack<MazeCell>();
@@ -88,7 +90,6 @@ public class Generator
           //  
         } while (stack.Count > 0);
     }
-    
 
     private void removeWallsOldosBroder(MazeCell[,] maze)
     {
@@ -96,6 +97,7 @@ public class Generator
         current.visited = true;
         current.numInside = 1;
         current.start = true;
+        start = current;
 
         int unvisited = 1;
 
@@ -153,7 +155,6 @@ public class Generator
         return randNeighbor;
     }
 
-
     private void RemoveWall(MazeCell a, MazeCell b)
     {
         if (a.X == b.X)
@@ -186,5 +187,86 @@ public class Generator
 
 
 
+    int unvisited;
+    public void findPaths(MazeCell[,] maze)
+    {
+        for (int x = 0; x < maze.GetLength(0); x++)
+        {
+            for (int y = 0; y < maze.GetLength(1); y++)
+            {
+                maze[x, y].visited = false;
+            }
+        }
 
+        unvisited = 100;
+
+        GoNextB(start, 1);
+    }
+    private void GoNextB(MazeCell current, int step)
+    {
+        if (unvisited > 0)
+        {
+            current.numInside = step;
+            unvisited--;
+
+            Debug.Log($"{unvisited} {step}");
+
+            List<MazeCell> behs = findBeh(current);
+
+            if (behs.Count > 0) 
+                foreach (MazeCell beh in behs)
+                    GoNextB(beh, ++step);
+            else 
+                return;
+        }
+        else 
+            return;
+    }
+
+    private List<MazeCell> findBeh(MazeCell current)
+    {
+        int x = current.X, y = current.Y;
+
+        // up down right left
+        List<MazeCell> neighbors = new List<MazeCell>();
+
+        if (x + 1 < width && current.UpW == false)
+        {
+            if (globalMaze[x + 1,y].visited == false)
+            {
+                MazeCell temp = globalMaze[x + 1, y];
+                neighbors.Add(temp);
+            }
+
+        }
+
+        if (x - 1 >= 0 && current.BottomW == false)
+        {
+            if (globalMaze[x - 1, y].visited == false)
+            {
+                MazeCell temp = globalMaze[x - 1, y];
+                neighbors.Add(temp);
+            }
+        }
+        
+        if (y + 1 < height && current.RightW == false)
+        {
+            if (globalMaze[x, y + 1].visited == false)
+            {
+                MazeCell temp = globalMaze[x, y + 1];
+                neighbors.Add(temp);
+            }
+        }
+       
+        if (y - 1 >= 0 && current.LeftW == false)
+        {
+            if (globalMaze[x, y - 1].visited == false)
+            {
+                MazeCell temp = globalMaze[x, y - 1];
+                neighbors.Add(temp);
+            }
+        }
+
+        return neighbors;
+    }
 }
