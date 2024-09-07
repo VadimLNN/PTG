@@ -209,30 +209,33 @@ public class Generator
             current.numInside = step;
             unvisited--;
 
-            Debug.Log($"{unvisited} {step}");
+            List<MazeCell> behs = findBehs(current);
 
-            List<MazeCell> behs = findBeh(current);
+            Debug.Log($"{unvisited} {step} {behs.Count}");
 
-            if (behs.Count > 0) 
-                foreach (MazeCell beh in behs)
-                    GoNextB(beh, ++step);
-            else 
-                return;
+
+            if (behs.Count == 1)
+                GoNextB(behs[0], ++step);
+            else if (behs.Count == 2)
+            {
+                GoNextB(behs[0], ++step);
+                GoNextB(behs[1], ++step);
+            }
         }
         else 
             return;
     }
 
-    private List<MazeCell> findBeh(MazeCell current)
+    private List<MazeCell> findBehs(MazeCell current)
     {
         int x = current.X, y = current.Y;
 
         // up down right left
         List<MazeCell> neighbors = new List<MazeCell>();
 
-        if (x + 1 < width && current.UpW == false)
+        if (x + 1 < width && current.UpW == false && globalMaze[x + 1,y].visited == false)
         {
-            if (globalMaze[x + 1,y].visited == false)
+            //if ()
             {
                 MazeCell temp = globalMaze[x + 1, y];
                 neighbors.Add(temp);
@@ -240,27 +243,27 @@ public class Generator
 
         }
 
-        if (x - 1 >= 0 && current.BottomW == false)
+        if (x - 1 >= 0 && current.BottomW == false && globalMaze[x - 1, y].visited == false)
         {
-            if (globalMaze[x - 1, y].visited == false)
+            //if ()
             {
                 MazeCell temp = globalMaze[x - 1, y];
                 neighbors.Add(temp);
             }
         }
         
-        if (y + 1 < height && current.RightW == false)
+        if (y + 1 < height && current.RightW == false && globalMaze[x, y + 1].visited == false)
         {
-            if (globalMaze[x, y + 1].visited == false)
+            //if ()
             {
                 MazeCell temp = globalMaze[x, y + 1];
                 neighbors.Add(temp);
             }
         }
        
-        if (y - 1 >= 0 && current.LeftW == false)
+        if (y - 1 >= 0 && current.LeftW == false && globalMaze[x, y - 1].visited == false)
         {
-            if (globalMaze[x, y - 1].visited == false)
+            //if ()
             {
                 MazeCell temp = globalMaze[x, y - 1];
                 neighbors.Add(temp);
