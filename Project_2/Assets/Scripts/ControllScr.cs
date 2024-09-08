@@ -15,8 +15,8 @@ public class ControllScr : MonoBehaviour
     public float ang_speed = 72;
 
     // Характеристики для прыжка
-    [Range(0.1f, 1f)]
-    public float jumpForce = 0.35f;
+    //[Range(0.1f, 1f)]
+    public float jumpForce = 0.6f;
     public bool onGround;
 
     // отслеживание состояния атаки
@@ -96,7 +96,7 @@ public class ControllScr : MonoBehaviour
 
             // прыжок 
             if (onGround == true && Input.GetKey(KeyCode.Space))
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
 
             // установка анимация конфузии в полёте 
             if (onGround == false)

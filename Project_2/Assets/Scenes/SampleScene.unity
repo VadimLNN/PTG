@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ang_speed: 72
-  jumpForce: 0.35
+  jumpForce: 0.5
   onGround: 0
   attacking: 0
 --- !u!65 &1834040348
