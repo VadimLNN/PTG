@@ -185,9 +185,6 @@ public class Generator
         }
     }
 
-
-
-    int unvisited;
     public void findPaths(MazeCell[,] maze)
     {
         for (int x = 0; x < maze.GetLength(0); x++)
@@ -198,65 +195,49 @@ public class Generator
             }
         }
 
-        unvisited = width*height;
+        int step = 1;
 
-        GoNextB(start, 0);
-    }
-    private void GoNextB(MazeCell current, int step)
-    {
-        if (unvisited > 1)
+        MazeCell current = start;
+        current.visited = true;
+        current.numInside = step;
+
+        // очередь посещЄнных €чеек 
+        Stack<MazeCell> stack = new Stack<MazeCell>();
+
+        do
         {
-            current.numInside = step;
-            unvisited--;
+            // список не посещЄнных соседей
+            List<MazeCell> unvisitedNeighbours = new List<MazeCell>();
 
-            List<MazeCell> behs = findBehs(current);
+            int x = current.X;
+            int y = current.Y;
 
-            Debug.Log($"{unvisited} {step} {behs.Count}");
+            // добавление непосещЄнных соседей в список
+            if (x > 0 && !maze[x - 1, y].visited && current.LeftW == false) unvisitedNeighbours.Add(maze[x - 1, y]);
+            if (y > 0 && !maze[x, y - 1].visited && current.BottomW == false) unvisitedNeighbours.Add(maze[x, y - 1]);
+            if (x < width - 1 && !maze[x + 1, y].visited && current.RightW == false) unvisitedNeighbours.Add(maze[x + 1, y]);
+            if (y < height - 1 && !maze[x, y + 1].visited && current.UpW == false) unvisitedNeighbours.Add(maze[x, y + 1]);
 
-
-            if (behs.Count == 1)
-                GoNextB(behs[0], ++step);
-            else if (behs.Count == 2)
+            // если есть непосещЄнные соседи 
+            if (unvisitedNeighbours.Count > 0)
             {
-                GoNextB(behs[0], ++step);
-                GoNextB(behs[1], ++step);
+                // выбор случайного соседа
+                MazeCell chosen = unvisitedNeighbours[UnityEngine.Random.Range(0, unvisitedNeighbours.Count)];
+
+                // отметка о посещении и добавлени выбранной в список посещЄнных
+                chosen.visited = true;
+                chosen.numInside = current.numInside+1;
+                stack.Push(chosen);
+
+                // переход к выбранной €чейке
+                current = chosen;
             }
-        }
-        else 
-            return;
-    }
+            else // возврат по очереди если нет не посещЄнных 
+            {
+                current = stack.Pop();
+            }  
+        } while (stack.Count > 0);
 
-    private List<MazeCell> findBehs(MazeCell current)
-    {
-        int x = current.X, y = current.Y;
-
-        // up down right left
-        List<MazeCell> neighbors = new List<MazeCell>();
-
-        if (x + 1 < width && current.RightW == false && globalMaze[x + 1,y].visited == false)
-        {
-            MazeCell temp = globalMaze[x + 1, y];
-            neighbors.Add(temp);
-        }
-
-        if (x - 1 >= 0 && current.LeftW == false && globalMaze[x - 1, y].visited == false)
-        {
-            MazeCell temp = globalMaze[x - 1, y];
-            neighbors.Add(temp);
-        }
-        
-        if (y + 1 < height && current.UpW == false && globalMaze[x, y + 1].visited == false)
-        {
-            MazeCell temp = globalMaze[x, y + 1];
-            neighbors.Add(temp);
-        }
-       
-        if (y - 1 >= 0 && current.BottomW == false && globalMaze[x, y - 1].visited == false)
-        {
-            MazeCell temp = globalMaze[x, y - 1];
-            neighbors.Add(temp);
-        }
-
-        return neighbors;
+        //GoNextB(start, 0);
     }
 }
