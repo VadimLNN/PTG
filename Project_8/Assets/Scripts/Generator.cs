@@ -198,13 +198,13 @@ public class Generator
             }
         }
 
-        unvisited = 100;
+        unvisited = width*height;
 
-        GoNextB(start, 1);
+        GoNextB(start, 0);
     }
     private void GoNextB(MazeCell current, int step)
     {
-        if (unvisited > 0)
+        if (unvisited > 1)
         {
             current.numInside = step;
             unvisited--;
@@ -233,41 +233,28 @@ public class Generator
         // up down right left
         List<MazeCell> neighbors = new List<MazeCell>();
 
-        if (x + 1 < width && current.UpW == false && globalMaze[x + 1,y].visited == false)
+        if (x + 1 < width && current.RightW == false && globalMaze[x + 1,y].visited == false)
         {
-            //if ()
-            {
-                MazeCell temp = globalMaze[x + 1, y];
-                neighbors.Add(temp);
-            }
-
+            MazeCell temp = globalMaze[x + 1, y];
+            neighbors.Add(temp);
         }
 
-        if (x - 1 >= 0 && current.BottomW == false && globalMaze[x - 1, y].visited == false)
+        if (x - 1 >= 0 && current.LeftW == false && globalMaze[x - 1, y].visited == false)
         {
-            //if ()
-            {
-                MazeCell temp = globalMaze[x - 1, y];
-                neighbors.Add(temp);
-            }
+            MazeCell temp = globalMaze[x - 1, y];
+            neighbors.Add(temp);
         }
         
-        if (y + 1 < height && current.RightW == false && globalMaze[x, y + 1].visited == false)
+        if (y + 1 < height && current.UpW == false && globalMaze[x, y + 1].visited == false)
         {
-            //if ()
-            {
-                MazeCell temp = globalMaze[x, y + 1];
-                neighbors.Add(temp);
-            }
+            MazeCell temp = globalMaze[x, y + 1];
+            neighbors.Add(temp);
         }
        
-        if (y - 1 >= 0 && current.LeftW == false && globalMaze[x, y - 1].visited == false)
+        if (y - 1 >= 0 && current.BottomW == false && globalMaze[x, y - 1].visited == false)
         {
-            //if ()
-            {
-                MazeCell temp = globalMaze[x, y - 1];
-                neighbors.Add(temp);
-            }
+            MazeCell temp = globalMaze[x, y - 1];
+            neighbors.Add(temp);
         }
 
         return neighbors;
