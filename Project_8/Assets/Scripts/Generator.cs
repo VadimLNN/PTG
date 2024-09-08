@@ -28,13 +28,16 @@ public class Generator
             }
         }
 
-        // удаление стен
+        // удаление стен + поиск путей
         if (v == 1)
+        {
             removeWallsOldosBroder(cells);
+            findPathsOldosBroder(cells);
+        }
         else if (v == 2)
             removeWalls(cells);
 
-        findPaths(cells);
+
 
         // создание лабиринта 
         Maze maze = new Maze();
@@ -50,6 +53,7 @@ public class Generator
         MazeCell current = maze[0, 0];
         current.visited = true;
         current.start = true;
+        current.numInside = 1;
         start = current;
 
         // очередь посещЄнных €чеек 
@@ -79,6 +83,7 @@ public class Generator
 
                 // отметка о посещении и добавлени выбранной в список посещЄнных
                 chosen.visited = true;
+                chosen.numInside = current.numInside + 1;
                 stack.Push(chosen);
 
                 // переход к выбранной €чейке
@@ -108,7 +113,7 @@ public class Generator
             {
                 next.visited = true;
                 unvisited++;
-                next.numInside = unvisited;
+
                 RemoveWall(current, next);
             }
             current = next;
@@ -185,7 +190,7 @@ public class Generator
         }
     }
 
-    public void findPaths(MazeCell[,] maze)
+    public void findPathsOldosBroder(MazeCell[,] maze)
     {
         for (int x = 0; x < maze.GetLength(0); x++)
         {
@@ -195,49 +200,55 @@ public class Generator
             }
         }
 
-        int step = 1;
 
         MazeCell current = start;
-        current.visited = true;
-        current.numInside = step;
+        current.numInside = 1;
+        
+        int unvisited = 0;
 
-        // очередь посещЄнных €чеек 
-        Stack<MazeCell> stack = new Stack<MazeCell>();
-
-        do
+        while (unvisited < height * width)
         {
-            // список не посещЄнных соседей
-            List<MazeCell> unvisitedNeighbours = new List<MazeCell>();
-
-            int x = current.X;
-            int y = current.Y;
-
-            // добавление непосещЄнных соседей в список
-            if (x > 0 && !maze[x - 1, y].visited && current.LeftW == false) unvisitedNeighbours.Add(maze[x - 1, y]);
-            if (y > 0 && !maze[x, y - 1].visited && current.BottomW == false) unvisitedNeighbours.Add(maze[x, y - 1]);
-            if (x < width - 1 && !maze[x + 1, y].visited && current.RightW == false) unvisitedNeighbours.Add(maze[x + 1, y]);
-            if (y < height - 1 && !maze[x, y + 1].visited && current.UpW == false) unvisitedNeighbours.Add(maze[x, y + 1]);
-
-            // если есть непосещЄнные соседи 
-            if (unvisitedNeighbours.Count > 0)
+            List <MazeCell> freeNeighbors = pickFreeNeighbor(current);
+            MazeCell next = freeNeighbors[Random.Range(0, freeNeighbors.Count)];
+            if (next.visited == false)
             {
-                // выбор случайного соседа
-                MazeCell chosen = unvisitedNeighbours[UnityEngine.Random.Range(0, unvisitedNeighbours.Count)];
-
-                // отметка о посещении и добавлени выбранной в список посещЄнных
-                chosen.visited = true;
-                chosen.numInside = current.numInside+1;
-                stack.Push(chosen);
-
-                // переход к выбранной €чейке
-                current = chosen;
+                next.visited = true;
+                unvisited++;
+                
+                if (next != start)
+                    next.numInside = minNeighborsNum(next)+1;
             }
-            else // возврат по очереди если нет не посещЄнных 
-            {
-                current = stack.Pop();
-            }  
-        } while (stack.Count > 0);
+            current = next;
+        }
+    }
 
-        //GoNextB(start, 0);
+    private List<MazeCell> pickFreeNeighbor(MazeCell current)
+    {
+        int x = current.X, y = current.Y;
+
+        // up down right left
+        List<MazeCell> neighbors = new List<MazeCell>();
+
+        if (x > 0 && current.LeftW == false) neighbors.Add(globalMaze[x - 1, y]);
+        if (y > 0 && current.BottomW == false) neighbors.Add(globalMaze[x, y - 1]);
+        if (x < width - 1 && current.RightW == false) neighbors.Add(globalMaze[x + 1, y]);
+        if (y < height - 1 && current.UpW == false) neighbors.Add(globalMaze[x, y + 1]);
+
+        return neighbors;
+    }
+
+    private int minNeighborsNum(MazeCell current)
+    {
+        List<int> neighborsNums = new List<int>();
+
+        foreach (MazeCell neighbor in pickFreeNeighbor(current))
+            neighborsNums.Add(neighbor.numInside);
+
+        int min = 100;
+        foreach (int num in neighborsNums)
+            if (num > 0 && num < min)
+                min = num;
+
+        return min;
     }
 }
