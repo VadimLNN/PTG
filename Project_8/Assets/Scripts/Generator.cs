@@ -30,14 +30,11 @@ public class Generator
 
         // удаление стен + поиск путей
         if (v == 1)
-        {
             removeWallsOldosBroder(cells);
-            findPathsOldosBroder(cells);
-        }
         else if (v == 2)
             removeWalls(cells);
 
-
+        findPathsOldosBroder(cells);
 
         // создание лабиринта 
         Maze maze = new Maze();
@@ -53,7 +50,7 @@ public class Generator
         MazeCell current = maze[0, 0];
         current.visited = true;
         current.start = true;
-        current.numInside = 1;
+        //current.numInside = 1;
         start = current;
 
         // очередь посещЄнных €чеек 
@@ -83,7 +80,7 @@ public class Generator
 
                 // отметка о посещении и добавлени выбранной в список посещЄнных
                 chosen.visited = true;
-                chosen.numInside = current.numInside + 1;
+                //chosen.numInside = current.numInside + 1;
                 stack.Push(chosen);
 
                 // переход к выбранной €чейке
