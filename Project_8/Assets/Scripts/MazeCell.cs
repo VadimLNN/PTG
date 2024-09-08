@@ -16,5 +16,5 @@ public class MazeCell
     // состояние посещённости
     public bool visited = false;
 
-    public int numInside;
+    public int numInside = -1;
 }
