@@ -20,7 +20,7 @@ public class ControllScr : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000f, farPlane))
         {
-            Vector3 dir = hit.point - transform.position/3;
+            Vector3 dir = hit.point;// - transform.position/5;
             
             Vector3 xz = dir;
             xz.y = 0;
