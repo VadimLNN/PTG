@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 5fa01595737d36d498d0926344ec9c04
+  productGUID: c78ac14932a2bdd42a54a6bee2cb7523
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Project_3
+  productName: Project_3.2
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -628,7 +628,7 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 2
+  webGLCompressionFormat: 1
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
@@ -672,14 +672,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Project_3
+  metroPackageName: Project_3.2
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Project_3
+  metroApplicationDescription: Project_3.2
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -748,10 +748,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 14fd520d-f329-4057-8f74-fba057c10160
+  cloudProjectId: 3fae2a00-0347-463d-9b2b-4250942792f4
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Project_3
+  projectName: Project_3.2
   organizationId: vadim-l
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
