@@ -14,8 +14,16 @@ public class TargetMoverScr : MonoBehaviour
         anim.SetInteger("state", 1);
     }
 
-    public void moveTarget()
+    public void downTarget()
+    {
+        anim.SetInteger("state", 0);
+    }
+
+    public void moveTarget(float speed)
     {
         anim.SetInteger("state", 2);
+        anim.speed = 1f - speed;
     }
+
+
 }

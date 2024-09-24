@@ -13,22 +13,13 @@ public class TargetScr : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (transform.parent != null)
-            if (transform.parent.childCount > 2 && Time.time >= nextDelet)
-            {
-                nextDelet = Time.time + 1 / deletRate;
-                
-                Destroy(transform.parent.GetChild(1));
-            }
-    }
-
     public void Hit()
     {
         GameObject scoreBoard = GameObject.FindWithTag("ScoreBoard");
         if (scoreBoard != null)
             scoreBoard.GetComponent<ScoreScr>().scoreUp(1);
+
+        transform.parent.GetComponent<TargetMoverScr>().downTarget();
 
         GetComponent<MeshDestroy>().DestroyThis();
     }

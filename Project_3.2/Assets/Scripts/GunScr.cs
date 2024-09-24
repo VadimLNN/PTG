@@ -51,9 +51,6 @@ public class GunScr : MonoBehaviour
         if (Input.GetKey(KeyCode.R))
         {
             state = 2;
-            bullets = 10;
-
-            bulletsTxt.text = bullets.ToString();
         }
 
         anim.SetInteger("satate", state);
@@ -93,5 +90,10 @@ public class GunScr : MonoBehaviour
             // уничтожение эффекта через секунду 
             Destroy(hitEffect.gameObject, 1f);
         }
+    }
+    public void reload()
+    {
+        bullets = 10;
+        bulletsTxt.text = bullets.ToString();
     }
 }
