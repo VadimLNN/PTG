@@ -415,4 +415,11 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: reload
+    data: 
+    objectReferenceParameter: {fileID: 5786097810451525583, guid: 260ff1508afea5241b6511d8fbe92201, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
