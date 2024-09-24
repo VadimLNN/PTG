@@ -33,13 +33,13 @@ public class ScoreScr : MonoBehaviour
     {
         score_text.text = score.ToString();
 
-        if (score == 16)
+        if (score == 4)
         {
             Time.timeScale = 0;
             win_panel.SetActive(true);
-            score = 0;
             final_time_text.text = time.ToString();
-            time = 0;
+
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
