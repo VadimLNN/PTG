@@ -15,6 +15,7 @@ public class GunScr : MonoBehaviour
     // ссылки на камеру, сисетму частиц при выстреле и попадании
     public Camera cam;
     public ParticleSystem flash;
+    public ParticleSystem flash_2;
     public ParticleSystem onHit;
 
     // ссылка на гильзу 
@@ -23,17 +24,26 @@ public class GunScr : MonoBehaviour
     public TMP_Text bulletsTxt;
     int bullets = 10;
     int state;
+    int state_2;
 
     // ссылка на аниматор  
-    Animator anim;
+    Animator gan_anim_1;
+    Animator gan_anim_2;
+    public GameObject gun_2;
+
+    bool right_shoot = true;
+
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        gan_anim_1 = GetComponent<Animator>();
+        gan_anim_2 = gun_2.GetComponent<Animator>();
+        flash_2 = gun_2.GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
     {
         state = 0;
+        state_2 = 0;
 
         // вызов выстрела при нажатии кнопки стрельбы 
         if (Input.GetButton("Fire1") && Time.time >= nextShot && bullets > 0)
@@ -43,23 +53,36 @@ public class GunScr : MonoBehaviour
             
             Shoot();
             bullets -= 1;
-            
-            state = 1;
+
+
+            if (right_shoot)
+                state = 1;
+            else
+                state_2 = 1;
+
+            if (gun_2.active == true)
+                right_shoot = !right_shoot;
+
 
             bulletsTxt.text = bullets.ToString();
         }
         if (Input.GetKey(KeyCode.R))
         {
             state = 2;
+            state_2 = 2;
         }
 
-        anim.SetInteger("satate", state);
+        gan_anim_1.SetInteger("satate", state);
+        gan_anim_2.SetInteger("state", state_2);
     }
 
     void Shoot()
     {
         // воспроизведение вспышки 
-        flash.Play();
+        if (right_shoot)
+            flash.Play();
+        else 
+            flash_2.Play();
         
         // создание объекта гильзы 
         GameObject gilza = Instantiate(gilza_orig, transform.position, transform.rotation);
@@ -93,7 +116,11 @@ public class GunScr : MonoBehaviour
     }
     public void reload()
     {
-        bullets = 10;
+        if(gun_2.active == true)
+            bullets = 16;
+        else 
+            bullets = 10;
+
         bulletsTxt.text = bullets.ToString();
     }
 }
