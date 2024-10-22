@@ -29,6 +29,8 @@ public class Generator
             }
         }
 
+        pickStartOnEdge(cells);
+        
         // удаление стен + поиск путей
         if (v == 1)
             removeWallsOldosBroder(cells);
@@ -38,6 +40,7 @@ public class Generator
 
         destoyRandomWalls(cells);
 
+        
 
         findPathsOldosBroder(cells);
 
@@ -52,11 +55,15 @@ public class Generator
     private void removeWalls(MazeCell[,] maze)
     {
         // стартова€ €чейка 
-        MazeCell current = maze[0, 0];
+        //MazeCell current = maze[0, 0];
+        //current.visited = true;
+        //current.start = true;
+        ////current.numInside = 1;
+        //start = current;
+
+        MazeCell current = start;
         current.visited = true;
         current.start = true;
-        //current.numInside = 1;
-        start = current;
 
         // очередь посещЄнных €чеек 
         Stack<MazeCell> stack = new Stack<MazeCell>();
@@ -100,11 +107,16 @@ public class Generator
 
     private void removeWallsOldosBroder(MazeCell[,] maze)
     {
-        MazeCell current = maze[Random.Range(0, width), Random.Range(0, height)];
+        //MazeCell current = maze[Random.Range(0, width), Random.Range(0, height)];
+        //current.visited = true;
+        //current.numInside = 1;
+        //current.start = true;
+        //start = current;
+
+        MazeCell current = start;
         current.visited = true;
         current.numInside = 1;
         current.start = true;
-        start = current;
 
         int unvisited = 1;
 
@@ -294,7 +306,7 @@ public class Generator
             }
         }
     }
-
+    
     private List<MazeCell> pickLockNeighbor(MazeCell current)
     {
         int x = current.X, y = current.Y;
@@ -308,5 +320,20 @@ public class Generator
         if (y < height - 1 && current.UpW == true) neighbors.Add(globalMaze[x, y + 1]);
 
         return neighbors;
+    }
+
+    
+    private void pickStartOnEdge(MazeCell[,] maze)
+    {
+        int edge = Random.Range(0, 4);
+        // ^ > v <
+        if (edge == 0)
+            start = maze[Random.Range(0, 10), 0];
+        if (edge == 1)
+            start = maze[9, Random.Range(0, 10)];
+        if (edge == 2)
+            start = maze[Random.Range(0, 10), 9];
+        if (edge == 3)
+            start = maze[0, Random.Range(0, 10)];
     }
 }
