@@ -30,6 +30,7 @@ public class Generator
         }
 
         pickStartOnEdge(cells);
+        destroyOutsideWall(start);
         
         // удаление стен + поиск путей
         if (v == 1)
@@ -37,12 +38,11 @@ public class Generator
         else if (v == 2)
             removeWalls(cells);
 
-
         destoyRandomWalls(cells);
 
-        
-
         findPathsOldosBroder(cells);
+
+        findMaxLongWay(cells);       
 
         // создание лабиринта 
         Maze maze = new Maze();
@@ -325,15 +325,58 @@ public class Generator
     
     private void pickStartOnEdge(MazeCell[,] maze)
     {
-        int edge = Random.Range(0, 4);
+        int edge = Random.Range(0, 4), x = 0, y = 0;
         // ^ > v <
         if (edge == 0)
-            start = maze[Random.Range(0, 10), 0];
+        {
+            x = Random.Range(0, 10);
+            y = 0;
+        }
         if (edge == 1)
-            start = maze[9, Random.Range(0, 10)];
+        {
+            x = 9;
+            y = Random.Range(0, 10);
+        }
         if (edge == 2)
-            start = maze[Random.Range(0, 10), 9];
+        {
+            x = Random.Range(0, 10);
+            y = 9;
+        }
         if (edge == 3)
-            start = maze[0, Random.Range(0, 10)];
+        {
+            x = 0;
+            y = Random.Range(0, 10);
+        }
+
+        start = maze[x, y];
+    }
+
+    private void destroyOutsideWall(MazeCell current)
+    {   
+        int x = current.X, y = current.Y;
+
+        if (y == 0 && 0 < x && x < 9)
+            current.UpW = false;
+        if (x == 9 && 0 < y && y < 9)
+            current.RightW = false;
+        if (y == 9 && 0 < x && x < 9)
+            current.BottomW = false;
+        if (x == 0 && 0 < y && y < 9)
+            current.LeftW = false;
+
+        if (y == 0 && x == 9)
+            current.RightW = false;
+        if (x == 9 && y == 9)
+            current.BottomW = false;
+        if (y == 9 && x == 0)
+            current.LeftW = false;
+        if (x == 0 && y == 0)
+            current.UpW = false;
+    }
+
+
+    private void findMaxLongWay(MazeCell[,] maze)
+    {
+
     }
 }
