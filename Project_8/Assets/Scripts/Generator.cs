@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using UnityEngine;
+using System;
 
 public class Generator
 {
@@ -33,6 +34,10 @@ public class Generator
             removeWallsOldosBroder(cells);
         else if (v == 2)
             removeWalls(cells);
+
+
+        destoyRandomWalls(cells);
+
 
         findPathsOldosBroder(cells);
 
@@ -247,5 +252,61 @@ public class Generator
                 min = num;
 
         return min;
+    }
+
+    
+
+    private void destoyRandomWalls(MazeCell[,] maze)
+    {
+        int destroyedWallsCount = 0, x = 0 ,y = 0;
+
+        while (destroyedWallsCount < 4)
+        {
+            if (destroyedWallsCount == 0)
+            {
+                x = Random.Range(0, 5);
+                y = Random.Range(0, 5);
+            }
+            if (destroyedWallsCount == 1)
+            {
+                x = Random.Range(5, 10);
+                y = Random.Range(0, 5);
+            }
+            if (destroyedWallsCount == 2)
+            {
+                x = Random.Range(0, 5);
+                y = Random.Range(5, 10);
+            }
+            if (destroyedWallsCount == 3)
+            {
+                x = Random.Range(5, 10);
+                y = Random.Range(5, 10);
+            }
+
+            List<MazeCell> lockNeighbors = pickLockNeighbor(maze[x, y]);
+            
+            if (Random.Range(0, 100) < 5 && lockNeighbors.Count > 0)
+            {
+                Debug.Log($"{x} {y}");
+
+                RemoveWall(maze[x, y], lockNeighbors[Random.Range(0, lockNeighbors.Count)]);
+                destroyedWallsCount++;
+            }
+        }
+    }
+
+    private List<MazeCell> pickLockNeighbor(MazeCell current)
+    {
+        int x = current.X, y = current.Y;
+
+        // up down right left
+        List<MazeCell> neighbors = new List<MazeCell>();
+
+        if (x > 0 && current.LeftW == true) neighbors.Add(globalMaze[x - 1, y]);
+        if (y > 0 && current.BottomW == true) neighbors.Add(globalMaze[x, y - 1]);
+        if (x < width - 1 && current.RightW == true) neighbors.Add(globalMaze[x + 1, y]);
+        if (y < height - 1 && current.UpW == true) neighbors.Add(globalMaze[x, y + 1]);
+
+        return neighbors;
     }
 }
