@@ -30,7 +30,6 @@ public class Generator
         }
 
         pickStartOnEdge(cells);
-        destroyOutsideWall(start);
         
         // удаление стен + поиск путей
         if (v == 1)
@@ -40,6 +39,8 @@ public class Generator
 
         destoyRandomWalls(cells);
 
+        findPathsOldosBroder(cells);
+        findPathsOldosBroder(cells);
         findPathsOldosBroder(cells);
 
         findMaxLongWay(cells);       
@@ -299,7 +300,7 @@ public class Generator
             
             if (Random.Range(0, 100) < 5 && lockNeighbors.Count > 0)
             {
-                Debug.Log($"{x} {y}");
+                //Debug.Log($"{x} {y}");
 
                 RemoveWall(maze[x, y], lockNeighbors[Random.Range(0, lockNeighbors.Count)]);
                 destroyedWallsCount++;
@@ -349,34 +350,75 @@ public class Generator
         }
 
         start = maze[x, y];
+
+        destroyOutsideWall(maze[x, y]);
+        //Debug.Log($"Start: {x}, {y}");
     }
 
     private void destroyOutsideWall(MazeCell current)
     {   
         int x = current.X, y = current.Y;
 
-        if (y == 0 && 0 < x && x < 9)
-            current.UpW = false;
-        if (x == 9 && 0 < y && y < 9)
-            current.RightW = false;
-        if (y == 9 && 0 < x && x < 9)
-            current.BottomW = false;
-        if (x == 0 && 0 < y && y < 9)
-            current.LeftW = false;
-
-        if (y == 0 && x == 9)
-            current.RightW = false;
-        if (x == 9 && y == 9)
-            current.BottomW = false;
-        if (y == 9 && x == 0)
-            current.LeftW = false;
-        if (x == 0 && y == 0)
-            current.UpW = false;
+        if (y == 0 || y == 9 && 0 <= x && x <= 9)
+            if (y == 9)
+                current.UpW = false;
+            else 
+                current.BottomW = false;
+        else if (x == 0 || x == 9 && 0 <= y && y <= 9)
+            if (x == 9)
+                current.RightW = false;
+            else 
+                current.LeftW = false;
+    
     }
 
 
     private void findMaxLongWay(MazeCell[,] maze)
     {
+        int maxLongWay = 0;
+        MazeCell end = new MazeCell();
 
+        // ^
+        for (int i = 0; i < width; i++)
+        {
+            if (maze[i, 0].numInside > maxLongWay)
+            {
+                maxLongWay = maze[i, 0].numInside; 
+                end = maze[i, 0];
+            }
+        }
+        // v
+        for (int i = 0; i < width; i++)
+        {
+            if (maze[i, 9].numInside > maxLongWay)
+            {
+                maxLongWay = maze[i, 9].numInside;
+                end = maze[i, 9];
+            }
+        }
+        // <
+        for (int i = 0; i < height; i++)
+        {
+            if (maze[0, i].numInside > maxLongWay)
+            {
+                maxLongWay = maze[0, i].numInside;
+                end = maze[0, i];
+            }
+        }
+        // >
+        for (int i = 0; i < height; i++)
+        {
+            if (maze[9, i].numInside > maxLongWay)
+            {
+                maxLongWay = maze[9, i].numInside;
+                end = maze[9, i];
+            }
+        }
+
+        Debug.Log($"Max Long Way: {maxLongWay}");
+
+        destroyOutsideWall(end);
+
+        //Debug.Log($"End: {end.X}, {end.Y}");
     }
 }
