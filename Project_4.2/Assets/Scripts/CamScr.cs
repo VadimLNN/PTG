@@ -11,7 +11,9 @@ public class CamScr : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, mSpeed * Time.fixedDeltaTime);
+        Vector3 respos = new Vector3(target.position.x, target.position.y + 4, target.position.z - 4);
+
+        transform.position = Vector3.MoveTowards(transform.position, respos, mSpeed * Time.fixedDeltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rSpeed * Time.fixedDeltaTime);
     }
 }

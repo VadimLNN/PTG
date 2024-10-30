@@ -15,6 +15,8 @@ public class SimplePlayerMovement : MonoBehaviour
     Vector3 zV;
     Vector3 V;
 
+    public PlayerAnimations anims;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,6 +36,8 @@ public class SimplePlayerMovement : MonoBehaviour
 
         V.x *= xSpeed;
         V.z *= zSpeed;
+
+        anims.setAnimatorParameters(V.x/xSpeed, V.z/zSpeed);
 
         V = transform.TransformDirection(V);
 
