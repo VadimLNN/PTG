@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 153950388}
   m_Layer: 0
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 244692835}
   m_Layer: 0
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 372533852}
   m_Layer: 0
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,13 +448,15 @@ GameObject:
   m_Component:
   - component: {fileID: 380978044}
   - component: {fileID: 380978043}
+  - component: {fileID: 380978048}
   - component: {fileID: 380978042}
-  - component: {fileID: 380978047}
   - component: {fileID: 380978046}
   - component: {fileID: 380978045}
+  - component: {fileID: 380978049}
+  - component: {fileID: 380978050}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -466,14 +468,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380978041}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad2e24802f172b04abf69a607960f49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   zSpeed: 5
   xSpeed: 3
-  anims: {fileID: 380978047}
+  anims: {fileID: 0}
 --- !u!114 &380978043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +503,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1069449426}
-  - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &380978045
@@ -554,7 +555,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &380978047
+--- !u!114 &380978048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,10 +564,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 380978041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef00eb2bf9ac4754a88da9d96fa50ea8, type: 3}
+  m_Script: {fileID: 11500000, guid: 35715868905787e4b8134867f5078a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1069449424}
+  runSpeed: 10
+  sideStepSpeed: 5
+  acceleration: 3
+  deceleration: 5
+  pa: {fileID: 1069449427}
+--- !u!65 &380978049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380978041}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6, y: 0.6, z: 0.6}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &380978050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380978041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0baa6b5e059c643a883d71f060dda5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 25
+  pa: {fileID: 1069449427}
 --- !u!1 &506984382
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +621,7 @@ GameObject:
   - component: {fileID: 506984384}
   m_Layer: 0
   m_Name: tramplin
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -731,7 +771,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac185551f6192ad47992f6fd140cc74f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1069449427}
   m_SourcePrefab: {fileID: 100100000, guid: ac185551f6192ad47992f6fd140cc74f, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -953,11 +996,11 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
-  m_LocalPosition: {x: 0, y: 4, z: -4}
+  m_LocalPosition: {x: 0, y: 4.21, z: -9.059999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 380978044}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 18, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -966,14 +1009,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 867217a7431d62444a1016acfe3e1706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 380978044}
-  mSpeed: 5
-  rSpeed: 5
+  mSpeed: 15
+  rSpeed: 6
 --- !u!1 &1035625894
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +1031,7 @@ GameObject:
   - component: {fileID: 1035625896}
   m_Layer: 0
   m_Name: tramplin
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1089,6 +1132,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac185551f6192ad47992f6fd140cc74f, type: 3}
   m_PrefabInstance: {fileID: 522994484}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1069449427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069449424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a4aa4edb016d844a07c9e1d2160d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 380978050}
+        m_TargetAssemblyTypeName: JumpScr, Assembly-CSharp
+        m_MethodName: jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1320479485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1173,7 @@ GameObject:
   - component: {fileID: 1320479487}
   m_Layer: 0
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1229,7 +1299,7 @@ GameObject:
   - component: {fileID: 2000488616}
   m_Layer: 0
   m_Name: stairs
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1404,7 @@ GameObject:
   - component: {fileID: 2028584720}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4293,3 +4363,4 @@ SceneRoots:
   - {fileID: 719936673}
   - {fileID: 543450652310729143}
   - {fileID: 380978044}
+  - {fileID: 963194228}

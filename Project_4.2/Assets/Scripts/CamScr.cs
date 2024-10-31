@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class CamScr : MonoBehaviour
 {
@@ -11,9 +12,15 @@ public class CamScr : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 respos = new Vector3(target.position.x, target.position.y + 4, target.position.z - 4);
+        Vector3 resPos = target.position - target.forward*2.5f;
+        resPos.y += 3;
 
-        transform.position = Vector3.MoveTowards(transform.position, respos, mSpeed * Time.fixedDeltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rSpeed * Time.fixedDeltaTime);
+        Vector3 resTergertPos = target.position + new Vector3(0,2,0);
+        transform.LookAt(resTergertPos);
+
+        transform.position = Vector3.MoveTowards(transform.position, resPos, mSpeed * Time.fixedDeltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rSpeed * Time.fixedDeltaTime);
+        
+
     }
 }
