@@ -10,8 +10,9 @@ public class ChangeCharactersScr : MonoBehaviour
     
     void Start()
     {
-        camScr.changeTraget(characters[0]);
-        panels[0].gameObject.SetActive(true);
+        camScr.changeTraget(characters[3]);
+        panels[3].gameObject.SetActive(true);
+        camScr.camInFace = true;
     }
 
     void Update()
