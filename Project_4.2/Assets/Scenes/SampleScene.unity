@@ -476,7 +476,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac185551f6192ad47992f6fd140cc74f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 127445741}
+      addedObject: {fileID: 127445739}
   m_SourcePrefab: {fileID: 100100000, guid: ac185551f6192ad47992f6fd140cc74f, type: 3}
 --- !u!4 &127445737 stripped
 Transform:
@@ -488,7 +488,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ac185551f6192ad47992f6fd140cc74f, type: 3}
   m_PrefabInstance: {fileID: 127445736}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &127445741
+--- !u!114 &127445739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 127445738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 774a792dc15024b4c9fc5c9526ff657b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5da692d1e5f37bf4689bfb78fc00a2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &131948137
@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Space
+  m_text: LMB - block
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2673,11 +2673,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000268567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cabfbb23293d2b640a0d90e79d6b72a7, type: 3}
+  m_Script: {fileID: 11500000, guid: d424e8938b7411647b73e830f3171939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: {fileID: 0}
-  anim: {fileID: 127445741}
+  character: {fileID: 127445738}
 --- !u!1 &1035625894
 GameObject:
   m_ObjectHideFlags: 0
