@@ -33,7 +33,7 @@ public class ScoreScr : MonoBehaviour
     {
         score_text.text = score.ToString();
 
-        if (score == 4)
+        if (score == 16)
         {
             Time.timeScale = 0;
             win_panel.SetActive(true);
