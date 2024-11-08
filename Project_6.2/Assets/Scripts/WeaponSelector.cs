@@ -10,7 +10,7 @@ public class WeaponSelector : MonoBehaviour
 
     void Start() => hideWeapon();
 
-    public void selectNextWeapon()
+    public CWeapon selectNextWeapon()
     {
         hideWeapon();
 
@@ -20,9 +20,10 @@ public class WeaponSelector : MonoBehaviour
             selectedWeaponIndex = 0;
 
         weaponHolder.GetChild(selectedWeaponIndex).gameObject.SetActive(true);
+        return weaponHolder.GetChild(selectedWeaponIndex).gameObject.GetComponent<CWeapon>();
     }
 
-    public void selectPrevWeapon()
+    public CWeapon selectPrevWeapon()
     {
         hideWeapon();
 
@@ -32,6 +33,7 @@ public class WeaponSelector : MonoBehaviour
             selectedWeaponIndex = weaponHolder.childCount - 1;
 
         weaponHolder.GetChild(selectedWeaponIndex).gameObject.SetActive(true);
+        return weaponHolder.GetChild(selectedWeaponIndex).gameObject.GetComponent<CWeapon>();
     }
 
     public void selectWeaponByIndex(int ind)
@@ -49,5 +51,10 @@ public class WeaponSelector : MonoBehaviour
     {
         foreach (Transform child in weaponHolder)
             child.gameObject.SetActive(false);
+    }
+
+    public CWeapon getSelectedWeapon()
+    {
+        return weaponHolder.GetChild(selectedWeaponIndex).gameObject.GetComponent<CWeapon>();
     }
 }

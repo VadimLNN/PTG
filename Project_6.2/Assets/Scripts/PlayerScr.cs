@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerScr : MonoBehaviour
 {
     public WeaponSelector weaponSelector;
+    public WeaponScr weaponScript;
 
     public int numberOfWeapons = 4;
 
     void Update()
     {
         float mouseWheelDelta = Input.GetAxisRaw("Mouse ScrollWheel");
-        if (mouseWheelDelta > 0) weaponSelector.selectNextWeapon();
-        if (mouseWheelDelta < 0) weaponSelector.selectPrevWeapon();
+        if (mouseWheelDelta > 0) weaponScript.setWeapon(weaponSelector.selectNextWeapon());
+        if (mouseWheelDelta < 0) weaponScript.setWeapon(weaponSelector.selectPrevWeapon());
     }
 
     private void OnGUI()
@@ -31,7 +32,15 @@ public class PlayerScr : MonoBehaviour
                     return;
             }
 
-            weaponSelector.selectWeaponByIndex(k-2);
+            weaponSelector.selectWeaponByIndex(k-1);
         }
+
+        if (e.type == EventType.MouseDown)
+            if (e.button == 0) 
+                weaponScript.fireStart();
+        
+        if (e.type == EventType.MouseUp)
+            if (e.button == 0) 
+                weaponScript.fireEnd();
     }
 }
