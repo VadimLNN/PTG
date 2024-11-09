@@ -10,7 +10,11 @@ public class CShotgun : CWeapon
     TracerSystem tracerSystem;
     ShotgunLogic shotgunLogic;
 
-    void Start() => shotgunLogic = GetComponent<ShotgunLogic>();
+    void Start()
+    {
+        tracerSystem = GetComponent<TracerSystem>();
+        shotgunLogic = GetComponent<ShotgunLogic>();
+    }
 
     public override void fire(Ammunition ammunition)
     {

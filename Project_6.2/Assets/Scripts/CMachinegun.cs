@@ -10,8 +10,11 @@ public class CMachinegun : CWeapon
     TracerSystem tracerSystem;
     MachinegunLogic machineugnLogic;
 
-    void Start() => machineugnLogic = GetComponent<MachinegunLogic>();
-
+    void Start()
+    {
+        machineugnLogic = GetComponent<MachinegunLogic>();
+        tracerSystem = GetComponent<TracerSystem>();
+    }
     public override void fire(Ammunition ammunition)
     {
         base.fire(ammunition);

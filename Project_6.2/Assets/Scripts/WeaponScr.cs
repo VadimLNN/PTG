@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponScr : MonoBehaviour
 {
-    Ammunition ammunition;
+    public Ammunition ammunition;
     CWeapon currentWeapon;
     bool isFiring = false;
 
