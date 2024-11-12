@@ -48,4 +48,15 @@ public class Ammunition : MonoBehaviour
 
         return true;
     }
+
+    public bool addAmmo(WeaponTypes type, int amount)
+    {
+        if(ammoDictionary.ContainsKey(type) == false)
+            return false;
+
+        ammoDictionary[type] += amount;
+        onAmmoChange?.Invoke();
+
+        return true;
+    }
 }
