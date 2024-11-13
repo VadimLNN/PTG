@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -27,7 +28,11 @@ public class AmmunitionGUI : MonoBehaviour
                 weaponDictionary.Add(weapon.weaponType, weapon.text);
     }
 
-    void Start() => listToDictionary();
+    void Start() 
+    {
+        listToDictionary(); 
+        updateGUI();
+    }
 
     public void updateGUI()
     {

@@ -32,7 +32,7 @@ public class PlayerScr : MonoBehaviour
                     return;
             }
 
-            weaponSelector.selectWeaponByIndex(k-1);
+            weaponScript.setWeapon(weaponSelector.selectWeaponByIndex(k-1));
         }
 
         if (e.type == EventType.MouseDown)

@@ -9,7 +9,6 @@ public class WeaponSelector : MonoBehaviour
     int selectedWeaponIndex = 0;
 
     void Start() => hideWeapon();
-
     public CWeapon selectNextWeapon()
     {
         hideWeapon();
@@ -36,15 +35,19 @@ public class WeaponSelector : MonoBehaviour
         return weaponHolder.GetChild(selectedWeaponIndex).gameObject.GetComponent<CWeapon>();
     }
 
-    public void selectWeaponByIndex(int ind)
+    public CWeapon selectWeaponByIndex(int ind)
     {
         hideWeapon();
 
         if (ind > -1 && ind <= weaponHolder.childCount)
         {
             selectedWeaponIndex = ind;
+
             weaponHolder.GetChild(selectedWeaponIndex).gameObject.SetActive(true);
+            return weaponHolder.GetChild(selectedWeaponIndex).gameObject.GetComponent<CWeapon>();
         }
+
+        return null;
     }
 
     void hideWeapon()
