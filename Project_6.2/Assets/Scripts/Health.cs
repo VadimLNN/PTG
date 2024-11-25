@@ -12,6 +12,10 @@ public class Health : MonoBehaviour
 
     public UnityEvent<int, int> onHealthChange;
 
+    public UnityEvent<Vector3> spawnOnDeath;
+    public UnityEvent onDeath;
+    public UnityEvent onHitTaken;
+    
     private void Start() => onHealthChange?.Invoke(currentHealth, maxHealth);
  
     public bool changeHealth(int amount)
@@ -30,5 +34,25 @@ public class Health : MonoBehaviour
         onHealthChange?.Invoke(currentHealth, maxHealth);
 
         return true;
+    }
+
+    public void hpDecrease(float amount)
+    {
+        if (currentHealth <= 0) return;
+
+        onHitTaken?.Invoke();
+
+        currentHealth = Mathf.FloorToInt(currentHealth - amount);
+
+        if(currentHealth < 0)
+            currentHealth = 0;
+
+        onHealthChange?.Invoke(currentHealth, maxHealth);
+
+        if (currentHealth <= 0)
+        {
+            onDeath?.Invoke();
+            spawnOnDeath?.Invoke(transform.position);
+        }
     }
 }
