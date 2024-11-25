@@ -27,10 +27,14 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 
     public Health EnemyHP { get { return enemyHP; } }
 
+    protected StateMachine stateMachine;
+
     protected void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        stateMachine = new StateMachine();
 
         StartCoroutine(updateCall());
     }
