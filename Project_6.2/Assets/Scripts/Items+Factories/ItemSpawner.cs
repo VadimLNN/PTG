@@ -39,7 +39,8 @@ public class ItemSpawner : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab)) 
-            spawnRandomItem();
+        //if(Input.GetKeyDown(KeyCode.Tab)) 
+        //    spawnRandomItem();
     }
+
 }
