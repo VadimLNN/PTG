@@ -17,6 +17,7 @@ public class RunTo : IState
     {
         enemy.stop(true);
     }
+
     public void update()
     {
         enemy.moveTo(enemy.Player.position);
