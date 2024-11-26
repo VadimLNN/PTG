@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     List<EnemyFactory> enemyFactories = new List<EnemyFactory>();
 
     EnemyFactory enemyFactory;
+    public Transform player;
 
     private void Start() 
     {
@@ -27,14 +28,21 @@ public class EnemySpawner : MonoBehaviour
     public void spawnRandomEnemy()
     {
         enemyFactory = enemyFactories[Random.Range(0, enemyFactories.Count)];
+        IEnemy enemy = enemyFactory.getEnemy();
 
-        IEnemy enemy = enemyFactory.getItem();
 
         Vector3 direction = new Vector3(Random.insideUnitCircle.x, 0, Random.insideUnitCircle.y);
-        direction = direction.normalized * Random.Range(3, 6);
+        direction = direction.normalized * Random.Range(3, 50);
         Vector3 position = transform.position + direction;
-
+        
         enemy.positionAndRotation(position, Quaternion.identity);
+
+        
+        enemy.Player = player;
+
+        Health enemyHP = enemy.EnemyHP;
+        enemyHP.spawnOnDeath.AddListener(transform.GetComponent<ItemSpawner>().spawnRandomItem);
+
     }
 
     void Update()

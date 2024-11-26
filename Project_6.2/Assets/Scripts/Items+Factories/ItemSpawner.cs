@@ -37,6 +37,15 @@ public class ItemSpawner : MonoBehaviour
         item.setPosition(position);
     }
 
+    public void spawnRandomItem(Vector3 position)
+    {
+        itemFactory = itemFactories[Random.Range(0, itemFactories.Count)];
+
+        IItem item = itemFactory.getItem();
+
+        item.setPosition(position);
+    }
+
     void Update()
     {
         //if(Input.GetKeyDown(KeyCode.Tab)) 

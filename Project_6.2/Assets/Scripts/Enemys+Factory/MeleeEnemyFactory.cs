@@ -6,7 +6,7 @@ public class MeleeEnemyFactory : EnemyFactory
 {
     [SerializeField] GameObject meleeEnemyPrefab;
 
-    public override IEnemy getItem()
+    public override IEnemy getEnemy()
     {
         GameObject meleeEnemy = Instantiate(meleeEnemyPrefab);
 

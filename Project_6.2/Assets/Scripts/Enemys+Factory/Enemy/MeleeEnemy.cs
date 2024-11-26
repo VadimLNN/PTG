@@ -19,10 +19,6 @@ public class MeleeEnemy : AbstractEnemy
     {
         base.Start();
 
-        GameObject currPlayer = GameObject.FindWithTag("Player");
-        if (currPlayer != null)
-            Player = currPlayer.transform;
-
         runState = new RunTo(this);
         attackState = new Attack(this);
         stunnedState = new Stunned(this);

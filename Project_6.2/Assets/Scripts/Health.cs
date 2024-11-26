@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     public UnityEvent<int, int> onHealthChange;
 
-    public UnityEvent<Vector3> spawnOnDeath;
+    public UnityEvent <Vector3> spawnOnDeath;
     public UnityEvent onDeath;
     public UnityEvent onHitTaken;
     
