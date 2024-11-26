@@ -64,7 +64,7 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     }
     public virtual void attack(bool state)
     {
-        animator.SetBool("attack", true);
+        animator.SetBool("attack", state);
     }
     public virtual void stunBegin()
     {
