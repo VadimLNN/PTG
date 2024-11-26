@@ -62,9 +62,7 @@ public class MeleeEnemy : AbstractEnemy
         {
             Health playerHP = player.GetComponent<Health>();
             if (playerHP != null)
-            {
                 playerHP.hpDecrease(damage);    
-            }
         }
     }
 }
