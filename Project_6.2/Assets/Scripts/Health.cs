@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     public UnityEvent onHitTaken;
 
     private Coroutine burnCoroutine;
+    public ParticleSystem burning;
 
     private void Start() => onHealthChange?.Invoke((int)currentHealth, maxHealth);
  
@@ -67,6 +68,7 @@ public class Health : MonoBehaviour
             StopCoroutine(burnCoroutine);
         }
         burnCoroutine = StartCoroutine(BurnEffect(damagePerSecond, duration));
+        burning.Play();
     }
 
     private IEnumerator BurnEffect(float damagePerSecond, float duration)
