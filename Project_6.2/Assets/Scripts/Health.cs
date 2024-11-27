@@ -54,6 +54,7 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             onDeath?.Invoke();
+            
             spawnOnDeath?.Invoke(transform.position);
         }
     }
@@ -89,7 +90,5 @@ public class Health : MonoBehaviour
 
             yield return null;
         }
-
-        Debug.Log("Ёффект горени€ закончилс€.");
     }
 }
