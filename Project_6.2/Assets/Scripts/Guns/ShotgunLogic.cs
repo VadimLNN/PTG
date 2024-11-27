@@ -8,6 +8,8 @@ public class ShotgunLogic : MonoBehaviour
     [SerializeField] int buckshot = 8;
     [SerializeField] float spread = 40f;
 
+    public int piercingPower = 2;
+
     public List<Vector3> shot(Transform firePoint, float damage)
     {
         List<Vector3> directions = new List<Vector3>();
@@ -23,11 +25,23 @@ public class ShotgunLogic : MonoBehaviour
 
         foreach (var direction in directions)
         {
-            RaycastHit hit;
+            RaycastHit[] hits;
 
-            if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, 1000f, enemy))
+            Ray ray = new Ray(firePoint.position, firePoint.forward);
+            hits = Physics.RaycastAll(ray, 100f, enemy);
+
+            System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
+
+            if (hits.Length > 0)
             {
-
+                for (int i = 0; i < Mathf.Min(piercingPower, hits.Length); i++)
+                {
+                    Health enemyHp = hits[i].transform.GetComponent<Health>();
+                    if (enemyHp != null)
+                    {
+                        enemyHp.hpDecrease(damage);
+                    }
+                }
             }
         }
 
