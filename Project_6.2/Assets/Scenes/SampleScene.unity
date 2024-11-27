@@ -1707,6 +1707,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112861648}
   m_CullTransparentMesh: 1
+--- !u!114 &1149535560 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4054853796191963865, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+  m_PrefabInstance: {fileID: 8254656813962014037}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b36ae8e09f576143b328ec495a8d702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1149535562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3598661531417091318, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
@@ -1925,7 +1936,8 @@ MonoBehaviour:
   - factory: {fileID: 1950140621129777682, guid: 6c8eb091059350442b7fc22371c0bd86, type: 3}
     probability: 35
   player: {fileID: 1149535562}
-  spawnInterval: 4
+  spawnIntervalMax: 10
+  spawnIntervalMin: 1.5
 --- !u!1 &1691791846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,9 +2480,37 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1149535560}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: death
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
       propertyPath: onHealthChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 739441264}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerScr, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2170359519999989540, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
       propertyPath: mainCam
       value: 

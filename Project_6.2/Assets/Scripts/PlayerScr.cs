@@ -8,7 +8,7 @@ public class PlayerScr : MonoBehaviour
     public WeaponScr weaponScript;
 
     public int numberOfWeapons = 4;
-
+    Animator anim; 
     private void Start() => weaponScript.setWeapon(weaponSelector.selectWeaponByIndex(0));
     void Update()
     {

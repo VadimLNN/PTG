@@ -10,7 +10,8 @@ public class EnemySpawner : MonoBehaviour
     EnemyFactory enemyFactory;
     public Transform player;
 
-    public float spawnInterval = 2f;
+    public float spawnIntervalMax = 10f;
+    public float spawnIntervalMin = 1.5f;
 
     private void Start() 
     {
@@ -26,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < enemy.probability; i++)
                 enemyFactories.Add(enemy.factory);
 
-        InvokeRepeating(nameof(SpawnEnemy), spawnInterval, spawnInterval);
+        InvokeRepeating(nameof(SpawnEnemy), spawnIntervalMin, Random.Range(spawnIntervalMin, spawnIntervalMax));
     }
 
     public void spawnRandomEnemy()
@@ -58,5 +59,9 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         spawnRandomEnemy();
+
+        spawnIntervalMax = Mathf.Max(1f, spawnIntervalMax - 0.05f);
+        CancelInvoke(nameof(SpawnEnemy));
+        InvokeRepeating(nameof(SpawnEnemy), spawnIntervalMin, spawnIntervalMax);
     }
 }
