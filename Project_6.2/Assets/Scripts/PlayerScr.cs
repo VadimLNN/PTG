@@ -9,6 +9,7 @@ public class PlayerScr : MonoBehaviour
 
     public int numberOfWeapons = 4;
 
+    private void Start() => weaponScript.setWeapon(weaponSelector.selectWeaponByIndex(0));
     void Update()
     {
         float mouseWheelDelta = Input.GetAxisRaw("Mouse ScrollWheel");
