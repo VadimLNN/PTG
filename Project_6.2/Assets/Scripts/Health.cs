@@ -8,15 +8,17 @@ public class Health : MonoBehaviour
     [Range(1, 100)]
     [SerializeField] int maxHealth;
     [Range(1, 100)]
-    [SerializeField] int currentHealth;
+    [SerializeField] float currentHealth;
 
     public UnityEvent<int, int> onHealthChange;
 
     public UnityEvent <Vector3> spawnOnDeath;
     public UnityEvent onDeath;
     public UnityEvent onHitTaken;
-    
-    private void Start() => onHealthChange?.Invoke(currentHealth, maxHealth);
+
+    private Coroutine burnCoroutine;
+
+    private void Start() => onHealthChange?.Invoke((int)currentHealth, maxHealth);
  
     public bool changeHealth(int amount)
     {
@@ -31,7 +33,7 @@ public class Health : MonoBehaviour
         if(currentHealth < 0)
             currentHealth = 0;
 
-        onHealthChange?.Invoke(currentHealth, maxHealth);
+        onHealthChange?.Invoke((int)currentHealth, maxHealth);
 
         return true;
     }
@@ -47,7 +49,7 @@ public class Health : MonoBehaviour
         if(currentHealth < 0)
             currentHealth = 0;
 
-        onHealthChange?.Invoke(currentHealth, maxHealth);
+        onHealthChange?.Invoke((int)currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -56,5 +58,38 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void ApplyBurnEffect(float damagePerSecond, float duration)
+    {
+        // Если враг уже горит, перезапускаем эффект
+        if (burnCoroutine != null)
+        {
+            StopCoroutine(burnCoroutine);
+        }
+        burnCoroutine = StartCoroutine(BurnEffect(damagePerSecond, duration));
+    }
 
+    private IEnumerator BurnEffect(float damagePerSecond, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            currentHealth -= damagePerSecond * Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+
+            if (currentHealth < 0)
+                currentHealth = 0;
+
+            if (currentHealth == 0)
+            {
+                onDeath?.Invoke();
+                spawnOnDeath?.Invoke(transform.position);
+                yield break; 
+            }
+
+            yield return null;
+        }
+
+        Debug.Log("Эффект горения закончился.");
+    }
 }
