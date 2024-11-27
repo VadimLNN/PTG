@@ -1921,10 +1921,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyFactoriesWithProbs:
   - factory: {fileID: 2121459689837511124, guid: f21b27e652dcc3748beea1e6e1a580ff, type: 3}
-    probability: 0
+    probability: 65
   - factory: {fileID: 1950140621129777682, guid: 6c8eb091059350442b7fc22371c0bd86, type: 3}
-    probability: 100
+    probability: 35
   player: {fileID: 1149535562}
+  spawnInterval: 4
 --- !u!1 &1691791846
 GameObject:
   m_ObjectHideFlags: 0
