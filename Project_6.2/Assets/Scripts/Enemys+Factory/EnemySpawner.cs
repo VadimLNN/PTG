@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     EnemyFactory enemyFactory;
     public Transform player;
 
+    public float spawnInterval = 2f;
+
     private void Start() 
     {
         float probabilitySum = 0;
@@ -23,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemy in enemyFactoriesWithProbs)
             for (int i = 0; i < enemy.probability; i++)
                 enemyFactories.Add(enemy.factory);
+
+        InvokeRepeating(nameof(SpawnEnemy), spawnInterval, spawnInterval);
     }
 
     public void spawnRandomEnemy()
@@ -49,5 +53,10 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
             spawnRandomEnemy();
+    }
+
+    void SpawnEnemy()
+    {
+        spawnRandomEnemy();
     }
 }
