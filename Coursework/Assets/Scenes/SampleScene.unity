@@ -15371,7 +15371,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4127258197343739866}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f338662ba6950c546a0274845b1570a9, type: 3}
   m_Name: 
@@ -15382,7 +15382,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  jumpForce: 2.5
+  jumpForce: 5
   onGround: 0
   minions: {fileID: 284665588}
 --- !u!1 &728814724047600822
@@ -17326,6 +17326,8 @@ GameObject:
   - component: {fileID: 3134193821712813073}
   - component: {fileID: 691584961640174329}
   - component: {fileID: 7770397136392544554}
+  - component: {fileID: 7770397136392544556}
+  - component: {fileID: 7770397136392544555}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -18486,8 +18488,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4127258197343739866}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ba336804d1a2a145b878ab466c4bb56, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 2047b885c44f3ae43a77dea6ce3b32d7, type: 3}
+  m_Controller: {fileID: 9100000, guid: 222336c84454b5a4d9b7debc90a5ee93, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19550,6 +19552,43 @@ MonoBehaviour:
   - {fileID: 5784509060208140611}
   - {fileID: 247560365}
   - {fileID: 2114422600}
+--- !u!114 &7770397136392544555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127258197343739866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd043580db3ebe4694118980845fe77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7770397136392544556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127258197343739866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebade0a9eab960438f0512295d016c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 10
+  sideStepSpeed: 5
+  acceleration: 3
+  deceleration: 5
+  pa: {fileID: 7770397136392544555}
+  jumpForce: 7
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  minions: {fileID: 284665588}
+  interactable:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7783437969434285300
 GameObject:
   m_ObjectHideFlags: 0
