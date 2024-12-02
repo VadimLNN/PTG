@@ -3686,7 +3686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Minions: {fileID: 284665588}
-  minion: {fileID: 784139269558240466, guid: aebcd0c3b3523024fb4d3375186a0f0d, type: 3}
+  minion: {fileID: 8750017221117171629, guid: 6e944629f8c119047a646ec2d13daaac, type: 3}
 --- !u!1 &493143968
 GameObject:
   m_ObjectHideFlags: 0

@@ -505,10 +505,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795013077373290452}
+  - component: {fileID: 9000991941705500380}
   - component: {fileID: 59004196170200668}
   - component: {fileID: 3466298819338103577}
   - component: {fileID: 4169379124113458376}
-  - component: {fileID: 9000991941705500380}
   - component: {fileID: 1324874408226611393}
   m_Layer: 8
   m_Name: minion
@@ -535,6 +535,27 @@ Transform:
   - {fileID: 1057433196820678538}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &9000991941705500380
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784139269558240466}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9028fe51c96074f42ac5aad8d33818f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!195 &59004196170200668
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -607,27 +628,6 @@ CapsuleCollider:
   m_Height: 1.8951209
   m_Direction: 1
   m_Center: {x: 0, y: 0.8816925, z: -0.0022379556}
---- !u!95 &9000991941705500380
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784139269558240466}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9028fe51c96074f42ac5aad8d33818f5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1324874408226611393
 MonoBehaviour:
   m_ObjectHideFlags: 0
