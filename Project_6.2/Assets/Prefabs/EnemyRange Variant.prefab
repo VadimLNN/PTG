@@ -447,7 +447,8 @@ MonoBehaviour:
   enemyHP: {fileID: -279807751928402833}
   updatesPerSecond: 10
   rotationSpeed: 120
-  attackRange: 10
+  attackRange: 15
+  saveDist: 12
   damage: 10
   enemyProjectile: {fileID: 2004165707237620359, guid: 5a86d264473c959499b04cf41688eaf7, type: 3}
   shotPoint: {fileID: 5776476485300725934}

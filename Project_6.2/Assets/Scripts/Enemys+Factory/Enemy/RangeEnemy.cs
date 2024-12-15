@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class RangeEnemy : AbstractEnemy
 {
-    [Range(0.1f, 10)]
-    public float attackRange = 2;
+    [Range(1f, 50)]
+    public float attackRange = 10;
+    [Range(1f, 50)]
+    public float saveDist = 8;
 
     [Range(1, 100)]
     public int damage;
 
     RunTo runState;
+    RunOut runOutState;
     Attack attackState;
     Stunned stunnedState;
     RotateTo rotateState;
@@ -18,11 +21,13 @@ public class RangeEnemy : AbstractEnemy
     public GameObject enemyProjectile;
     public Transform shotPoint;
 
+
     private new void Start()
     {
         base.Start();
 
         runState = new RunTo(this);
+        runOutState = new RunOut(this);
         attackState = new Attack(this);
         stunnedState = new Stunned(this);
         rotateState = new RotateTo(this);
@@ -37,6 +42,12 @@ public class RangeEnemy : AbstractEnemy
         if (stunned == true)
         {
             stateMachine?.setState(stunnedState);
+        }
+
+
+        if (Vector3.Distance(transform.position, player.position) < saveDist)
+        {
+            stateMachine?.setState(runOutState);
         }
         else
         {

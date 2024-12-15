@@ -2072,7 +2072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyFactoriesWithProbs:
   - factory: {fileID: 2121459689837511124, guid: f21b27e652dcc3748beea1e6e1a580ff, type: 3}
-    probability: 65
+    probability: 0
   - factory: {fileID: 1950140621129777682, guid: 6c8eb091059350442b7fc22371c0bd86, type: 3}
     probability: 35
   player: {fileID: 1149535562}
@@ -2849,7 +2849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2053207353842495568, guid: 227c8db1e9c47304a8d23d4550fb12d5, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
