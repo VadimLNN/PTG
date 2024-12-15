@@ -15364,27 +15364,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &691584961640174329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4127258197343739866}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f338662ba6950c546a0274845b1570a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable:
-    serializedVersion: 2
-    m_Bits: 64
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  jumpForce: 5
-  onGround: 0
-  minions: {fileID: 284665588}
 --- !u!1 &728814724047600822
 GameObject:
   m_ObjectHideFlags: 0
@@ -17324,7 +17303,6 @@ GameObject:
   - component: {fileID: 6674477513212381925}
   - component: {fileID: 6173988816330834285}
   - component: {fileID: 3134193821712813073}
-  - component: {fileID: 691584961640174329}
   - component: {fileID: 7770397136392544554}
   - component: {fileID: 7770397136392544556}
   - component: {fileID: 7770397136392544555}

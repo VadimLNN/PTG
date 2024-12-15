@@ -192,13 +192,4 @@ public class PlayerMovement : MonoBehaviour
     }
     void stopAttack() => pa.stopAttack();
 
-
-    void HandleBlock()
-    {
-        if (Input.GetMouseButton(1) && Input.GetKeyDown(KeyCode.LeftControl))
-            pa.setBlock(true);
-        
-        if (Input.GetMouseButtonUp(1) && Input.GetKeyDown(KeyCode.LeftControl))
-            pa.setBlock(false);
-    }
 }
