@@ -2550,7 +2550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cb48ae9f483f54f96fef4a14eb1332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &6920570553418622731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,7 +2731,6 @@ MonoBehaviour:
   - {fileID: 4142641598710205601}
   - {fileID: 4959342801596344831}
   - {fileID: 7682750494347937251}
-  hp: 50
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -2743,6 +2741,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   hpScrollBar: {fileID: 6899542979828382639}
+  hp: 50
 --- !u!1 &7016656997054696989
 GameObject:
   m_ObjectHideFlags: 0
