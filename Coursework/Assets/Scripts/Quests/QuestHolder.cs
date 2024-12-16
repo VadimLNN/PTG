@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestHolderZomb : MonoBehaviour
+public class QuestHolder : MonoBehaviour
 {
     public RectTransform quePnl;
     public int points = 1;
@@ -17,7 +17,7 @@ public class QuestHolderZomb : MonoBehaviour
     {
         foreach (var quest in questManager.quests)
         {
-            if (quest.questName == "Kill Zombie")
+            if (quest.questName.Contains(transform.name))
             {
                 questManager.UpdateQuest(quest, points);
             }
