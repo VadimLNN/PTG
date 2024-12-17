@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public abstract class AbstractEnemy : MonoBehaviour, IEnemy
 {
-    protected Transform player;
-    protected Transform ind;
+    protected Transform target;
     public Health enemyHP;
 
     [Range(1, 60)]
@@ -20,10 +19,12 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
     protected bool stunned = false;
     protected bool dead = false;
 
-    public Transform Player
+    public float stoppingDistance = 1f;
+
+    public Transform Target
     {
-        get { return player; }
-        set { player = value; }
+        get { return target; }
+        set { target = value; }
     }
 
     public Health EnemyHP { get { return enemyHP; } }

@@ -9,18 +9,34 @@ public class MeleeEnemy : AbstractEnemy
 {
     [Range(0.1f, 10)]
     public float attackRange = 2;
+    
+    [Range(0.1f, 10)]
+    public float detectRange = 15;
 
     [Range(1, 100)]
     public int damage;
 
+    Wander wanderState;
     RunTo runState;
     Attack attackState;
     RotateTo rotateState;
+
+    public LayerMask targetLayer;
+
+    private void Update()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, detectRange, targetLayer);
+
+        if (cols.Length > 0)
+            Target = cols[0].transform;
+
+    }
 
     private new void Start()
     {
         base.Start();
 
+        wanderState = new Wander(this);
         runState = new RunTo(this);
         attackState = new Attack(this);
         rotateState = new RotateTo(this);
@@ -32,32 +48,38 @@ public class MeleeEnemy : AbstractEnemy
     {
         if (dead == true) return;
 
-        
-        if (Vector3.Angle(transform.forward, player.position - transform.position) > 20)
+        if (Vector3.Distance(transform.forward, target.position - transform.position) < detectRange)
         {
-            stateMachine?.setState(rotateState);
-        }
-        else if (Vector3.Distance(transform.position, player.position) > attackRange)
-        {
-            stateMachine?.setState(runState);
-        }
-        else if (Vector3.Angle(transform.forward, player.position - transform.position) > 10)
-        {
-            stateMachine?.setState(rotateState);
+            if (Vector3.Angle(transform.forward, target.position - transform.position) > 20)
+            {
+                stateMachine?.setState(rotateState);
+            }
+            else if (Vector3.Distance(transform.position, target.position) > attackRange)
+            {
+                stateMachine?.setState(runState);
+            }
+            else if (Vector3.Angle(transform.forward, target.position - transform.position) > 10)
+            {
+                stateMachine?.setState(rotateState);
+            }
+            else
+                stateMachine?.setState(attackState);
         }
         else
-            stateMachine?.setState(attackState);
-
+        {
+            stateMachine?.setState(wanderState);
+        }
+        
         stateMachine?.update();
     }
 
     public void dealDamage()
     {
-        if (Vector3.Distance(transform.position, player.position) <= attackRange)
+        if (Vector3.Distance(transform.position, target.position) <= attackRange)
         {
-            Health playerHP = player.GetComponent<Health>();
-            if (playerHP != null)
-                playerHP.hpDecrease(damage);    
+            Health targetHP = target.GetComponent<Health>();
+            if (targetHP != null)
+                targetHP.hpDecrease(damage);    
         }
     }
 }

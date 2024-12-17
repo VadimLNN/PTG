@@ -3145,14 +3145,13 @@ MonoBehaviour:
   enemyHP: {fileID: 2923740886721745770}
   updatesPerSecond: 10
   rotationSpeed: 120
+  stoppingDistance: 1
   attackRange: 2
+  detectRange: 10
   damage: 0
-  wayPoints:
-  - {fileID: 8591376165437897024}
-  - {fileID: 4223193576582956740}
-  - {fileID: 6078499123565854870}
-  - {fileID: 7225274059408070231}
-  - {fileID: 8998015486319153355}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2923740886721745770
 MonoBehaviour:
   m_ObjectHideFlags: 0

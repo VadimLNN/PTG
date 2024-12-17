@@ -10,7 +10,7 @@ public class RunTo : IState
     public void enter()
     {
         enemy.stop(false);
-        enemy.moveTo(enemy.Player.position);
+        enemy.moveTo(enemy.Target.position);
     }
 
     public void exit()
@@ -20,6 +20,6 @@ public class RunTo : IState
 
     public void update()
     {
-        enemy.moveTo(enemy.Player.position);
+        enemy.moveTo(enemy.Target.position);
     }
 }

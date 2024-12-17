@@ -12,7 +12,7 @@ public class RunOut : IState
     public void enter()
     {
         enemy.stop(false);
-        enemy.moveTo(enemy.transform.position - enemy.Player.position);
+        enemy.moveTo(enemy.transform.position - enemy.Target.position);
     }
 
     public void exit()
@@ -22,6 +22,6 @@ public class RunOut : IState
 
     public void update()
     {
-        enemy.moveTo(enemy.transform.position - enemy.Player.position);
+        enemy.moveTo(enemy.transform.position - enemy.Target.position);
     }
 }

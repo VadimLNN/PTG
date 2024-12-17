@@ -21,6 +21,6 @@ public class RotateTo : IState
     }
     public void update()
     {
-        enemy.rotateTo(enemy.Player.position);
+        enemy.rotateTo(enemy.Target.position);
     }
 }

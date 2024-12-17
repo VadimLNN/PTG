@@ -45,21 +45,21 @@ public class RangeEnemy : AbstractEnemy
         }
 
 
-        if (Vector3.Distance(transform.position, player.position) < saveDist)
+        if (Vector3.Distance(transform.position, target.position) < saveDist)
         {
             stateMachine?.setState(runOutState);
         }
         else
         {
-            if (Vector3.Angle(transform.forward, player.position - transform.position) > 20)
+            if (Vector3.Angle(transform.forward, target.position - transform.position) > 20)
             {
                 stateMachine?.setState(rotateState);
             }
-            else if (Vector3.Distance(transform.position, player.position) > attackRange)
+            else if (Vector3.Distance(transform.position, target.position) > attackRange)
             {
                 stateMachine?.setState(runState);
             }
-            else if (Vector3.Angle(transform.forward, player.position - transform.position) > 10)
+            else if (Vector3.Angle(transform.forward, target.position - transform.position) > 10)
             {
                 stateMachine?.setState(rotateState);
             }
@@ -72,7 +72,7 @@ public class RangeEnemy : AbstractEnemy
 
     public void dealDamage()
     {
-        if (Vector3.Distance(transform.position, player.position) <= attackRange)
+        if (Vector3.Distance(transform.position, target.position) <= attackRange)
         {
             Instantiate(enemyProjectile, shotPoint.position, shotPoint.rotation);
         }

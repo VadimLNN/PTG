@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    public Transform Player { get; set; }
+    public Transform Target { get; set; }
     public Health EnemyHP { get; }
     public void updateState();
     public void moveTo(Vector3 point);

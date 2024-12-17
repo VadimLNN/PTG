@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class QuestHolder : MonoBehaviour
 {
-    public RectTransform quePnl;
     public int points = 1;
-    QuestManager questManager;
-
-    private void Start()
-    {
-        questManager = quePnl.GetComponent<QuestManager>();
-    }
+    public QuestManager questManager;
 
     private void OnDestroy()
     {

@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.positionAndRotation(position, Quaternion.identity);
 
         
-        enemy.Player = player;
+        enemy.Target = player;
 
         Health enemyHP = enemy.EnemyHP;
         enemyHP.spawnOnDeath.AddListener(transform.GetComponent<ItemSpawner>().spawnRandomItem);

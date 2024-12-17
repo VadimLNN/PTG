@@ -1,6 +1,6 @@
 using System;
 
-public enum ItemTypes { Eye, Pinky, Cerebellum };
+public enum ItemTypes { Cristal, Wings, Soul, Mushroom, Cerebellum, Ear, Pinky};
 
 [Serializable]
 

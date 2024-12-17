@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class MinionScr : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class MinionScr : MonoBehaviour
 
     // радиус атаки, замечания, здоровья
     float atkRadius = 0.7f;
-    float detectRadius = 10f;
+    float detectRadius = 5f;
     int hp = 40;
 
     // точки для определения состояния простоя или ходьбы 
