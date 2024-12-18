@@ -412,6 +412,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e71d97357ea1054a8cd6fa8a7afe6da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3379329385410082692}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7e71d97357ea1054a8cd6fa8a7afe6da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1511549892759960712}
   m_SourcePrefab: {fileID: 100100000, guid: 7e71d97357ea1054a8cd6fa8a7afe6da, type: 3}
 --- !u!1 &8750017221117171629 stripped
 GameObject:
@@ -507,3 +510,41 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isOnAssignment: 0
+--- !u!114 &1511549892759960712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750017221117171629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b66e492f99686429c9584826fcc2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 40
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  spawnOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3379329385410082692}
+        m_TargetAssemblyTypeName: MinionScr, Assembly-CSharp
+        m_MethodName: death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHitTaken:
+    m_PersistentCalls:
+      m_Calls: []

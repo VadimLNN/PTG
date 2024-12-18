@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask interactable;
     float detectRadius = 1.5f;
 
+    bool dead = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -60,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (dead) return;
+
         HandleJump();
         HandleAttack();
         HandleOrders();
@@ -124,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (minionsCrowd != null)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetKey(KeyCode.E))
             {
                 pa.setOrder(1);
                 ordering = true;
@@ -136,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButton(1))
+            if (Input.GetKey(KeyCode.Q))
             {
                 pa.setOrder(2);
                 ordering = true;
@@ -159,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         // проверка объекта для интеракции в радиусе
         Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, interactable);
         // если объект попал в радиус
-        if (cols.Length > 0 && Input.GetKey(KeyCode.E))
+        if (cols.Length > 0 && Input.GetKey(KeyCode.F))
         {
             pa.interact();
             InteractableObj c = cols[0].transform.GetComponent<InteractableObj>();
@@ -171,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleAttack()
     {
-        if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetMouseButton(0))
         {
             pa.Attack();
             attacking = true;
@@ -183,13 +187,25 @@ public class PlayerMovement : MonoBehaviour
 
         if (cols.Length > 0)
         {
-            EnemyScr c = cols[0].transform.GetComponent<EnemyScr>();
-            if (c != null) c.takeDamage(20);
-
-            GoatSheepControllerScr c2 = cols[0].transform.GetComponent<GoatSheepControllerScr>();
-            if (c2 != null) c2.takeDamage(20);
+            Health targetHP = cols[0].GetComponent<Health>();
+            if (targetHP != null)
+                targetHP.hpDecrease(100);
         }
     }
     void stopAttack() => pa.stopAttack();
 
+
+    public void death()
+    {
+        dead = true;
+        pa.SetDeath();
+
+        StartCoroutine(despawn());
+    }
+    IEnumerator despawn()
+    {
+        yield return new WaitForSeconds(4);
+
+        Destroy(gameObject);
+    }
 }

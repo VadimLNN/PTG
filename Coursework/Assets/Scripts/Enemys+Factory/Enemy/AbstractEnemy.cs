@@ -92,9 +92,6 @@ public abstract class AbstractEnemy : MonoBehaviour, IEnemy
         animator.SetTrigger("death");
         stop(true);
 
-        //ScoreScr scorePnl = GameObject.FindWithTag("scorePnl").transform.GetComponent<ScoreScr>();
-        //scorePnl.scoreUp();
-
         StartCoroutine(despawn());
     }
     IEnumerator despawn()

@@ -13,7 +13,8 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        LoadProgress();
+        ResetProgress();
+        //LoadProgress();
         UpdateQuestUI();
     }
 
@@ -23,7 +24,18 @@ public class QuestManager : MonoBehaviour
         {
             quest.AddProgress(amount);
             UpdateQuestUI();
-            SaveProgress();
+            //SaveProgress();
+        }
+    }
+
+    public void UpdateQuest(string item, int points)
+    {
+        foreach (var quest in quests)
+        {
+            if (quest.questName.Contains(item))
+            {
+                UpdateQuest(quest, points);
+            }
         }
     }
 
@@ -52,7 +64,6 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    // Загрузка прогресса заданий
     public void LoadProgress()
     {
         foreach (var quest in quests)
@@ -64,7 +75,6 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    // Сброс сохраненного прогресса (для тестов)
     public void ResetProgress()
     {
         foreach (var quest in quests)

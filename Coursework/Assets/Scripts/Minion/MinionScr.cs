@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,10 +31,13 @@ public class MinionScr : MonoBehaviour
     public bool isOnAssignment = false;
     bool isDead = false;
 
+    Rigidbody rb;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();  
+        rb = GetComponent<Rigidbody>();
     }
 
     void LateUpdate()
@@ -45,50 +50,50 @@ public class MinionScr : MonoBehaviour
             Destroy(this.gameObject, 5);
         }
 
-        if (isDead == false)
+        if (isDead == true) return;
+        
+        Vector3 posNow = transform.position;
+        float razbros = 0.1f;
+        if (assignmentPnt.x - razbros <= posNow.x && posNow.x <= assignmentPnt.x + razbros &&
+            assignmentPnt.z - razbros <= posNow.z && posNow.z <= assignmentPnt.z + razbros)
         {
-            Vector3 posNow = transform.position;
-            float razbros = 0.1f;
-            if (assignmentPnt.x - razbros <= posNow.x && posNow.x <= assignmentPnt.x + razbros &&
-                assignmentPnt.z - razbros <= posNow.z && posNow.z <= assignmentPnt.z + razbros)
+            state = 0;
+
+            // отсчёт времени до прекращения состояния "на задании" 
+            if (state == 0 && isOnAssignment == true)
             {
-                state = 0;
+                inspectionTime -= Time.deltaTime;
+            }
 
-                // отсчёт времени до прекращения состояния "на задании" 
-                if (state == 0 && isOnAssignment == true)
-                {
-                    inspectionTime -= Time.deltaTime;
-                }
+            if (inspectionTime <= 0 && isOnAssignment == true)
+            {
+                isOnAssignment = false;
+                inspectionTime = 0.5f;
+            }
+        }
+        else
+            state = 1;
 
-                if (inspectionTime <= 0 && isOnAssignment == true)
-                {
-                    isOnAssignment = false;
-                    inspectionTime = 0.5f;
-                }
+
+        // отслеживание врага
+        Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, enemyLayer);
+
+        // если враг в радиусе 
+        if (cols.Length > 0 && isOnAssignment == true)
+        {
+            if (Vector3.Distance(transform.position, cols[0].transform.position) <= atkRadius)
+            {
+                state = 2;
+                agent.SetDestination(transform.position);
             }
             else
-                state = 1;
-
-
-            // отслеживание врага
-            Collider[] cols = Physics.OverlapSphere(transform.position, detectRadius, enemyLayer);
-
-            // если враг в радиусе 
-            if (cols.Length > 0 && isOnAssignment == true)
-            {
-                if (Vector3.Distance(transform.position, cols[0].transform.position) <= atkRadius)
-                {
-                    state = 2;
-                    agent.SetDestination(transform.position);
-                }
-                else
-                    agent.SetDestination(cols[0].transform.position);
-            }
+                agent.SetDestination(cols[0].transform.position);
         }
 
 
         // установка анимации
         anim.SetInteger("state", state);
+        anim.SetFloat("speed", Vector3.Magnitude(rb.velocity));
     }
     
     public void FollowOrder(Vector3 point) 
@@ -139,6 +144,20 @@ public class MinionScr : MonoBehaviour
     public void takeDamage(int gamage)
     {
         hp -= gamage;
+    }
+
+    public void death()
+    {
+        isDead = true;
+        anim.SetTrigger("death");
+
+        StartCoroutine(despawn());
+    }
+    IEnumerator despawn()
+    {
+        yield return new WaitForSeconds(1);
+
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

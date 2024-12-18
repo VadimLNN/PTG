@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +11,7 @@ public class Inventory : MonoBehaviour
     public Dictionary<ItemTypes, int> itemDictionary;
 
     public UnityEvent onInventoryChange;
+    public UnityEvent <string, int> updateQuests;
 
     public void listToDictionary()
     {
@@ -45,6 +48,10 @@ public class Inventory : MonoBehaviour
 
         itemDictionary[type] += amount;
         onInventoryChange?.Invoke();
+
+
+        string itemName = Enum.GetName(typeof(ItemTypes), type);
+        updateQuests?.Invoke(itemName, amount);
 
         return true;
     }
