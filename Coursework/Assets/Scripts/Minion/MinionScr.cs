@@ -22,7 +22,6 @@ public class MinionScr : MonoBehaviour
     // радиус атаки, замечания, здоровья
     float atkRadius = 0.7f;
     float detectRadius = 5f;
-    int hp = 40;
 
     // точки для определения состояния простоя или ходьбы 
     Vector3 assignmentPnt;
@@ -30,6 +29,7 @@ public class MinionScr : MonoBehaviour
     // состояния "на задании", "смерти"
     public bool isOnAssignment = false;
     bool isDead = false;
+    bool isFighting = false;
 
     Rigidbody rb;
 
@@ -42,14 +42,6 @@ public class MinionScr : MonoBehaviour
 
     void LateUpdate()
     {
-        if (hp <= 0)
-        {
-            agent.SetDestination(transform.position);
-            state = -1;
-            isDead = true;
-            Destroy(this.gameObject, 5);
-        }
-
         if (isDead == true) return;
         
         Vector3 posNow = transform.position;
@@ -81,6 +73,7 @@ public class MinionScr : MonoBehaviour
         // если враг в радиусе 
         if (cols.Length > 0 && isOnAssignment == true)
         {
+            isFighting = true;
             if (Vector3.Distance(transform.position, cols[0].transform.position) <= atkRadius)
             {
                 state = 2;
@@ -89,6 +82,8 @@ public class MinionScr : MonoBehaviour
             else
                 agent.SetDestination(cols[0].transform.position);
         }
+        else
+            isFighting = false;
 
 
         // установка анимации
@@ -115,6 +110,7 @@ public class MinionScr : MonoBehaviour
             // преследование мастера
             agent.SetDestination(point);
             isOnAssignment = false;
+            isFighting = false;
         }
     }
 
@@ -127,6 +123,7 @@ public class MinionScr : MonoBehaviour
     {
         // прекрашение состояния "на задании"
         isOnAssignment = false;
+        isFighting = false;
     }
 
 
@@ -141,14 +138,10 @@ public class MinionScr : MonoBehaviour
                 targetHP.hpDecrease(3);
         }
     }
-    public void takeDamage(int gamage)
-    {
-        hp -= gamage;
-    }
-
     public void death()
     {
         isDead = true;
+        agent.SetDestination(transform.position);
         anim.SetTrigger("death");
 
         StartCoroutine(despawn());

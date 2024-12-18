@@ -28,31 +28,33 @@ public class Inventory : MonoBehaviour
         onInventoryChange?.Invoke();
     }
 
-    public bool getItem(ItemTypes type)
+    public void getItem(ItemTypes type)
     {
-        if (itemDictionary.ContainsKey(type) == false)
-            return false;
-        if (itemDictionary[type] < 1)
-            return false;
-
         itemDictionary[type]--;
         onInventoryChange?.Invoke();
-
-        return true;
     }
 
-    public bool addItem(ItemTypes type, int amount)
+    public bool canGetItem(ItemTypes type)
+    {
+        bool res = true;
+
+        if (itemDictionary.ContainsKey(type) == false)
+            res = false;
+        if (itemDictionary[type] < 1)
+            res = false;
+
+        return res;
+    }
+
+    public void addItem(ItemTypes type, int amount)
     {
         if (itemDictionary.ContainsKey(type) == false)
-            return false;
+            return;
 
         itemDictionary[type] += amount;
         onInventoryChange?.Invoke();
 
-
         string itemName = Enum.GetName(typeof(ItemTypes), type);
         updateQuests?.Invoke(itemName, amount);
-
-        return true;
     }
 }

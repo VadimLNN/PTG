@@ -16,8 +16,8 @@ public class OrganItem : MonoBehaviour, IItem
 
     public void onPickUp(GameObject player)
     {
-        if (player.GetComponent<Inventory>().addItem(itemType, amount))
-            Destroy(gameObject);
+        player.GetComponent<Inventory>().addItem(itemType, amount);
+        Destroy(gameObject);
     }
 
     public void setPosition(Vector3 pos)

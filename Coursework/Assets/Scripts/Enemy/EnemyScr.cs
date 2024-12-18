@@ -168,7 +168,7 @@ public class EnemyScr : InteractableObj
                 distToMaster == 0 && distToMinon > 0)
             {
                 MinionScr c = colsM[0].transform.GetComponent<MinionScr>();
-                if (c != null) c.takeDamage(20);
+                //if (c != null) c.takeDamage(20);
             }
         }
 

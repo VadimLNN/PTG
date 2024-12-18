@@ -7,12 +7,11 @@ public class SpawnerMinonScr : InteractableObj
     public GameObject Minions;
     public GameObject minion;
 
-    // кол-во приспешников, которых можно призвать
-    int minionsMax = 10;
-
     // ограничение спавна приспешников 
     float spawnRate = 10f;
     float nextSpawn = 0f;
+
+    public Inventory inv;
 
     public override void interact()
     {
@@ -21,11 +20,11 @@ public class SpawnerMinonScr : InteractableObj
 
     void SpawnMinion()
     {
-        if (Time.time >= nextSpawn && minionsMax > 0)
+        if (Time.time >= nextSpawn && inv.canGetItem(ItemTypes.Soul))
         {
             nextSpawn = Time.time + 1 / spawnRate;
             Instantiate(minion, transform.position, Quaternion.identity, Minions.gameObject.transform);
-            minionsMax--;
+            inv.getItem(ItemTypes.Soul);
         }
     }
 }
