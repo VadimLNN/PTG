@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203863456f810434188e7cab1cbf560a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77
+      value: 20.06232
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203863456f810434188e7cab1cbf560a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17369
+      value: 5.759145
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203863456f810434188e7cab1cbf560a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.68
+      value: 49.612427
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 203863456f810434188e7cab1cbf560a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74,9 +74,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 203863456f810434188e7cab1cbf560a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3361291063753477138}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 203863456f810434188e7cab1cbf560a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1520720215360917974}
   m_SourcePrefab: {fileID: 100100000, guid: 203863456f810434188e7cab1cbf560a, type: 3}
 --- !u!1 &4783615372600086559 stripped
 GameObject:
@@ -118,17 +115,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   amount: 2
---- !u!114 &1520720215360917974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4783615372600086559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9ff43203224744392ce906645763b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quePnl: {fileID: 0}
-  points: 1

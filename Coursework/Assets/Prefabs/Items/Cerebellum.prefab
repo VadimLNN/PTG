@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 7228276672960248811}
   - component: {fileID: 2287643823205183086}
   - component: {fileID: 7611780425435559325}
-  - component: {fileID: 3116072674373581057}
   m_Layer: 0
   m_Name: Cerebellum
   m_TagString: Untagged
@@ -153,17 +152,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 4
   amount: 1
---- !u!114 &3116072674373581057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7999571592608342353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9ff43203224744392ce906645763b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quePnl: {fileID: 0}
-  points: 1

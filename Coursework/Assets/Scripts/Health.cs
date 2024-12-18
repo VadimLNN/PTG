@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     [Range(1, 100)]
     [SerializeField] int maxHealth;
-    [Range(1, 100)]
+    [Range(0, 100)]
     [SerializeField] float currentHealth;
 
     public UnityEvent<int, int> onHealthChange;

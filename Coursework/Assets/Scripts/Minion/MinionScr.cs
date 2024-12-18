@@ -125,17 +125,15 @@ public class MinionScr : MonoBehaviour
     }
 
 
-    void attack()
+    void dealDamage()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, atkRadius, enemyLayer);
 
         if (cols.Length > 0)
         {
-            EnemyScr c = cols[0].transform.GetComponent<EnemyScr>();
-            if (c != null) c.takeDamage(3);
-        
-            GoatSheepControllerScr c2 = cols[0].transform.GetComponent<GoatSheepControllerScr>();
-            if (c2 != null) c2.takeDamage(5);
+            Health targetHP = cols[0].GetComponent<Health>();
+            if (targetHP != null)
+                targetHP.hpDecrease(3);
         }
     }
     public void takeDamage(int gamage)
