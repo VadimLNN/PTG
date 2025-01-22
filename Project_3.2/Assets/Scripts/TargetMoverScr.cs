@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TargetMoverScr : MonoBehaviour
 {
     Animator anim;
+
+    public UnityEvent upNext;
 
     private void Start()
     {
@@ -17,6 +20,7 @@ public class TargetMoverScr : MonoBehaviour
     public void downTarget()
     {
         anim.SetInteger("state", 0);
+        upNext.Invoke();
     }
 
     public void moveTarget(float speed)
