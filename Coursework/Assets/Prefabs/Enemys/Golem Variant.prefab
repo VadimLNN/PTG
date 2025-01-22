@@ -226,9 +226,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 474825259339910810, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4806445522342849314}
-    - targetCorrespondingSourceObject: {fileID: 474825259339910810, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6071265331918102919}
     - targetCorrespondingSourceObject: {fileID: 474825259339910810, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
       insertIndex: -1
@@ -239,39 +236,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 474825259339910810, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4145839732352559426}
+    - targetCorrespondingSourceObject: {fileID: 474825259339910810, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4474481000475856221}
   m_SourcePrefab: {fileID: 100100000, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
 --- !u!1 &749914206524580718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 474825259339910810, guid: cfdaf9009eaf6284bb2e89504bc24020, type: 3}
   m_PrefabInstance: {fileID: 936416608287206900}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &4806445522342849314
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749914206524580718}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &6071265331918102919
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -377,3 +350,17 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 768
+--- !u!114 &4474481000475856221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749914206524580718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da290a757cc86f46a757e0d91cf3300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: 9.81
+  distToGround: 0.5

@@ -88,7 +88,7 @@ public class MinionScr : MonoBehaviour
 
         // установка анимации
         anim.SetInteger("state", state);
-        anim.SetFloat("speed", Vector3.Magnitude(rb.velocity));
+        anim.SetFloat("speed", Vector3.Magnitude(rb.linearVelocity));
     }
     
     public void FollowOrder(Vector3 point) 
